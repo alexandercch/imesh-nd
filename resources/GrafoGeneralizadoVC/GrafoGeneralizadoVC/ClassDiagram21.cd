@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="CAppUtils" Collapsed="true">
+    <Position X="9" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAgABAAAACgAAAAAAAAAAgAAAAAAAAAAAAAQA=</HashCode>
+      <FileName>C:\Users\alex\Dropbox\Tesis-Alexander\GrafoGeneralizado\GrafoGeneralizado\CAppUtils.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CColor" Collapsed="true">
+    <Position X="9" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAAAAAEAAAAAAAAIAAAQAAQAAAAAAAAAA=</HashCode>
+      <FileName>C:\Users\alex\Dropbox\Tesis-Alexander\GrafoGeneralizado\GrafoGeneralizado\CColor.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CGraph&lt;T&gt;" Collapsed="true">
+    <Position X="4.25" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAABAAAAAAAAAgAIAAgAAAAAA=</HashCode>
+      <FileName>C:\Users\alex\Dropbox\Tesis-Alexander\GrafoGeneralizado\GrafoGeneralizado\CGraph.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CGraphImage2D&lt;T&gt;" Collapsed="true">
+    <Position X="6.75" Y="4.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAECAAAAAAAAAAAAEAAAAAAQIAAAAAwgCIAgAAAAAgA=</HashCode>
+      <FileName>C:\Users\alex\Dropbox\Tesis-Alexander\GrafoGeneralizado\GrafoGeneralizado\CGraphImage2D.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CGraphImage3D&lt;T&gt;" Collapsed="true">
+    <Position X="2" Y="4.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAECAQAAAAAAAAAAEAAAAAAQIAAAABQgCIAgAAAAAgA=</HashCode>
+      <FileName>C:\Users\alex\Dropbox\Tesis-Alexander\GrafoGeneralizado\GrafoGeneralizado\CGraphImage3D.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CGraphIterator2D&lt;T&gt;" Collapsed="true">
+    <Position X="6.75" Y="6.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAACAAAAAAEAQAAAAgAAIIAgCAAQAAAgAAEAAAA=</HashCode>
+      <FileName>C:\Users\alex\Dropbox\Tesis-Alexander\GrafoGeneralizado\GrafoGeneralizado\CGraphIterator2D.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CGraphIterator3D&lt;T&gt;" Collapsed="true">
+    <Position X="4.25" Y="6.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAEAAQACAAAAAAEAQAAAAgAAIIAgBAAQAAAgAAEAAAA=</HashCode>
+      <FileName>C:\Users\alex\Dropbox\Tesis-Alexander\GrafoGeneralizado\GrafoGeneralizado\CGraphIterator3D.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CGraphIteratorND&lt;T&gt;" Collapsed="true">
+    <Position X="2" Y="6.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACCEAAAAAEAQAAAAgAAAIAgAAAQAAAgAAEAAAA=</HashCode>
+      <FileName>C:\Users\alex\Dropbox\Tesis-Alexander\GrafoGeneralizado\GrafoGeneralizado\CGraphIteratorND.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CGraphMeshND&lt;T&gt;" Collapsed="true">
+    <Position X="4.25" Y="4.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAQCAAEAAAAAAAAQAgAAAAAQAAAAAAYgCIAgAAIAAAA=</HashCode>
+      <FileName>C:\Users\alex\Dropbox\Tesis-Alexander\GrafoGeneralizado\GrafoGeneralizado\CGraphMeshND.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CNode&lt;T&gt;" Collapsed="true">
+    <Position X="9" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAAAAAAAAIACAAAIAAAAAAAAAAAgAAABAAA=</HashCode>
+      <FileName>C:\Users\alex\Dropbox\Tesis-Alexander\GrafoGeneralizado\GrafoGeneralizado\CNode.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CImage" Collapsed="true">
+    <Position X="9" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAACAAAAAAABQAAEAAAAAAEQAACCAAgAAAAAQAA=</HashCode>
+      <FileName>C:\Users\alex\Dropbox\Tesis-Alexander\GrafoGeneralizado\GrafoGeneralizado\CImage.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CGraphUtils&lt;T&gt;" Collapsed="true">
+    <Position X="9" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAgAAAAAAAAAAEAIABAEAYAAAAAAA=</HashCode>
+      <FileName>C:\Users\alex\Dropbox\Tesis-Alexander\GrafoGeneralizado\GrafoGeneralizado\CGraphUtils.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CSegmentator&lt;G&gt;" Collapsed="true">
+    <Position X="6.5" Y="3" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAEAAAAAAQAABAAAAACAEgABKBAAASAAAEIAA=</HashCode>
+      <FileName>C:\Users\alex\Dropbox\Tesis-Alexander\GrafoGeneralizado\GrafoGeneralizado\CSegmentator.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CGraphIterator&lt;T&gt;" Collapsed="true">
+    <Position X="4.25" Y="5.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAgAAAAAAQAAAAAAAAAAgAAAAEAAgAAAAAAA=</HashCode>
+      <FileName>C:\Users\alex\Dropbox\Tesis-Alexander\GrafoGeneralizado\GrafoGeneralizado\CGraphIterator.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
