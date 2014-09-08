@@ -1,0 +1,239 @@
+# depslib dependency file v1.0
+1404860614 source:c:\users\rasec1986\dropbox\tesis-alexander\grafogeneralizado\grafogeneralizadocb\main.cpp
+	<iostream>
+	"CGraphImage3D.h"
+	"CGraphImage2D.h"
+	"CGraphMeshND.h"
+	"CSegmentator.h"
+	"CImage.h"
+	"CGraphUtils.h"
+	"CAppUtils.h"
+
+1404860614 c:\users\rasec1986\dropbox\tesis-alexander\grafogeneralizado\grafogeneralizadocb\cgraphimage3d.h
+	"CGraph.h"
+	"CGraphIterator3D.h"
+
+1403029793 c:\users\rasec1986\dropbox\tesis-alexander\grafogeneralizado\grafogeneralizadocb\cgraph.h
+	"CNode.h"
+	"CImage.h"
+	<string>
+	<fstream>
+	<iostream>
+
+1385147019 c:\users\rasec1986\dropbox\tesis-alexander\grafogeneralizado\grafogeneralizadocb\cnode.h
+
+1404860614 c:\users\rasec1986\dropbox\tesis-alexander\grafogeneralizado\grafogeneralizadocb\cimage.h
+	<fstream>
+	<iostream>
+	<vector>
+	<string>
+	"CImg.h"
+
+1404860614 c:\users\rasec1986\dropbox\tesis-alexander\grafogeneralizado\grafogeneralizadocb\cimg.h
+	<cstdio>
+	<cstdlib>
+	<cstdarg>
+	<cstring>
+	<cmath>
+	<ctime>
+	<exception>
+	<sys/types.h>
+	<sys/time.h>
+	<unistd.h>
+	<windows.h>
+	<shlobj.h>
+	<process.h>
+	<io.h>
+	<stdio.h>
+	<X11/Xlib.h>
+	<X11/Xutil.h>
+	<X11/keysym.h>
+	<pthread.h>
+	<sys/ipc.h>
+	<sys/shm.h>
+	<X11/extensions/XShm.h>
+	<X11/extensions/Xrandr.h>
+	"omp.h"
+	<cstddef>
+	"cv.h"
+	"highgui.h"
+	"png.h"
+	"jpeglib.h"
+	"setjmp.h"
+	"tiffio.h"
+	"minc_io_simple_volume.h"
+	"minc_1_simple.h"
+	"minc_1_simple_rw.h"
+	"avformat.h"
+	"avcodec.h"
+	"swscale.h"
+	"zlib.h"
+	"Magick++.h"
+	"fftw3.h"
+	"Board.h"
+	"ImfRgbaFile.h"
+	"ImfInputFile.h"
+	"ImfChannelList.h"
+	"ImfMatrixAttribute.h"
+	"ImfArray.h"
+	"CImg.h"
+
+1404860614 c:\users\rasec1986\dropbox\tesis-alexander\grafogeneralizado\grafogeneralizadocb\cgraphiterator3d.h
+	"CGraphIterator.h"
+
+1404860614 c:\users\rasec1986\dropbox\tesis-alexander\grafogeneralizado\grafogeneralizadocb\cgraphiterator.h
+
+1404860614 c:\users\rasec1986\dropbox\tesis-alexander\grafogeneralizado\grafogeneralizadocb\cgraphimage2d.h
+	"CGraph.h"
+	"CGraphIterator2D.h"
+
+1404860614 c:\users\rasec1986\dropbox\tesis-alexander\grafogeneralizado\grafogeneralizadocb\cgraphiterator2d.h
+	"CGraphIterator.h"
+
+1404860614 c:\users\rasec1986\dropbox\tesis-alexander\grafogeneralizado\grafogeneralizadocb\cgraphmeshnd.h
+	"CGraph.h"
+	"CGraphIteratorND.h"
+	<vector>
+
+1404860614 c:\users\rasec1986\dropbox\tesis-alexander\grafogeneralizado\grafogeneralizadocb\cgraphiteratornd.h
+	"CGraphIterator.h"
+
+1404860614 c:\users\rasec1986\dropbox\tesis-alexander\grafogeneralizado\grafogeneralizadocb\csegmentator.h
+	<map>
+	<queue>
+	<iostream>
+	"CColor.h"
+
+1404912283 c:\users\rasec1986\dropbox\tesis-alexander\grafogeneralizado\grafogeneralizadocb\ccolor.h
+	<cstdlib>
+	<time.h>
+
+1404860614 c:\users\rasec1986\dropbox\tesis-alexander\grafogeneralizado\grafogeneralizadocb\cgraphutils.h
+	"CImage.h"
+
+1404860614 c:\users\rasec1986\dropbox\tesis-alexander\grafogeneralizado\grafogeneralizadocb\capputils.h
+	<iostream>
+	<fstream>
+	<time.h>
+	<direct.h>
+	<cstdio>
+
+1404959119 source:c:\users\alex\dropbox\tesis-alexander\grafogeneralizado\grafogeneralizadocb\main.cpp
+	<iostream>
+	"CGraphImage3D.h"
+	"CGraphImage2D.h"
+	"CGraphMeshND.h"
+	"CSegmentator.h"
+	"CImage.h"
+	"CGraphUtils.h"
+	"CAppUtils.h"
+
+1404857014 c:\users\alex\dropbox\tesis-alexander\grafogeneralizado\grafogeneralizadocb\cgraphimage3d.h
+	"CGraph.h"
+	"CGraphIterator3D.h"
+
+1403051394 c:\users\alex\dropbox\tesis-alexander\grafogeneralizado\grafogeneralizadocb\cgraph.h
+	"CNode.h"
+	"CImage.h"
+	<string>
+	<fstream>
+	<iostream>
+
+1385168620 c:\users\alex\dropbox\tesis-alexander\grafogeneralizado\grafogeneralizadocb\cnode.h
+
+1404857014 c:\users\alex\dropbox\tesis-alexander\grafogeneralizado\grafogeneralizadocb\cimage.h
+	<fstream>
+	<iostream>
+	<vector>
+	<string>
+	"CImg.h"
+
+1404857014 c:\users\alex\dropbox\tesis-alexander\grafogeneralizado\grafogeneralizadocb\cimg.h
+	<cstdio>
+	<cstdlib>
+	<cstdarg>
+	<cstring>
+	<cmath>
+	<ctime>
+	<exception>
+	<sys/types.h>
+	<sys/time.h>
+	<unistd.h>
+	<windows.h>
+	<shlobj.h>
+	<process.h>
+	<io.h>
+	<stdio.h>
+	<X11/Xlib.h>
+	<X11/Xutil.h>
+	<X11/keysym.h>
+	<pthread.h>
+	<sys/ipc.h>
+	<sys/shm.h>
+	<X11/extensions/XShm.h>
+	<X11/extensions/Xrandr.h>
+	"omp.h"
+	<cstddef>
+	"cv.h"
+	"highgui.h"
+	"png.h"
+	"jpeglib.h"
+	"setjmp.h"
+	"tiffio.h"
+	"minc_io_simple_volume.h"
+	"minc_1_simple.h"
+	"minc_1_simple_rw.h"
+	"avformat.h"
+	"avcodec.h"
+	"swscale.h"
+	"zlib.h"
+	"Magick++.h"
+	"fftw3.h"
+	"Board.h"
+	"ImfRgbaFile.h"
+	"ImfInputFile.h"
+	"ImfChannelList.h"
+	"ImfMatrixAttribute.h"
+	"ImfArray.h"
+	"CImg.h"
+
+1404857014 c:\users\alex\dropbox\tesis-alexander\grafogeneralizado\grafogeneralizadocb\cgraphiterator3d.h
+	"CGraphIterator.h"
+
+1404857014 c:\users\alex\dropbox\tesis-alexander\grafogeneralizado\grafogeneralizadocb\cgraphiterator.h
+
+1404857014 c:\users\alex\dropbox\tesis-alexander\grafogeneralizado\grafogeneralizadocb\cgraphimage2d.h
+	"CGraph.h"
+	"CGraphIterator2D.h"
+
+1404857014 c:\users\alex\dropbox\tesis-alexander\grafogeneralizado\grafogeneralizadocb\cgraphiterator2d.h
+	"CGraphIterator.h"
+
+1404857014 c:\users\alex\dropbox\tesis-alexander\grafogeneralizado\grafogeneralizadocb\cgraphmeshnd.h
+	"CGraph.h"
+	"CGraphIteratorND.h"
+	<vector>
+
+1404857014 c:\users\alex\dropbox\tesis-alexander\grafogeneralizado\grafogeneralizadocb\cgraphiteratornd.h
+	"CGraphIterator.h"
+
+1404857014 c:\users\alex\dropbox\tesis-alexander\grafogeneralizado\grafogeneralizadocb\csegmentator.h
+	<map>
+	<queue>
+	<iostream>
+	"CColor.h"
+
+1404908683 c:\users\alex\dropbox\tesis-alexander\grafogeneralizado\grafogeneralizadocb\ccolor.h
+	<cstdlib>
+	<time.h>
+
+1404857014 c:\users\alex\dropbox\tesis-alexander\grafogeneralizado\grafogeneralizadocb\cgraphutils.h
+	"CImage.h"
+
+1404857014 c:\users\alex\dropbox\tesis-alexander\grafogeneralizado\grafogeneralizadocb\capputils.h
+	<iostream>
+	<fstream>
+	<time.h>
+	<direct.h>
+	<cstdio>
+
