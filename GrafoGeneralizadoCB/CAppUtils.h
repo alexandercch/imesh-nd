@@ -4,8 +4,17 @@
 #include <iostream>
 #include <fstream>
 #include <time.h>
-#include <direct.h>
 #include <cstdio>
+#include <cstdlib>
+#include <stdio.h>  /* defines FILENAME_MAX */
+#ifdef WINDOWS
+    #include <direct.h>
+    #define GetCurrentDir _getcwd
+#else
+    #include <unistd.h>
+    #define GetCurrentDir getcwd
+#endif
+
 using namespace std;
 
 //this class will provide statistic, last, conversion and another useful functions
@@ -35,8 +44,8 @@ void CAppUtils::show_duration()
 void CAppUtils::show_working_directory()
 {
     char cCurrentPath[FILENAME_MAX];
-    if (!_getcwd(cCurrentPath, sizeof(cCurrentPath)))
-        printf("error: %d", errno);
+    if (!GetCurrentDir(cCurrentPath, sizeof(cCurrentPath)))
+        printf("error: %d", rand());
     cCurrentPath[sizeof(cCurrentPath) - 1] = '\0'; /* not really required */
     printf ("The current working directory is %s", cCurrentPath);
 };
