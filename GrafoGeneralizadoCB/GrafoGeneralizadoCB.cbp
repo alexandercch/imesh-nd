@@ -48,6 +48,7 @@
 		<Unit filename="CGraphUtils.h" />
 		<Unit filename="CImage.h" />
 		<Unit filename="CImg.h" />
+		<Unit filename="CMeshRegion.h" />
 		<Unit filename="CNode.h" />
 		<Unit filename="CSegmentator.h" />
 		<Unit filename="main.cpp" />

@@ -1,6 +1,11 @@
 #ifndef CNODE_H
 #define CNODE_H
 #define OUT_OF_REGION -5
+
+#define DEFAULT_FLAG_VALUE -1
+#define DEFAULT_AREA_VALUE 1.0
+#define DEFAULT_VISITED_VALUE false
+
 template<class T>
 class CNode
 {
@@ -12,23 +17,24 @@ public:
     void operator=(CNode &_node);
     T m_data;
     bool m_visited;
-    int m_flag;
+    int m_label;//will hold the label number assigned
+    float m_area;
 protected:
 private:
 };
 
 template<class T>
-CNode<T>::CNode():m_visited(false), m_flag(-1)
+CNode<T>::CNode():m_visited(DEFAULT_VISITED_VALUE), m_label(DEFAULT_FLAG_VALUE), m_area(DEFAULT_AREA_VALUE)
 {
 }
 
 template<class T>
-CNode<T>::CNode(T _data):m_data(_data), m_visited(false), m_flag(-1)
+CNode<T>::CNode(T _data):m_visited(DEFAULT_VISITED_VALUE), m_label(DEFAULT_FLAG_VALUE), m_area(DEFAULT_AREA_VALUE)
 {
 }
 
 template<class T>
-CNode<T>::CNode(const CNode<T> &_node ):m_data(_node.m_data),m_visited(_node.m_visited),m_flag(_node.m_flag)
+CNode<T>::CNode(const CNode<T> &_node ):m_data(_node.m_data),m_visited(_node.m_visited),m_label(_node.m_label)
 {
 }
 
@@ -37,7 +43,7 @@ void CNode<T>::operator=(CNode &_node)
 {
     m_data = _node.m_data;
     m_visited = _node.m_visited;
-    m_flag = _node.m_flag;
+    m_label = _node.m_label;
 }
 
 template<class T>

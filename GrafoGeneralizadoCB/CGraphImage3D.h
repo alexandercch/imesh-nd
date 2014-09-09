@@ -9,6 +9,7 @@ template<class T>
 class CGraphImage3D : public CGraph<T>
 {
 public:
+    //typedef T T;
     typedef CGraphIterator3D<T> iterator;
     typedef typename CGraph<T>::node node;
 

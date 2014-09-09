@@ -3,6 +3,8 @@
 #include <map>
 #include <queue>
 #include <iostream>
+#include <vector>
+#include "CMeshRegion.h"
 #include "CColor.h"
 using namespace std;
 template<class G>
@@ -35,6 +37,9 @@ public:
 
 protected:
 private:
+    //private members
+    vector<CMeshRegion<G> > m_meshregionV;
+
     //processes to handle pixel by pixel
     void init();
     int rgb_difference(unsigned int a, unsigned int b);
@@ -151,46 +156,28 @@ void CSegmentator<G>::group_neighbor_cells()
     int labeler=0;
     for(iter = input->begin(); !iter.end(); iter++)
     {
-        //cout<<iter.m_row<<" "<<iter.m_col<<" "<<iter.m_lay<<endl;
-        if (iter->m_flag !=-1) continue;
+        if (iter->m_label !=-1) continue;
         queue<iterator> node_queue;
-        iter->m_flag=++labeler;
+        iter->m_label=++labeler;
         node_queue.push(iter);
-        //cout<<"label:"<<labeler<<endl;
         while(node_queue.size())
         {
             iterator actual =node_queue.front();
             node_queue.pop();
-            //if (actual->m_flag>-1) continue;
-            //actual->m_flag=labeler;
-            //pixel = color(labeler);
-            //output->set_at(actual, pixel);
             iterator i_neighbor_actual;
             i_neighbor_actual= actual;
             for(int i = 0 ; i< input->m_number_of_neighbors; ++i)
             {
-                //cout<<"grouping!!!"<<endl;
                 i_neighbor_actual.neighbor(&actual, i);
-                if (i_neighbor_actual->m_flag>-1 || i_neighbor_actual->m_visited ) continue;
-                //if (i_neighbor_actual->m_flag > -1) continue;
-
+                if (i_neighbor_actual->m_label>-1 || i_neighbor_actual->m_visited ) continue;
                 if ( gray_difference(i_neighbor_actual->m_data, actual->m_data)
                         < m_max_segmentation_difference )
                 {
-                    i_neighbor_actual->m_flag=labeler;
+                    i_neighbor_actual->m_label=labeler;
                     node_queue.push(i_neighbor_actual);
                 }
             }
         }
     }
-    //now we assign the respective color to out
-    /*int col;
-    for(iter = input->begin(); !iter.end(); iter++)
-    {
-        col=color(iter->m_flag);
-        output->set_at(iter,col);
-    }*/
-
-
 }
 #endif // SEGMENTATOR_H

@@ -7,6 +7,7 @@ template<class T>
 class CGraphMeshND : public CGraph<T>
 {
 public:
+    //typedef T T;
     typedef CGraphIteratorND<T> iterator;
     typedef typename CGraph<T>::node node;
 

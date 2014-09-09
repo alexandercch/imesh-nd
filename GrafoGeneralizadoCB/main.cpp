@@ -11,12 +11,12 @@ using namespace std;
 const string DATA_PATH ="..\\Data\\";
 int SEGMENTATION_DIFFERENCE=3;
 CAppUtils app;
-
+string data_file="pelotas.jpg";
 
 void do_mesh()
 {
     CGraphMeshND<int> grafo_entrada, grafo_salida;
-    grafo_entrada.load_data(DATA_PATH + "meshin");
+    grafo_entrada.load_data(DATA_PATH + data_file);
     //grafo_entrada.print_mesh();
     grafo_salida=grafo_entrada;
     CSegmentator<CGraphMeshND<int> > seg(&grafo_entrada, &grafo_salida);
@@ -25,7 +25,7 @@ void do_mesh()
 }
 void do_bin()
 {
-    CImage imagen(DATA_PATH + "auto.jpg");//true beacuse it is 3d
+    CImage imagen(DATA_PATH + data_file);//true beacuse it is 3d
     imagen.to_gray_scale();
     CGraphUtils<int> utils;
     CGraphImage2D<int> in, out;
@@ -39,7 +39,7 @@ void do_bin()
 }
 void do_ag()
 {
-    CImage imagen(DATA_PATH + "pelotas.jpg", true);//true beacuse it is 3d
+    CImage imagen(DATA_PATH + data_file, true);//true beacuse it is 3d
     CGraphUtils<int> utils;
     CGraphImage3D<int> in, out;
     utils.ImageToGraph3D(&in, &imagen);

@@ -149,7 +149,7 @@ void CGraphUtils<T>::LabeledGraphToImage2D(CGraphImage2D<T> *graph, CImage *imag
 {
     for(int i=0; i< image->m_height; ++i)
         for(int j=0; j< image->m_width; ++j)
-            image->set_pixel(i, j,color_pallete((int)graph->m_matriz[i+1][j+1].m_flag));
+            image->set_pixel(i, j,color_pallete((int)graph->m_matriz[i+1][j+1].m_label));
 }
 template<class T>//image must be already configured height x width
 void CGraphUtils<T>::LabeledGraphToImage3D(CGraphImage3D<T> *graph, CImage *image)
@@ -157,7 +157,7 @@ void CGraphUtils<T>::LabeledGraphToImage3D(CGraphImage3D<T> *graph, CImage *imag
     for(int i=0; i< image->m_height; ++i)
         for(int j=0; j< image->m_width; ++j)
             for(int k=0; k< image->m_layers; ++k)
-                image->set_pixel(i, j, k,color_pallete((int)graph->m_matriz[i+1][j+1][k+1].m_flag));
+                image->set_pixel(i, j, k,color_pallete((int)graph->m_matriz[i+1][j+1][k+1].m_label));
 }
 
 
