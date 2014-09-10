@@ -9,9 +9,9 @@
 using namespace std;
 //some config vars
 const string DATA_PATH ="..\\Data\\";
-int SEGMENTATION_DIFFERENCE=3;
+int SEGMENTATION_DIFFERENCE=10;
 CAppUtils app;
-string data_file="pelotas.jpg";
+string data_file="test.png";
 
 void do_mesh()
 {
@@ -56,6 +56,7 @@ void do_ag()
     app.begin_counter();
     seg.group_neighbor_cells();
     app.show_duration();
+    seg.show_mesh_region();
     //seg.binary_segmentation();
     //utils.GraphToImage3D(&out, &imagen);
     utils.LabeledGraphToImage3D(&in, &imagen);

@@ -6,6 +6,8 @@
 #include <vector>
 #include "CMeshRegion.h"
 #include "CColor.h"
+#define FORVZ(x) for(int i = 0;i<x.size(); ++i)
+
 using namespace std;
 template<class G>
 class CSegmentator
@@ -35,10 +37,16 @@ public:
     //imagen preprocesing
     void to_gray_scale();
 
+
+
+    //debuging subroutines
+    void show_mesh_region();
+
+
 protected:
 private:
     //private members
-    vector<CMeshRegion<G> > m_meshregionV;
+    vector<CMeshRegion<G>* > m_meshregionV;
 
     //processes to handle pixel by pixel
     void init();
@@ -159,11 +167,16 @@ void CSegmentator<G>::group_neighbor_cells()
         if (iter->m_label !=-1) continue;
         queue<iterator> node_queue;
         iter->m_label=++labeler;
+        CMeshRegion<G> *mr= new CMeshRegion<G>();
+        mr->Init(labeler);
         node_queue.push(iter);
         while(node_queue.size())
         {
             iterator actual =node_queue.front();
             node_queue.pop();
+
+            mr->Incorporate(actual.self());
+
             iterator i_neighbor_actual;
             i_neighbor_actual= actual;
             for(int i = 0 ; i< input->m_number_of_neighbors; ++i)
@@ -178,6 +191,18 @@ void CSegmentator<G>::group_neighbor_cells()
                 }
             }
         }
+        m_meshregionV.push_back(mr);
     }
 }
+template<class G>
+void CSegmentator<G>::show_mesh_region(){
+    cout<<"id: area label ncells"<<endl;
+    FORVZ(m_meshregionV){
+        cout<<i<<":"<<m_meshregionV[i]->m_area<<" "<<m_meshregionV[i]->m_label<<" "<<m_meshregionV[i]->m_ncells<<endl;
+    }
+
+}
+
+
+
 #endif // SEGMENTATOR_H
