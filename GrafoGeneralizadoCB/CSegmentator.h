@@ -200,7 +200,6 @@ void CSegmentator<G>::show_mesh_region(){
     FORVZ(m_meshregionV){
         cout<<i<<":"<<m_meshregionV[i]->m_area<<" "<<m_meshregionV[i]->m_label<<" "<<m_meshregionV[i]->m_ncells<<endl;
     }
-
 }
 
 
