@@ -458,7 +458,7 @@
 1410277072 d:\alex\repo\imesh-nd\grafogeneralizadocb\cgraphiteratornd.h
 	"CGraphIterator.h"
 
-1410377147 d:\alex\repo\imesh-nd\grafogeneralizadocb\csegmentator.h
+1410463449 d:\alex\repo\imesh-nd\grafogeneralizadocb\csegmentator.h
 	<map>
 	<queue>
 	<iostream>
@@ -483,8 +483,9 @@
 	<direct.h>
 	<unistd.h>
 
-1410286204 d:\alex\repo\imesh-nd\grafogeneralizadocb\cmeshregion.h
+1410463394 d:\alex\repo\imesh-nd\grafogeneralizadocb\cmeshregion.h
 	"CNode.h"
+	<vector>
 
 1410442632 source:d:\sampa\tesis\imesh-nd\grafogeneralizadocb\main.cpp
 	<iostream>

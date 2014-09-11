@@ -14,7 +14,9 @@ public:
     CNode(const CNode &_node );
     CNode(T _data);
     virtual ~CNode();
+
     void operator=(CNode &_node);
+
     T m_data;
     bool m_visited;
     int m_label;//will hold the label number assigned

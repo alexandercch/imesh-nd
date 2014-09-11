@@ -6,6 +6,7 @@
 #include <vector>
 #include "CMeshRegion.h"
 #include "CColor.h"
+
 #define FORVZ(x) for(int i = 0;i<x.size(); ++i)
 
 using namespace std;
@@ -183,7 +184,12 @@ void CSegmentator<G>::group_neighbor_cells()
             for(int i = 0 ; i< input->m_number_of_neighbors; ++i)
             {
                 i_neighbor_actual.neighbor(&actual, i);
-                if (i_neighbor_actual->m_label>-1 || i_neighbor_actual->m_visited ) continue;
+                //we add the neighbor of the
+                if ()
+
+
+                if (i_neighbor_actual->m_label>-1 || i_neighbor_actual->m_visited) continue;
+
                 if ( gray_difference(i_neighbor_actual->m_data, actual->m_data)
                         < m_max_segmentation_difference )
                 {
