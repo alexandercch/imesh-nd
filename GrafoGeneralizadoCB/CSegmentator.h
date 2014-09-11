@@ -33,6 +33,7 @@ public:
     //segmentation algorithms
     void binary_segmentation();
     void group_neighbor_cells();
+    void group_neighbor_regions();
 
     //imagen preprocesing
     void to_gray_scale();
@@ -194,11 +195,23 @@ void CSegmentator<G>::group_neighbor_cells()
         m_meshregionV.push_back(mr);
     }
 }
+
+
+
+template<class G>
+void CSegmentator<G>::group_neighbor_regions(){
+    //the code goes here :3
+
+}
+
+
 template<class G>
 void CSegmentator<G>::show_mesh_region(){
-    cout<<"id: area label ncells"<<endl;
+    cout<<"id: area label ncells mpattern"<<endl;
     FORVZ(m_meshregionV){
-        cout<<i<<":"<<m_meshregionV[i]->m_area<<" "<<m_meshregionV[i]->m_label<<" "<<m_meshregionV[i]->m_ncells<<endl;
+        cout<<i<<":"<<m_meshregionV[i]->m_area<<" "
+            <<m_meshregionV[i]->m_label<<" "
+            <<m_meshregionV[i]->m_ncells<<" "<<m_meshregionV[i]->m_pattern<<endl;
     }
 }
 
