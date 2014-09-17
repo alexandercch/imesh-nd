@@ -36,16 +36,17 @@ CNode<T>::CNode(T _data):m_visited(DEFAULT_VISITED_VALUE), m_label(DEFAULT_FLAG_
 }
 
 template<class T>
-CNode<T>::CNode(const CNode<T> &_node ):m_data(_node.m_data),m_visited(_node.m_visited),m_label(_node.m_label)
+CNode<T>::CNode(const CNode<T> &_node ):m_data(_node.m_data),m_visited(_node.m_visited),m_label(_node.m_label), m_area(_node.m_area)
 {
 }
 
 template<class T>
 void CNode<T>::operator=(CNode &_node)
 {
-    m_data = _node.m_data;
-    m_visited = _node.m_visited;
-    m_label = _node.m_label;
+    m_data      = _node.m_data;
+    m_visited   = _node.m_visited;
+    m_label     = _node.m_label;
+    m_area      = _node.m_area;
 }
 
 template<class T>

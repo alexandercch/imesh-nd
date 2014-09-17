@@ -1,5 +1,6 @@
 #ifndef SEGMENTATOR_H
 #define SEGMENTATOR_H
+#include <cstdio>
 #include <map>
 #include <queue>
 #include <iostream>
@@ -163,14 +164,15 @@ void CSegmentator<G>::group_neighbor_cells()
 {
     int pixel;
     iterator iter ;
-    int labeler=0;
+    int labeler=-1;
+
     for(iter = input->begin(); !iter.end(); iter++)
     {
         if (iter->m_label !=-1) continue;
         queue<iterator> node_queue;
         iter->m_label=++labeler;
         CMeshRegion<G> *mr= new CMeshRegion<G>();
-        mr->Init(labeler);
+        mr->Init(labeler, &m_meshregionV);
         node_queue.push(iter);
         while(node_queue.size())
         {
@@ -184,11 +186,18 @@ void CSegmentator<G>::group_neighbor_cells()
             for(int i = 0 ; i< input->m_number_of_neighbors; ++i)
             {
                 i_neighbor_actual.neighbor(&actual, i);
-                //we add the neighbor of the
-                if ()
 
-
-                if (i_neighbor_actual->m_label>-1 || i_neighbor_actual->m_visited) continue;
+                if (i_neighbor_actual->m_visited) continue;
+                if (i_neighbor_actual->m_label>-1){
+                    //we add the neighbor of the region
+                    if (i_neighbor_actual->m_label != iter->m_label){
+                        mr->set_neighbor(i_neighbor_actual->m_label);
+                        //mr->m_neighbors_set.insert(i_neighbor_actual->m_label);
+                        //cout<<"region "<<i_neighbor_actual->m_label<<" added "
+                        //    <<iter->m_label<<" as neighbor"<<endl;
+                    }
+                    continue;
+                }
 
                 if ( gray_difference(i_neighbor_actual->m_data, actual->m_data)
                         < m_max_segmentation_difference )
@@ -202,22 +211,24 @@ void CSegmentator<G>::group_neighbor_cells()
     }
 }
 
-
-
 template<class G>
 void CSegmentator<G>::group_neighbor_regions(){
     //the code goes here :3
-
 }
-
 
 template<class G>
 void CSegmentator<G>::show_mesh_region(){
-    cout<<"id: area label ncells mpattern"<<endl;
+    cout<<"id: area label ncells mpattern [neighbors, ...]"<<endl;
     FORVZ(m_meshregionV){
         cout<<i<<":"<<m_meshregionV[i]->m_area<<" "
             <<m_meshregionV[i]->m_label<<" "
-            <<m_meshregionV[i]->m_ncells<<" "<<m_meshregionV[i]->m_pattern<<endl;
+            <<m_meshregionV[i]->m_ncells<<" ";
+            printf("%x",(int) m_meshregionV[i]->m_pattern);
+            set<int>::iterator sit;
+            for(sit =  m_meshregionV[i]->m_neighbors_set.begin();
+                sit != m_meshregionV[i]->m_neighbors_set.end(); ++sit)
+                cout<<" "<<*sit<<",";
+            cout<<endl;
     }
 }
 

@@ -1,4 +1,6 @@
 #pragma once
+#include <cstdio>
+#include <set>
 #include "CImage.h"
 using namespace std;
 template<class T>
@@ -70,7 +72,7 @@ template<class T>
 void CGraphUtils<T>::ImageToGraph3D(CGraphImage3D<T> *graph, CImage *image)
 {
     graph->config(image->m_height+2, image->m_width+2, image->m_layers+2);
-
+    set<int> colorset;
     for(int i=0; i< graph->m_rows; ++i)
         for(int j=0; j< graph->m_cols; ++j)
             for(int k=0; k< graph->m_lays; ++k)
@@ -82,6 +84,7 @@ void CGraphUtils<T>::ImageToGraph3D(CGraphImage3D<T> *graph, CImage *image)
             {
                 graph->m_matriz[i+1][j+1][k+1].m_data= image->get_pixel(i, j, k);
                 graph->m_matriz[i+1][j+1][k+1].m_visited=false;
+                colorset.insert(image->get_pixel(i, j, k));
             }
     /*int r=graph->m_rows-1, c=graph->m_cols-1, l=graph->m_lays-1;
     for(int i=0; i< graph->m_rows; ++i)
@@ -99,6 +102,12 @@ void CGraphUtils<T>::ImageToGraph3D(CGraphImage3D<T> *graph, CImage *image)
         graph->m_matriz[r][0][i].m_visited=
         graph->m_matriz[0][c][i].m_visited=
         graph->m_matriz[r][c][i].m_visited=true;*/
+        cout<<"set of image colors:"<<endl;
+        for(set<int>::iterator iter= colorset.begin();
+            iter!= colorset.end(); iter++)
+            printf("%x ", *iter);
+        cout<<endl;
+
 }
 template<class T>
 void CGraphUtils<T>::p(CGraphImage3D<T> *graph)

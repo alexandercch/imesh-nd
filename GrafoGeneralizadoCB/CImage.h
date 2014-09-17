@@ -134,13 +134,13 @@ public:
     unsigned int get_pixel(int row, int column)
     {
         int r, g, b, pos, msize;
-        unsigned int pixel;//msize is the the total size of pixels aka (height x widht)
+        unsigned int pixel=0;//msize is the the total size of pixels aka (height x widht)
         pos = m_width * row + column;
         msize = m_height * m_width;
         r = m_imagen->data()[pos];
         g = m_imagen->data()[msize + pos];
         b = m_imagen->data()[msize*2 + pos];
-        pixel=255<<8;
+        //pixel=255<<8;
         pixel|=r;
         pixel<<=8;
         pixel|=g;
@@ -152,13 +152,13 @@ public:
     unsigned int get_pixel(int row, int column, int layer) //row and column form the matrix/image 2d
     {
         int r, g, b, pos, msize;//matrix size (height x widht x layers)
-        unsigned int pixel;
+        unsigned int pixel=0;
         pos = m_width * row + column;
         msize = m_height * m_width;
         r = m_imagenes[layer]->data()[pos];
         g = m_imagenes[layer]->data()[msize + pos];
         b = m_imagenes[layer]->data()[msize*2 + pos];
-        pixel=255<<8;
+        //pixel=255<<8;
         pixel|=r;
         pixel<<=8;
         pixel|=g;
