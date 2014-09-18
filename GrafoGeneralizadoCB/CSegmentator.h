@@ -2,6 +2,7 @@
 #define SEGMENTATOR_H
 #include <cstdio>
 #include <map>
+#include <set>
 #include <queue>
 #include <iostream>
 #include <vector>
@@ -50,8 +51,10 @@ protected:
 private:
     //private members
     vector<CMeshRegion<G>* > m_meshregionV;
+    set<CMeshRegion<G>*, mr_cmp> m_less_index_mr_set;
 
     //processes to handle pixel by pixel
+    bool mr_cmp(CMeshRegion<G>* a, CMeshRegion<G>* b);
     void init();
     int rgb_difference(unsigned int a, unsigned int b);
     inline int gray_difference(int a, int b);
@@ -215,6 +218,13 @@ template<class G>
 void CSegmentator<G>::group_neighbor_regions(){
     //the code goes here :3
 }
+
+template<class G>
+void CSegmentator<G>::mr_cmp(CMeshRegion<G>* a, CMeshRegion<G>* b){
+     return
+
+}
+
 
 template<class G>
 void CSegmentator<G>::show_mesh_region(){
