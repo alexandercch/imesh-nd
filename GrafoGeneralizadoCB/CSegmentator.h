@@ -51,10 +51,9 @@ protected:
 private:
     //private members
     vector<CMeshRegion<G>* > m_meshregionV;
-    set<CMeshRegion<G>*, mr_cmp> m_less_index_mr_set;
+    set<CMeshRegion<G>*, mr_cmp<G> > m_less_index_mr_set;
 
     //processes to handle pixel by pixel
-    bool mr_cmp(CMeshRegion<G>* a, CMeshRegion<G>* b);
     void init();
     int rgb_difference(unsigned int a, unsigned int b);
     inline int gray_difference(int a, int b);
@@ -165,9 +164,9 @@ void CSegmentator<G>::to_gray_scale()
 template<class G>
 void CSegmentator<G>::group_neighbor_cells()
 {
-    int pixel;
-    iterator iter ;
     int labeler=-1;
+    iterator iter ;
+    int totalarea= input->area(), totalelements=input->weight();
 
     for(iter = input->begin(); !iter.end(); iter++)
     {
@@ -194,7 +193,7 @@ void CSegmentator<G>::group_neighbor_cells()
                 if (i_neighbor_actual->m_label>-1){
                     //we add the neighbor of the region
                     if (i_neighbor_actual->m_label != iter->m_label){
-                        mr->set_neighbor(i_neighbor_actual->m_label);
+                        mr->Set_Neighbor(i_neighbor_actual->m_label);
                         //mr->m_neighbors_set.insert(i_neighbor_actual->m_label);
                         //cout<<"region "<<i_neighbor_actual->m_label<<" added "
                         //    <<iter->m_label<<" as neighbor"<<endl;
@@ -210,6 +209,7 @@ void CSegmentator<G>::group_neighbor_cells()
                 }
             }
         }
+        mr->Set_Distance(totalelements, totalarea);
         m_meshregionV.push_back(mr);
     }
 }
@@ -217,16 +217,23 @@ void CSegmentator<G>::group_neighbor_cells()
 template<class G>
 void CSegmentator<G>::group_neighbor_regions(){
     //the code goes here :3
+    set<CMeshRegion<G>*, mr_cmp<G> > mr_priority_set(m_meshregionV.begin(), m_meshregionV.end());
+
+    cout<<"size:"<<mr_priority_set.size()<<endl;
+    typename set<CMeshRegion<G>*, mr_cmp<G> >::iterator it=mr_priority_set.begin();
+    cout<<"hello"<<endl;
+    do{
+        cout<<(*it)->m_index<<" cells: "<<(*it)->m_ncells<<" area :"<<(*it)->m_area<<endl;
+    }while(++it!= mr_priority_set.end());
+    //for(int i=0; i< m_meshregionV.size(); ++i){
+    //    mr_priority_set.insert(m_meshregionV[i]);
+    //}
+
+
 }
 
-template<class G>
-void CSegmentator<G>::mr_cmp(CMeshRegion<G>* a, CMeshRegion<G>* b){
-     return
 
-}
-
-
-template<class G>
+template<class G>//this code if debuging :3
 void CSegmentator<G>::show_mesh_region(){
     cout<<"id: area label ncells mpattern [neighbors, ...]"<<endl;
     FORVZ(m_meshregionV){

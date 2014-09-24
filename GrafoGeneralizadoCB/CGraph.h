@@ -6,7 +6,7 @@
 #include <fstream>
 #include <iostream>
 using namespace std;
-//CGraph es la carcaza que pretendemos hacer 
+//CGraph es la carcaza que pretendemos hacer
 template<class T>
 class CGraph
 {
@@ -14,9 +14,10 @@ public:
     typedef CNode<T> node;
     //methods
     CGraph();
-    virtual ~CGraph();    
+    virtual ~CGraph();
     void load_data(string filename);
-    int weight();//number of nodes    
+    int weight();//number of nodes
+    int area();//image area
 protected:
 private:
 };

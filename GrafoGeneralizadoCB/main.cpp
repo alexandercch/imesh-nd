@@ -57,6 +57,7 @@ void do_ag()
     seg.group_neighbor_cells();
     app.show_duration();
     seg.show_mesh_region();
+    seg.group_neighbor_regions();
     //seg.binary_segmentation();
     //utils.GraphToImage3D(&out, &imagen);
     utils.LabeledGraphToImage3D(&in, &imagen);

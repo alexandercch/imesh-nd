@@ -22,6 +22,7 @@ public:
     CGraphImage2D ();
     virtual ~CGraphImage2D ();
     int weight();
+    int area();
 
     //methods - configuration
     void config(int _rows, int _cols);
@@ -83,6 +84,12 @@ template<class T>
 int CGraphImage2D<T>::weight()
 {
     return m_rows*m_cols; //number of elements
+}
+
+template<class T>
+int CGraphImage2D<T>::area()
+{
+    return m_rows*m_cols; //number of area in pixels
 }
 
 template<class T>

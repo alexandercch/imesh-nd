@@ -22,6 +22,7 @@ public:
     CGraphImage3D ();
     virtual ~CGraphImage3D ();
     int weight();
+    int area();
 
     //methods - configuration
     void config(int _rows, int _cols, int _lays);
@@ -87,6 +88,12 @@ template<class T>
 int CGraphImage3D<T>::weight()
 {
     return m_rows*m_cols*m_lays;
+}
+
+template<class T>
+int CGraphImage3D<T>::area()
+{
+    return m_rows*m_cols*m_lays; //number of area in pixels
 }
 
 template<class T>

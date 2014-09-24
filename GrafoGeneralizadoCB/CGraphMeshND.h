@@ -24,7 +24,7 @@ public:
     //methods - configuration
     void load_data(string filename);
     int weight();
-
+    int area();
     //methods - iteration
     CGraphMeshND* begin();
     void set_at(iterator& iter, T& data);
@@ -101,6 +101,16 @@ int CGraphMeshND<T>::weight()
 {
     return m_size;
 }
+
+template<class T>
+int CGraphMeshND<T>::area()
+{
+    float tarea=0.0;
+    for(int i=0; i< m_size; ++i)
+        tarea+=m_nodes[i]->m_area;
+    return tarea;
+}
+
 
 template<class T>
 void CGraphMeshND<T>::print_mesh()

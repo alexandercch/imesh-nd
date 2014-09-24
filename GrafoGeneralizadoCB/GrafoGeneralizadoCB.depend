@@ -487,7 +487,7 @@
 	"CNode.h"
 	<vector>
 
-1410442632 source:d:\sampa\tesis\imesh-nd\grafogeneralizadocb\main.cpp
+1411585594 source:d:\sampa\tesis\imesh-nd\grafogeneralizadocb\main.cpp
 	<iostream>
 	"CGraphImage3D.h"
 	"CGraphImage2D.h"
@@ -497,11 +497,11 @@
 	"CGraphUtils.h"
 	"CAppUtils.h"
 
-1410442632 d:\sampa\tesis\imesh-nd\grafogeneralizadocb\cgraphimage3d.h
+1411575727 d:\sampa\tesis\imesh-nd\grafogeneralizadocb\cgraphimage3d.h
 	"CGraph.h"
 	"CGraphIterator3D.h"
 
-1410442632 d:\sampa\tesis\imesh-nd\grafogeneralizadocb\cgraph.h
+1411575634 d:\sampa\tesis\imesh-nd\grafogeneralizadocb\cgraph.h
 	"CNode.h"
 	"CImage.h"
 	<string>
@@ -571,14 +571,14 @@
 
 1410442632 d:\sampa\tesis\imesh-nd\grafogeneralizadocb\cgraphiterator.h
 
-1410442632 d:\sampa\tesis\imesh-nd\grafogeneralizadocb\cgraphimage2d.h
+1411575681 d:\sampa\tesis\imesh-nd\grafogeneralizadocb\cgraphimage2d.h
 	"CGraph.h"
 	"CGraphIterator2D.h"
 
 1410442632 d:\sampa\tesis\imesh-nd\grafogeneralizadocb\cgraphiterator2d.h
 	"CGraphIterator.h"
 
-1410442632 d:\sampa\tesis\imesh-nd\grafogeneralizadocb\cgraphmeshnd.h
+1411580496 d:\sampa\tesis\imesh-nd\grafogeneralizadocb\cgraphmeshnd.h
 	"CGraph.h"
 	"CGraphIteratorND.h"
 	<vector>
@@ -586,17 +586,19 @@
 1410442632 d:\sampa\tesis\imesh-nd\grafogeneralizadocb\cgraphiteratornd.h
 	"CGraphIterator.h"
 
-1410980986 d:\sampa\tesis\imesh-nd\grafogeneralizadocb\csegmentator.h
+1411586132 d:\sampa\tesis\imesh-nd\grafogeneralizadocb\csegmentator.h
 	<cstdio>
 	<map>
+	<set>
 	<queue>
 	<iostream>
 	<vector>
 	"CMeshRegion.h"
 	"CColor.h"
 
-1410975155 d:\sampa\tesis\imesh-nd\grafogeneralizadocb\cmeshregion.h
+1411581753 d:\sampa\tesis\imesh-nd\grafogeneralizadocb\cmeshregion.h
 	"CNode.h"
+	<math.h>
 	<vector>
 	<set>
 
