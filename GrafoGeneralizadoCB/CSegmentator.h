@@ -22,6 +22,7 @@ public:
     //map<HashType, int> vis;
     int cntr;
     int m_max_segmentation_difference;
+    int m_nregions;
     CSegmentator();
     //CSegmentator(G *_m_pgraph);
     CSegmentator(G *_input, G *_output);
@@ -218,13 +219,41 @@ template<class G>
 void CSegmentator<G>::group_neighbor_regions(){
     //the code goes here :3
     set<CMeshRegion<G>*, mr_cmp<G> > mr_priority_set(m_meshregionV.begin(), m_meshregionV.end());
+    set<CMeshRegion<G>*, mr_cmp<G> >::iterator siter;
+    G::NeighborSet::iterator neighbor_iter;
 
-    cout<<"size:"<<mr_priority_set.size()<<endl;
+    while(mr_priority_set.size()>m_nregions){
+
+        siter = mr_priority_set.begin();
+        bool first=true;
+        double min_dist;
+        for(neighbor_iter = (*siter)->m_neighbors_set.begin();
+            neighbor_iter != (*siter)->m_neighbors_set.size();
+            ++neighbor_iter){
+            if (first){
+                first = false;
+                min_dist =
+
+                continue;
+            }
+
+
+
+
+        }
+
+
+
+    }
+
+
+    /*cout<<"size:"<<mr_priority_set.size()<<endl;
     typename set<CMeshRegion<G>*, mr_cmp<G> >::iterator it=mr_priority_set.begin();
     cout<<"hello"<<endl;
     do{
         cout<<(*it)->m_index<<" cells: "<<(*it)->m_ncells<<" area :"<<(*it)->m_area<<endl;
     }while(++it!= mr_priority_set.end());
+    */
     //for(int i=0; i< m_meshregionV.size(); ++i){
     //    mr_priority_set.insert(m_meshregionV[i]);
     //}
