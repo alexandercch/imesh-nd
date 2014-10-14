@@ -84,8 +84,13 @@ void CMeshRegion<G>::Incorporate(self *mregion){
     mregion->m_overlap = true;
     m_ncells += mregion->m_ncells;
     m_area += mregion->m_area;
-    m_pattern = (m_pattern * (m_area - mregion->m_area) + mregion->m_data * mregion->m_area)/m_area;
-    m_overlaped_mr_ids.push_back(mregion->m_index)
+    m_pattern = (m_pattern * (m_area - mregion->m_area) + mregion->m_pattern * mregion->m_area)/m_area;
+    m_overlaped_mr_ids.push_back(mregion->m_index);
+    //merge the neighborset :3
+    NeighborSet::iterator nsiter= mregion->m_neighbors_set.begin();
+    for(; nsiter!= mregion->m_neighbors_set.end(); ++nsiter){
+        m_neighbors_set.insert(*nsiter);
+    }
 }
 
 template<class G>

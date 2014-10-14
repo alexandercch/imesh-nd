@@ -11,7 +11,7 @@ using namespace std;
 const string DATA_PATH ="..\\Data\\";
 int SEGMENTATION_DIFFERENCE=10;
 CAppUtils app;
-string data_file="test.png";
+string data_file="data.png";
 
 void do_mesh()
 {
@@ -56,12 +56,45 @@ void do_ag()
     app.begin_counter();
     seg.group_neighbor_cells();
     app.show_duration();
+    seg.m_nregions=3;
     seg.show_mesh_region();
     seg.group_neighbor_regions();
     //seg.binary_segmentation();
     //utils.GraphToImage3D(&out, &imagen);
     utils.LabeledGraphToImage3D(&in, &imagen);
     imagen.display3d();
+}
+void do_ag2()
+{
+    CImage imagen(DATA_PATH + data_file);//true beacuse it is 3d
+    CGraphUtils<int> utils;
+    CGraphImage2D<int> in, out;
+    utils.ImageToGraph2D(&in, &imagen);
+    out=in;
+    CSegmentator<CGraphImage2D<int> > seg(&in, &out);
+    cout<<"to gray scale"<<endl;
+    app.begin_counter();
+    imagen.to_gray_scale();
+    app.show_duration();
+    cout<<endl;
+    //imagen.display3d();
+    cout<<"Segmentando"<<endl;
+    seg.m_max_segmentation_difference=SEGMENTATION_DIFFERENCE;
+    //seg.gray_scale();
+    app.begin_counter();
+    seg.group_neighbor_cells();
+    app.show_duration();
+    cout<<endl;
+
+
+    seg.m_nregions=3;
+    seg.show_mesh_region();
+    seg.group_neighbor_regions();
+    cout<<"end ASm_V"<<endl;
+    //seg.binary_segmentation();
+    //utils.GraphToImage3D(&out, &imagen);
+    utils.LabeledGraphToImage2D(&in, &imagen);
+    imagen.display();
 }
 int main()
 {
@@ -75,7 +108,7 @@ int main()
             do_bin();
             break;
         case 2:
-            do_ag();
+            do_ag2();
             break;
         case 3:
             do_mesh();

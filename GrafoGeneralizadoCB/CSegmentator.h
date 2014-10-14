@@ -218,32 +218,51 @@ void CSegmentator<G>::group_neighbor_cells()
 template<class G>
 void CSegmentator<G>::group_neighbor_regions(){
     //the code goes here :3
+    int totalarea= input->area(), totalelements=input->weight();
+
     set<CMeshRegion<G>*, mr_cmp<G> > mr_priority_set(m_meshregionV.begin(), m_meshregionV.end());
-    set<CMeshRegion<G>*, mr_cmp<G> >::iterator siter;
-    G::NeighborSet::iterator neighbor_iter;
+    typename set<CMeshRegion<G>*, mr_cmp<G> >::iterator siter;
+    typename CMeshRegion<G>::NeighborSet::iterator neighbor_iter;
+    cout<<"ASmV:"<<endl;
+    cout<<"m_nregions: "<<m_nregions<<endl;
 
-    while(mr_priority_set.size()>m_nregions){
-
+    while(mr_priority_set.size() > m_nregions){
         siter = mr_priority_set.begin();
+
         bool first=true;
-        double min_dist;
+        double min_dist, curr_dist;
+        int min_index;
+        //we find the most similar neighbor region
+        cout<<":3"<<endl;
         for(neighbor_iter = (*siter)->m_neighbors_set.begin();
-            neighbor_iter != (*siter)->m_neighbors_set.size();
+            neighbor_iter != (*siter)->m_neighbors_set.end();
             ++neighbor_iter){
+            cout<<":P"<<endl;
             if (first){
                 first = false;
-                min_dist =
-
+                min_dist = fabs((*siter)->m_pattern - (m_meshregionV[*neighbor_iter])->m_pattern);
+                min_index=(m_meshregionV[*neighbor_iter])->m_index;
+                cout<<"xD"<<endl;
                 continue;
             }
-
-
-
-
+            cout<<":P"<<endl;
+            curr_dist = fabs((*siter)->m_pattern - (m_meshregionV[*neighbor_iter])->m_pattern);
+            if (curr_dist < min_dist){
+                min_dist = curr_dist;
+                min_index = (*neighbor_iter);
+            }
+            cout<<":P"<<endl;
         }
+        cout<<"mergin regions:"<<(*siter)->m_label<<" - "
+            <<(m_meshregionV[min_index])->m_label<<endl;
 
-
-
+        //remove that region :3
+        CMeshRegion<G>* new_region = m_meshregionV[min_index];
+        new_region->Incorporate(*siter);
+        mr_priority_set.erase(*siter);
+        mr_priority_set.erase(m_meshregionV[min_index]);
+        new_region->Set_Distance(totalelements, totalarea);
+        mr_priority_set.insert(new_region);
     }
 
 
@@ -264,16 +283,19 @@ void CSegmentator<G>::group_neighbor_regions(){
 
 template<class G>//this code if debuging :3
 void CSegmentator<G>::show_mesh_region(){
-    cout<<"id: area label ncells mpattern [neighbors, ...]"<<endl;
+    cout<<"Results of mesh region: ("<<m_meshregionV.size()<<" regions..)"<<endl;
+    cout<<"id:\tarea\tlabel\tncells\tmpattern\t[neighbors, ...]"<<endl;
     FORVZ(m_meshregionV){
-        cout<<i<<":"<<m_meshregionV[i]->m_area<<" "
-            <<m_meshregionV[i]->m_label<<" "
-            <<m_meshregionV[i]->m_ncells<<" ";
+        cout<<i<<":\t"<<m_meshregionV[i]->m_area<<"\t"
+            <<m_meshregionV[i]->m_label<<"\t"
+            <<m_meshregionV[i]->m_ncells<<"\t";
             printf("%x",(int) m_meshregionV[i]->m_pattern);
+            cout<<"\t"<<"\t";
             set<int>::iterator sit;
             for(sit =  m_meshregionV[i]->m_neighbors_set.begin();
                 sit != m_meshregionV[i]->m_neighbors_set.end(); ++sit)
                 cout<<" "<<*sit<<",";
+            cout<<endl;
             cout<<endl;
     }
 }
