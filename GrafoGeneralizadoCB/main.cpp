@@ -9,7 +9,7 @@
 using namespace std;
 //some config vars
 const string DATA_PATH ="..\\Data\\";
-int SEGMENTATION_DIFFERENCE=10;
+int SEGMENTATION_DIFFERENCE=5;
 CAppUtils app;
 string data_file="data.png";
 
@@ -98,6 +98,7 @@ void do_ag2()
 }
 int main()
 {
+    freopen("out.txt", "w", stdout);
     int op;
     while(1)
     {

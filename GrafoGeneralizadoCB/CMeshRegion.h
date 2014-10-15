@@ -39,7 +39,7 @@ public:
 };
 
 template<class G>//mesh region comparator
-struct mr_cmp{bool operator()(CMeshRegion<G>* a, CMeshRegion<G>* b){return a->m_index< b->m_index;}};
+struct mr_cmp{bool operator()(CMeshRegion<G>* a, CMeshRegion<G>* b){return a->m_index < b->m_index;}};
 
 template<class G>
 CMeshRegion<G>::CMeshRegion():m_label(0), m_ncells(0), m_area(0.0), m_pattern(0.0),m_overlap(false)

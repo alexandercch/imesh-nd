@@ -487,7 +487,7 @@
 	"CNode.h"
 	<vector>
 
-1413229585 source:d:\sampa\tesis\imesh-nd\grafogeneralizadocb\main.cpp
+1413342727 source:d:\sampa\tesis\imesh-nd\grafogeneralizadocb\main.cpp
 	<iostream>
 	"CGraphImage3D.h"
 	"CGraphImage2D.h"
@@ -586,7 +586,7 @@
 1410442632 d:\sampa\tesis\imesh-nd\grafogeneralizadocb\cgraphiteratornd.h
 	"CGraphIterator.h"
 
-1413229930 d:\sampa\tesis\imesh-nd\grafogeneralizadocb\csegmentator.h
+1413343580 d:\sampa\tesis\imesh-nd\grafogeneralizadocb\csegmentator.h
 	<cstdio>
 	<map>
 	<set>
@@ -596,7 +596,7 @@
 	"CMeshRegion.h"
 	"CColor.h"
 
-1413226063 d:\sampa\tesis\imesh-nd\grafogeneralizadocb\cmeshregion.h
+1413339047 d:\sampa\tesis\imesh-nd\grafogeneralizadocb\cmeshregion.h
 	"CNode.h"
 	<math.h>
 	<vector>
