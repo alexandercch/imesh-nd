@@ -1,30 +1,40 @@
 to gray scale
-0.026 seconds.
+0.023 seconds.
 
 Segmentando
-0.096 seconds.
+0.089 seconds.
 
 Results of mesh region: (10 regions..)
-id/lbl:	area	index		ncells	mpattern	[neighbors, ...]
-0:	81918	0.898184	81918	222222		 1, 2, 3, 4, 5, 6, 7, 8, 9,
+id/lbl:	area	index		ncells	mpattern	overlaped	[neighbors, ...]
+0:	81918	0.898184	81918	222222		0		 1, 2, 3, 4, 5, 6, 7, 8, 9,
+ov regions:
 
-1:	35	0.000383755	35	8c		 0, 2,
+1:	35	0.000383755	35	8c		0		 0, 2,
+ov regions:
 
-2:	2500	0.0274111	2500	ffffff		 0, 1, 3,
+2:	2500	0.0274111	2500	ffffff		0		 0, 1, 3,
+ov regions:
 
-3:	100	0.00109644	100	0		 0, 2,
+3:	100	0.00109644	100	0		0		 0, 2,
+ov regions:
 
-4:	200	0.00219289	200	204000		 0,
+4:	200	0.00219289	200	204000		0		 0,
+ov regions:
 
-5:	54	0.000592079	54	dddddd		 0, 6,
+5:	54	0.000592079	54	dddddd		0		 0, 6,
+ov regions:
 
-6:	5000	0.0548222	5000	b20000		 0, 5, 7, 8, 9,
+6:	5000	0.0548222	5000	b20000		0		 0, 5, 7, 8, 9,
+ov regions:
 
-7:	88	0.00096487	88	99ffe5		 0, 6,
+7:	88	0.00096487	88	99ffe5		0		 0, 6,
+ov regions:
 
-8:	80	0.000877155	80	4c0066		 0, 6,
+8:	80	0.000877155	80	4c0066		0		 0, 6,
+ov regions:
 
-9:	25	0.000274111	25	ffbfff		 0, 6,
+9:	25	0.000274111	25	ffbfff		0		 0, 6,
+ov regions:
 
 ASmV:
 m_nregions: 3 set-size:10 mesh-regio size:10
@@ -150,3 +160,62 @@ e-(size)3
 6:0.0566532	5167	5167
 0:0.902735	82333	82333
 end ASm_V
+Results of mesh region: (10 regions..)
+id/lbl:	area	index		ncells	mpattern	overlaped	[neighbors, ...]
+0:	82333	0.902735	82333	221d0c		0		 0, 1, 2, 3, 4, 5, 6, 7, 8, 9,
+ov regions:	1	8	3	4
+
+1:	35	0.000383755	35	8c		1		 0, 2,
+ov regions:
+
+2:	2500	0.0274111	2500	ffffff		0		 0, 1, 3,
+ov regions:
+
+3:	100	0.00109644	100	0		1		 0, 2,
+ov regions:
+
+4:	200	0.00219289	200	204000		1		 0,
+ov regions:
+
+5:	54	0.000592079	54	dddddd		1		 0, 6,
+ov regions:
+
+6:	5167	0.0566532	5167	b26d06		0		 0, 5, 6, 7, 8, 9,
+ov regions:	9	5	7
+
+7:	88	0.00096487	88	99ffe5		1		 0, 6,
+ov regions:
+
+8:	80	0.000877155	80	4c0066		1		 0, 6,
+ov regions:
+
+9:	25	0.000274111	25	ffbfff		1		 0, 6,
+ov regions:
+
+:3
+mr: 0
+RDFS:0--16772296
+RDFS:1--16772296
+RDFS:8--16772296
+RDFS:3--16772296
+RDFS:4--16772296
+mr: 2
+RDFS:2--16776602
+mr: 6
+RDFS:6--16757765
+RDFS:9--16757765
+RDFS:5--16757765
+RDFS:7--16757765
+xD
+colors for mesh region
+	lbl	color
+	0	-16772296
+	1	-16772296
+	2	-16776602
+	3	-16772296
+	4	-16772296
+	5	-16757765
+	6	-16757765
+	7	-16757765
+	8	-16772296
+	9	-16757765

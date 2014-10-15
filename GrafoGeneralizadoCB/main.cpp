@@ -91,9 +91,12 @@ void do_ag2()
     seg.show_mesh_region();
     seg.group_neighbor_regions();
     cout<<"end ASm_V"<<endl;
+    seg.show_mesh_region();
     //seg.binary_segmentation();
     //utils.GraphToImage3D(&out, &imagen);
     utils.LabeledGraphToImage2D(&in, &imagen);
+    imagen.display();
+    utils.OverlapedGraphToImage2D(&in,&(seg.m_meshregionV),  &imagen);
     imagen.display();
 }
 int main()

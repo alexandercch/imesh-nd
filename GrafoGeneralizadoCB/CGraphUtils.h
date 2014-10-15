@@ -16,7 +16,15 @@ public:
 
     void LabeledGraphToImage2D(CGraphImage2D<T> *graph, CImage *image);
     void LabeledGraphToImage3D(CGraphImage3D<T> *graph, CImage *image);
+
+    void OverlapedGraphToImage2D(CGraphImage2D<T> *graph, vector<CMeshRegion<CGraphImage2D<T> >* > *p_mrv,  CImage *image);
+    //void OverlapedGraphToImage3D(CGraphImage3D<T> *graph, CImage *image);
+
+    void Region_DFS(int v, int color);
     CColor color_pallete;
+
+    map<int , int> m_label_color_map;
+    vector<CMeshRegion<CGraphImage2D<T> >* > *m_p_mrv;
     void p(CGraphImage3D<T> *graph);
 protected:
 private:
@@ -160,6 +168,7 @@ void CGraphUtils<T>::LabeledGraphToImage2D(CGraphImage2D<T> *graph, CImage *imag
         for(int j=0; j< image->m_width; ++j)
             image->set_pixel(i, j,color_pallete((int)graph->m_matriz[i+1][j+1].m_label));
 }
+
 template<class T>//image must be already configured height x width
 void CGraphUtils<T>::LabeledGraphToImage3D(CGraphImage3D<T> *graph, CImage *image)
 {
@@ -169,27 +178,46 @@ void CGraphUtils<T>::LabeledGraphToImage3D(CGraphImage3D<T> *graph, CImage *imag
                 image->set_pixel(i, j, k,color_pallete((int)graph->m_matriz[i+1][j+1][k+1].m_label));
 }
 
+template<class T>//image must be already configured height x width
+void CGraphUtils<T>::Region_DFS(int v, int color){
+    cout<<"RDFS:"<<v<<"-"<<color<<endl;
+    m_label_color_map[(*m_p_mrv)[v]->m_label] = color;
+    for(int i=0; i < (*m_p_mrv)[v]->m_overlaped_mr_ids.size(); ++i)
+        Region_DFS((*m_p_mrv)[v]->m_overlaped_mr_ids[i], color);
+}
 
 
 
+template<class T>//image must be already configured height x width
+void CGraphUtils<T>::OverlapedGraphToImage2D(CGraphImage2D<T> *graph, vector<CMeshRegion<CGraphImage2D<T> >* > *p_mrv, CImage *image)
+{
+    m_p_mrv = p_mrv;
+    int main_region_color;
+    cout<<":3"<<endl;
+    for(int i=0; i< p_mrv->size(); ++i){
+        if (!(*p_mrv)[i]->m_overlap){
+            main_region_color=color_pallete((*p_mrv)[i]->m_label);
+            //recorrer los hijos
+            cout<<"mr: "<<i<<endl;
+            Region_DFS((*p_mrv)[i]->m_label, main_region_color);
+        }
+    }
+    cout<<"xD"<<endl;
+    cout<<"colors for mesh region"<<endl;
+    cout<<"\tlbl\tcolor"<<endl;
+    for(map<int, int>::iterator iter = m_label_color_map.begin();
+        iter!=m_label_color_map.end(); ++iter)
+        cout<<"\t"<<iter->first<<"\t"<<iter->second<<endl;
 
-
-
-
-
-
-
-
-
+    for(int i=0; i< image->m_height; ++i)
+        for(int j=0; j< image->m_width; ++j)
+            image->set_pixel(i, j,m_label_color_map[(int)graph->m_matriz[i+1][j+1].m_label]);
+}
 
 
 
 
 //old methods
-
-
-
-
 /*template<class T>//image must be already configured height x width
 void CGraphUtils<T>::GraphToImage2D(CGraphImage2D<T> *graph, CImage *image)
 {

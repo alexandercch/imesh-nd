@@ -23,6 +23,10 @@ public:
     int cntr;
     int m_max_segmentation_difference;
     int m_nregions;
+    vector<CMeshRegion<G>* > m_meshregionV;
+
+
+
     CSegmentator();
     //CSegmentator(G *_m_pgraph);
     CSegmentator(G *_input, G *_output);
@@ -51,7 +55,7 @@ public:
 protected:
 private:
     //private members
-    vector<CMeshRegion<G>* > m_meshregionV;
+
     set<CMeshRegion<G>*, mr_cmp<G> > m_less_index_mr_set;
 
     //processes to handle pixel by pixel
@@ -288,17 +292,22 @@ void CSegmentator<G>::group_neighbor_regions(){
 template<class G>//this code if debuging :3
 void CSegmentator<G>::show_mesh_region(){
     cout<<"Results of mesh region: ("<<m_meshregionV.size()<<" regions..)"<<endl;
-    cout<<"id/lbl:\tarea\tindex\t\tncells\tmpattern\t[neighbors, ...]"<<endl;
+    cout<<"id/lbl:\tarea\tindex\t\tncells\tmpattern\toverlaped\t[neighbors, ...]"<<endl;
     FORVZ(m_meshregionV){
         cout<<i<<":\t"<<m_meshregionV[i]->m_area<<"\t"
             <<m_meshregionV[i]->m_index<<"\t"
             <<m_meshregionV[i]->m_ncells<<"\t";
-            printf("%x",(int) m_meshregionV[i]->m_pattern);
-            cout<<"\t"<<"\t";
+            printf("%x\t\t",(int) m_meshregionV[i]->m_pattern);
+            cout<<m_meshregionV[i]->m_overlap<<"\t";
+            cout<<"\t";
             set<int>::iterator sit;
             for(sit =  m_meshregionV[i]->m_neighbors_set.begin();
                 sit != m_meshregionV[i]->m_neighbors_set.end(); ++sit)
                 cout<<" "<<*sit<<",";
+            cout<<endl;
+            cout<<"ov regions:";
+            for(int j = 0; j <  m_meshregionV[i]->m_overlaped_mr_ids.size(); ++j)
+                cout<<"\t"<<m_meshregionV[i]->m_overlaped_mr_ids[j];
             cout<<endl;
             cout<<endl;
     }

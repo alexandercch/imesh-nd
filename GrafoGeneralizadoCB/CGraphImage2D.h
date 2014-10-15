@@ -11,6 +11,7 @@ class CGraphImage2D : public CGraph<T>
 public:
     //typedef T T;
     typedef CGraphIterator2D<T> iterator;
+    //typedef CGraphImage2D<T> self;
     typedef typename CGraph<T>::node node;
 
     //members
