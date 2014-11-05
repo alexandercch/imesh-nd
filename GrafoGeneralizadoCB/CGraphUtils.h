@@ -180,7 +180,7 @@ void CGraphUtils<T>::LabeledGraphToImage3D(CGraphImage3D<T> *graph, CImage *imag
 
 template<class T>//image must be already configured height x width
 void CGraphUtils<T>::Region_DFS(int v, int color){
-    cout<<"RDFS:"<<v<<"-"<<color<<endl;
+    //cout<<"RDFS:"<<v<<"-"<<color<<endl;
     m_label_color_map[(*m_p_mrv)[v]->m_label] = color;
     for(int i=0; i < (*m_p_mrv)[v]->m_overlaped_mr_ids.size(); ++i)
         Region_DFS((*m_p_mrv)[v]->m_overlaped_mr_ids[i], color);
@@ -202,12 +202,12 @@ void CGraphUtils<T>::OverlapedGraphToImage2D(CGraphImage2D<T> *graph, vector<CMe
             Region_DFS((*p_mrv)[i]->m_label, main_region_color);
         }
     }
-    cout<<"xD"<<endl;
+    /*cout<<"xD"<<endl;
     cout<<"colors for mesh region"<<endl;
     cout<<"\tlbl\tcolor"<<endl;
     for(map<int, int>::iterator iter = m_label_color_map.begin();
         iter!=m_label_color_map.end(); ++iter)
-        cout<<"\t"<<iter->first<<"\t"<<iter->second<<endl;
+        cout<<"\t"<<iter->first<<"\t"<<iter->second<<endl;*/
 
     for(int i=0; i< image->m_height; ++i)
         for(int j=0; j< image->m_width; ++j)

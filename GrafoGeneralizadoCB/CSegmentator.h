@@ -7,6 +7,7 @@
 #include <iostream>
 #include <vector>
 #include "CMeshRegion.h"
+#include "MinDistancesSet.h"
 #include "CColor.h"
 
 #define FORVZ(x) for(int i = 0;i<x.size(); ++i)
@@ -42,7 +43,7 @@ public:
     void binary_segmentation();
     void group_neighbor_cells();
     void group_neighbor_regions();
-
+    void group_similar_regions();
     //imagen preprocesing
     void to_gray_scale();
 
@@ -193,20 +194,16 @@ void CSegmentator<G>::group_neighbor_cells()
             for(int i = 0 ; i< input->m_number_of_neighbors; ++i)
             {
                 i_neighbor_actual.neighbor(&actual, i);
+                if (i_neighbor_actual->m_visited || i_neighbor_actual->m_label>-1){
 
-                if (i_neighbor_actual->m_visited) continue;
-                if (i_neighbor_actual->m_label>-1){
-                    //we add the neighbor of the region
-                    if (i_neighbor_actual->m_label != iter->m_label){
-                        mr->Set_Neighbor(i_neighbor_actual->m_label);
-                        //mr->m_neighbors_set.insert(i_neighbor_actual->m_label);
-                        //cout<<"region "<<i_neighbor_actual->m_label<<" added "
-                        //    <<iter->m_label<<" as neighbor"<<endl;
-                    }
+                        if (i_neighbor_actual->m_label>-1 && i_neighbor_actual->m_label != iter->m_label)
+                            mr->Set_Neighbor(i_neighbor_actual->m_label);
+                        //continue;
+
                     continue;
                 }
 
-                if ( gray_difference(i_neighbor_actual->m_data, actual->m_data)
+                if ( rgb_difference(i_neighbor_actual->m_data, actual->m_data)
                         < m_max_segmentation_difference )
                 {
                     i_neighbor_actual->m_label=labeler;
@@ -215,6 +212,7 @@ void CSegmentator<G>::group_neighbor_cells()
             }
         }
         mr->Set_Distance(totalelements, totalarea);
+        //cout<<labeler<<"-"<<endl;
         m_meshregionV.push_back(mr);
     }
 }
@@ -223,71 +221,74 @@ template<class G>
 void CSegmentator<G>::group_neighbor_regions(){
     //the code goes here :3
     int totalarea= input->area(), totalelements=input->weight();
-
-    set<CMeshRegion<G>*, mr_cmp<G> > mr_priority_set(m_meshregionV.begin(), m_meshregionV.end());
-    typename set<CMeshRegion<G>*, mr_cmp<G> >::iterator siter;
+    multiset<CMeshRegion<G>*, mr_cmp<G> > mr_priority_set(m_meshregionV.begin(), m_meshregionV.end());
+    typename multiset<CMeshRegion<G>*, mr_cmp<G> >::iterator siter;
     typename CMeshRegion<G>::NeighborSet::iterator neighbor_iter;
-    cout<<"ASmV:"<<endl;
-    cout<<"m_nregions: "<<m_nregions<<" set-size:"<<mr_priority_set.size()<<" mesh-regio size:"<<m_meshregionV.size()<<endl;
-    cout<<"Priority Set:"<<endl<<"index\tcells\tarea\t"<<endl;
+    CMeshRegion<G>* min_neighbor;
+    int niterations=0;
     while(mr_priority_set.size() > m_nregions){
-        cout<<"b-(size)"<<mr_priority_set.size()<<endl;
-        for(typename set<CMeshRegion<G>*, mr_cmp<G> >::iterator it=mr_priority_set.begin();
-        it!= mr_priority_set.end(); ++it)
-            cout<<(*it)->m_label<<":"<<(*it)->m_index<<"\t"<<(*it)->m_ncells<<"\t"<<(*it)->m_area<<endl;
-
+        niterations++;
         siter = mr_priority_set.begin();
         bool first=true;
         double min_dist, curr_dist;
         int min_index;
-        //we find the most similar neighbor region
-        cout<<":3"<<endl;
         for(neighbor_iter = (*siter)->m_neighbors_set.begin();
             neighbor_iter != (*siter)->m_neighbors_set.end();
             ++neighbor_iter){
-
+            if ((*neighbor_iter)->Is_Overlaped())continue;
             if (first){
                 first = false;
-                min_dist = fabs((*siter)->m_pattern - (m_meshregionV[*neighbor_iter])->m_pattern);
-                min_index=(m_meshregionV[*neighbor_iter])->m_index;
+                min_dist = rgb_difference((*siter)->m_pattern, (*neighbor_iter)->m_pattern);
+                min_index=(*neighbor_iter)->m_label;
+                min_neighbor= m_meshregionV[(*neighbor_iter)->m_label];
                 continue;
             }
-
-            curr_dist = fabs((*siter)->m_pattern - (m_meshregionV[*neighbor_iter])->m_pattern);
+            curr_dist = rgb_difference((*siter)->m_pattern , (*neighbor_iter)->m_pattern);
             if (curr_dist < min_dist){
                 min_dist = curr_dist;
-                min_index = (*neighbor_iter);
+                min_index = (*neighbor_iter)->m_label;
+                min_neighbor= m_meshregionV[(*neighbor_iter)->m_label];
             }
-
         }
-        cout<<"mergin regions:"<<(*siter)->m_label<<" - "
-            <<(m_meshregionV[min_index])->m_label<<endl;
-
-        //remove that region :3
+        if (first){
+            mr_priority_set.erase(*siter);
+            continue;
+        }
         CMeshRegion<G>* new_region = m_meshregionV[min_index];
         new_region->Incorporate(*siter);
-        mr_priority_set.erase(*siter);
-        mr_priority_set.erase(m_meshregionV[min_index]);
+        mr_priority_set.erase(siter);
+        mr_priority_set.erase(min_neighbor);
         new_region->Set_Distance(totalelements, totalarea);
         mr_priority_set.insert(new_region);
-
-        cout<<"e-(size)"<<mr_priority_set.size()<<endl;
-        for(typename set<CMeshRegion<G>*, mr_cmp<G> >::iterator it=mr_priority_set.begin();
-        it!= mr_priority_set.end(); ++it)
-            cout<<(*it)->m_label<<":"<<(*it)->m_index<<"\t"<<(*it)->m_ncells<<"\t"<<(*it)->m_area<<endl;
     }
-
-    /*cout<<"Priority Set:(size)"<<mr_priority_set.size()<<endl;
-    for(typename set<CMeshRegion<G>*, mr_cmp<G> >::iterator it=mr_priority_set.begin();
-        it!= mr_priority_set.end(); ++it)
-        cout<<(*it)->m_index<<" cells: "<<(*it)->m_ncells<<" area :"<<(*it)->m_area<<endl;*/
-    //for(int i=0; i< m_meshregionV.size(); ++i){
-    //    mr_priority_set.insert(m_meshregionV[i]);
-    //}
-
-
 }
 
+template<class G>// :3
+void CSegmentator<G>::group_similar_regions(){
+    cout<<":3"<<endl;
+    CMinDistancesSet<CMeshRegion<G> > similarity_set;
+    cout<<":3"<<endl;
+    vector<CMeshRegion<G>* > v;
+    cout<<":3"<<endl;
+    for(int i=0; i< m_meshregionV.size(); ++i){
+        if (!(m_meshregionV[i]->Is_Overlaped()))
+            v.push_back(m_meshregionV[i]);
+    }
+    cout<<":3"<<endl;
+    similarity_set.Init(&v);
+    cout<<"number of regions:"<<v.size()<<endl;
+    while(similarity_set.Size() > m_nregions){
+        CMeshRegion<G> *s1, *s2;
+        //cout<<"xD"<<endl;
+        similarity_set.GetLessDistPair(s1, s2);
+        //cout<<"xD"<<endl;
+        s1->Incorporate(s2);
+        //cout<<"xD"<<endl;
+        similarity_set.UpdtLessDistPair();
+        //cout<<"xD"<<endl;
+        //show_mesh_region();
+    }
+}
 
 template<class G>//this code if debuging :3
 void CSegmentator<G>::show_mesh_region(){
@@ -300,10 +301,10 @@ void CSegmentator<G>::show_mesh_region(){
             printf("%x\t\t",(int) m_meshregionV[i]->m_pattern);
             cout<<m_meshregionV[i]->m_overlap<<"\t";
             cout<<"\t";
-            set<int>::iterator sit;
+            typename CMeshRegion<G>::NeighborSet::iterator sit;
             for(sit =  m_meshregionV[i]->m_neighbors_set.begin();
                 sit != m_meshregionV[i]->m_neighbors_set.end(); ++sit)
-                cout<<" "<<*sit<<",";
+                cout<<" "<<(*sit)->m_label<<",";
             cout<<endl;
             cout<<"ov regions:";
             for(int j = 0; j <  m_meshregionV[i]->m_overlaped_mr_ids.size(); ++j)

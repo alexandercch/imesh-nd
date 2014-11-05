@@ -487,7 +487,7 @@
 	"CNode.h"
 	<vector>
 
-1413388666 source:d:\sampa\tesis\imesh-nd\grafogeneralizadocb\main.cpp
+1415216489 source:d:\sampa\tesis\imesh-nd\grafogeneralizadocb\main.cpp
 	<iostream>
 	"CGraphImage3D.h"
 	"CGraphImage2D.h"
@@ -586,7 +586,7 @@
 1410442632 d:\sampa\tesis\imesh-nd\grafogeneralizadocb\cgraphiteratornd.h
 	"CGraphIterator.h"
 
-1413391341 d:\sampa\tesis\imesh-nd\grafogeneralizadocb\csegmentator.h
+1415215936 d:\sampa\tesis\imesh-nd\grafogeneralizadocb\csegmentator.h
 	<cstdio>
 	<map>
 	<set>
@@ -594,9 +594,10 @@
 	<iostream>
 	<vector>
 	"CMeshRegion.h"
+	"MinDistancesSet.h"
 	"CColor.h"
 
-1413390450 d:\sampa\tesis\imesh-nd\grafogeneralizadocb\cmeshregion.h
+1415206501 d:\sampa\tesis\imesh-nd\grafogeneralizadocb\cmeshregion.h
 	"CNode.h"
 	<math.h>
 	<vector>
@@ -606,7 +607,7 @@
 	<cstdlib>
 	<time.h>
 
-1413391042 d:\sampa\tesis\imesh-nd\grafogeneralizadocb\cgraphutils.h
+1413503603 d:\sampa\tesis\imesh-nd\grafogeneralizadocb\cgraphutils.h
 	<cstdio>
 	<set>
 	"CImage.h"
@@ -620,4 +621,8 @@
 	<stdio.h>
 	<direct.h>
 	<unistd.h>
+
+1415215789 d:\sampa\tesis\imesh-nd\grafogeneralizadocb\mindistancesset.h
+	<vector>
+	<set>
 

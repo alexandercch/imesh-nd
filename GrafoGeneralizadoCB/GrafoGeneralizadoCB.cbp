@@ -51,6 +51,7 @@
 		<Unit filename="CMeshRegion.h" />
 		<Unit filename="CNode.h" />
 		<Unit filename="CSegmentator.h" />
+		<Unit filename="MinDistancesSet.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />
