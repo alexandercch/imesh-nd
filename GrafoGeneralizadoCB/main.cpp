@@ -42,7 +42,7 @@ void do_bin()
 }
 void do_ag()
 {
-     CImage imagen(DATA_PATH + data_file);//true beacuse it is 3d
+    CImage imagen(DATA_PATH + data_file);//true beacuse it is 3d
     imagen.display();
     CGraphUtils<int> utils;
     CGraphImage2D<int> in, out;

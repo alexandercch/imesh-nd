@@ -359,7 +359,7 @@
 	<direct.h>
 	<unistd.h>
 
-1410373209 source:d:\alex\repo\imesh-nd\grafogeneralizadocb\main.cpp
+1417200518 source:d:\alex\repo\imesh-nd\grafogeneralizadocb\main.cpp
 	<iostream>
 	"CGraphImage3D.h"
 	"CGraphImage2D.h"
@@ -369,27 +369,27 @@
 	"CGraphUtils.h"
 	"CAppUtils.h"
 
-1410286032 d:\alex\repo\imesh-nd\grafogeneralizadocb\cgraphimage3d.h
+1417200346 d:\alex\repo\imesh-nd\grafogeneralizadocb\cgraphimage3d.h
 	"CGraph.h"
 	"CGraphIterator3D.h"
 
-1410277072 d:\alex\repo\imesh-nd\grafogeneralizadocb\cgraph.h
+1417200346 d:\alex\repo\imesh-nd\grafogeneralizadocb\cgraph.h
 	"CNode.h"
 	"CImage.h"
 	<string>
 	<fstream>
 	<iostream>
 
-1410284805 d:\alex\repo\imesh-nd\grafogeneralizadocb\cnode.h
+1417200346 d:\alex\repo\imesh-nd\grafogeneralizadocb\cnode.h
 
-1410277072 d:\alex\repo\imesh-nd\grafogeneralizadocb\cimage.h
+1417200346 d:\alex\repo\imesh-nd\grafogeneralizadocb\cimage.h
 	<fstream>
 	<iostream>
 	<vector>
 	<string>
 	"CImg.h"
 
-1410277072 d:\alex\repo\imesh-nd\grafogeneralizadocb\cimg.h
+1417200346 d:\alex\repo\imesh-nd\grafogeneralizadocb\cimg.h
 	<cstdio>
 	<cstdlib>
 	<cstdarg>
@@ -438,42 +438,47 @@
 	"ImfArray.h"
 	"CImg.h"
 
-1410277072 d:\alex\repo\imesh-nd\grafogeneralizadocb\cgraphiterator3d.h
+1417200346 d:\alex\repo\imesh-nd\grafogeneralizadocb\cgraphiterator3d.h
 	"CGraphIterator.h"
 
-1410277072 d:\alex\repo\imesh-nd\grafogeneralizadocb\cgraphiterator.h
+1417200346 d:\alex\repo\imesh-nd\grafogeneralizadocb\cgraphiterator.h
 
-1410286032 d:\alex\repo\imesh-nd\grafogeneralizadocb\cgraphimage2d.h
+1417200346 d:\alex\repo\imesh-nd\grafogeneralizadocb\cgraphimage2d.h
 	"CGraph.h"
 	"CGraphIterator2D.h"
 
-1410277072 d:\alex\repo\imesh-nd\grafogeneralizadocb\cgraphiterator2d.h
+1417200346 d:\alex\repo\imesh-nd\grafogeneralizadocb\cgraphiterator2d.h
 	"CGraphIterator.h"
 
-1410286029 d:\alex\repo\imesh-nd\grafogeneralizadocb\cgraphmeshnd.h
+1417200346 d:\alex\repo\imesh-nd\grafogeneralizadocb\cgraphmeshnd.h
 	"CGraph.h"
 	"CGraphIteratorND.h"
 	<vector>
 
-1410277072 d:\alex\repo\imesh-nd\grafogeneralizadocb\cgraphiteratornd.h
+1417200346 d:\alex\repo\imesh-nd\grafogeneralizadocb\cgraphiteratornd.h
 	"CGraphIterator.h"
 
-1410463449 d:\alex\repo\imesh-nd\grafogeneralizadocb\csegmentator.h
+1417200346 d:\alex\repo\imesh-nd\grafogeneralizadocb\csegmentator.h
+	<cstdio>
 	<map>
+	<set>
 	<queue>
 	<iostream>
 	<vector>
 	"CMeshRegion.h"
+	"MinDistancesSet.h"
 	"CColor.h"
 
-1410283642 d:\alex\repo\imesh-nd\grafogeneralizadocb\ccolor.h
+1417200346 d:\alex\repo\imesh-nd\grafogeneralizadocb\ccolor.h
 	<cstdlib>
 	<time.h>
 
-1410284805 d:\alex\repo\imesh-nd\grafogeneralizadocb\cgraphutils.h
+1417200346 d:\alex\repo\imesh-nd\grafogeneralizadocb\cgraphutils.h
+	<cstdio>
+	<set>
 	"CImage.h"
 
-1410277072 d:\alex\repo\imesh-nd\grafogeneralizadocb\capputils.h
+1417200346 d:\alex\repo\imesh-nd\grafogeneralizadocb\capputils.h
 	<iostream>
 	<fstream>
 	<time.h>
@@ -483,9 +488,11 @@
 	<direct.h>
 	<unistd.h>
 
-1410463394 d:\alex\repo\imesh-nd\grafogeneralizadocb\cmeshregion.h
+1417200346 d:\alex\repo\imesh-nd\grafogeneralizadocb\cmeshregion.h
 	"CNode.h"
+	<math.h>
 	<vector>
+	<set>
 
 1415216489 source:d:\sampa\tesis\imesh-nd\grafogeneralizadocb\main.cpp
 	<iostream>
@@ -623,6 +630,10 @@
 	<unistd.h>
 
 1415215789 d:\sampa\tesis\imesh-nd\grafogeneralizadocb\mindistancesset.h
+	<vector>
+	<set>
+
+1417200346 d:\alex\repo\imesh-nd\grafogeneralizadocb\mindistancesset.h
 	<vector>
 	<set>
 
