@@ -359,7 +359,7 @@
 	<direct.h>
 	<unistd.h>
 
-1417200518 source:d:\alex\repo\imesh-nd\grafogeneralizadocb\main.cpp
+1417551148 source:d:\alex\repo\imesh-nd\grafogeneralizadocb\main.cpp
 	<iostream>
 	"CGraphImage3D.h"
 	"CGraphImage2D.h"
@@ -469,7 +469,8 @@
 	"MinDistancesSet.h"
 	"CColor.h"
 
-1417200346 d:\alex\repo\imesh-nd\grafogeneralizadocb\ccolor.h
+1417551977 d:\alex\repo\imesh-nd\grafogeneralizadocb\ccolor.h
+	<math.h>
 	<cstdlib>
 	<time.h>
 

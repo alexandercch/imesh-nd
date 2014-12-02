@@ -117,7 +117,7 @@ void do_ag2()
 }
 int main()
 {
-    freopen("out.txt", "w", stdout);
+    //freopen("out.txt", "w", stdout);
     freopen("in.txt", "r", stdin);
 
     int op;
