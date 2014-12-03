@@ -1,11 +1,13 @@
 #ifndef SEGMENTATOR_H
 #define SEGMENTATOR_H
+
 #include <cstdio>
 #include <map>
 #include <set>
 #include <queue>
 #include <iostream>
 #include <vector>
+
 #include "CMeshRegion.h"
 #include "MinDistancesSet.h"
 #include "CColor.h"
@@ -13,30 +15,26 @@
 #define FORVZ(x) for(int i = 0;i<x.size(); ++i)
 
 using namespace std;
+//in future this is intended to be the nd-imesh
 template<class G>
 class CSegmentator
 {
 public:
-    //typedef typename G::T T;
+    //members
     typedef typename G::iterator iterator;
     typedef typename G::node node;
-    //map<HashType, int> vis;
+
     int cntr;
     int m_max_segmentation_difference;
     int m_nregions;
     vector<CMeshRegion<G>* > m_meshregionV;
-
-
-
-    CSegmentator();
-    //CSegmentator(G *_m_pgraph);
-    CSegmentator(G *_input, G *_output);
     CColor color;
-
-    //G *m_pgraph;
-
     G *input;
     G *output;
+
+    //methods
+    CSegmentator();
+    CSegmentator(G *_input, G *_output);
     virtual ~CSegmentator();
 
     //segmentation algorithms
@@ -44,24 +42,21 @@ public:
     void group_neighbor_cells();
     void group_neighbor_regions();
     void group_similar_regions();
+
     //imagen preprocesing
     void to_gray_scale();
-
-
 
     //debuging subroutines
     void show_mesh_region();
 
-
 protected:
 private:
     //private members
-
     set<CMeshRegion<G>*, mr_cmp<G> > m_less_index_mr_set;
 
     //processes to handle pixel by pixel
     void init();
-    int rgb_difference(unsigned int a, unsigned int b);
+    inline int rgb_difference(unsigned int a, unsigned int b);
     inline int gray_difference(int a, int b);
     int process_pixel_binary(int pixel);
     int process_gray_scale(int pixel);
@@ -221,9 +216,12 @@ template<class G>
 void CSegmentator<G>::group_neighbor_regions(){
     //the code goes here :3
     int totalarea= input->area(), totalelements=input->weight();
+
     multiset<CMeshRegion<G>*, mr_cmp<G> > mr_priority_set(m_meshregionV.begin(), m_meshregionV.end());
+
     typename multiset<CMeshRegion<G>*, mr_cmp<G> >::iterator siter;
     typename CMeshRegion<G>::NeighborSet::iterator neighbor_iter;
+
     CMeshRegion<G>* min_neighbor;
     int niterations=0;
     while(mr_priority_set.size() > m_nregions){
@@ -265,27 +263,21 @@ void CSegmentator<G>::group_neighbor_regions(){
 
 template<class G>// :3
 void CSegmentator<G>::group_similar_regions(){
-    cout<<":3"<<endl;
+
     CMinDistancesSet<CMeshRegion<G> > similarity_set;
-    cout<<":3"<<endl;
+
     vector<CMeshRegion<G>* > v;
-    cout<<":3"<<endl;
     for(int i=0; i< m_meshregionV.size(); ++i){
         if (!(m_meshregionV[i]->Is_Overlaped()))
             v.push_back(m_meshregionV[i]);
     }
-    cout<<":3"<<endl;
     similarity_set.Init(&v);
-    cout<<"number of regions:"<<v.size()<<endl;
     while(similarity_set.Size() > m_nregions){
         CMeshRegion<G> *s1, *s2;
-        //cout<<"xD"<<endl;
+
         similarity_set.GetLessDistPair(s1, s2);
-        //cout<<"xD"<<endl;
         s1->Incorporate(s2);
-        //cout<<"xD"<<endl;
         similarity_set.UpdtLessDistPair();
-        //cout<<"xD"<<endl;
         //show_mesh_region();
     }
 }

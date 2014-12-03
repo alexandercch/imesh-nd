@@ -495,7 +495,7 @@
 	<vector>
 	<set>
 
-1415216489 source:d:\sampa\tesis\imesh-nd\grafogeneralizadocb\main.cpp
+1417633733 source:d:\sampa\tesis\imesh-nd\grafogeneralizadocb\main.cpp
 	<iostream>
 	"CGraphImage3D.h"
 	"CGraphImage2D.h"
@@ -594,7 +594,7 @@
 1410442632 d:\sampa\tesis\imesh-nd\grafogeneralizadocb\cgraphiteratornd.h
 	"CGraphIterator.h"
 
-1415215936 d:\sampa\tesis\imesh-nd\grafogeneralizadocb\csegmentator.h
+1417627531 d:\sampa\tesis\imesh-nd\grafogeneralizadocb\csegmentator.h
 	<cstdio>
 	<map>
 	<set>
@@ -611,11 +611,12 @@
 	<vector>
 	<set>
 
-1410442632 d:\sampa\tesis\imesh-nd\grafogeneralizadocb\ccolor.h
+1417628726 d:\sampa\tesis\imesh-nd\grafogeneralizadocb\ccolor.h
+	<math.h>
 	<cstdlib>
 	<time.h>
 
-1413503603 d:\sampa\tesis\imesh-nd\grafogeneralizadocb\cgraphutils.h
+1417633250 d:\sampa\tesis\imesh-nd\grafogeneralizadocb\cgraphutils.h
 	<cstdio>
 	<set>
 	"CImage.h"

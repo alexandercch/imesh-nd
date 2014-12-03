@@ -1,24 +1,17 @@
 #ifndef CCOLOR_H
 #define CCOLOR_H
+
 #include <math.h>
 #include <cstdlib>
 #include <time.h>
+
 using namespace std;
-#define PALLET_SIZE 30
 
-typedef struct RgbColor
-{
-    unsigned char r;
-    unsigned char g;
-    unsigned char b;
-} RgbColor;
+#define PALLET_SIZE 50
 
-typedef struct HsvColor
-{
-    unsigned char h;
-    unsigned char s;
-    unsigned char v;
-} HsvColor;
+struct RgbColor{unsigned char r, g, b;};
+
+struct HsvColor{unsigned char h, s, v;};
 
 RgbColor HsvToRgb(HsvColor hsv)
 {
@@ -42,24 +35,36 @@ RgbColor HsvToRgb(HsvColor hsv)
 
     switch (region)
     {
-        case 0:
-            rgb.r = hsv.v; rgb.g = t; rgb.b = p;
-            break;
-        case 1:
-            rgb.r = q; rgb.g = hsv.v; rgb.b = p;
-            break;
-        case 2:
-            rgb.r = p; rgb.g = hsv.v; rgb.b = t;
-            break;
-        case 3:
-            rgb.r = p; rgb.g = q; rgb.b = hsv.v;
-            break;
-        case 4:
-            rgb.r = t; rgb.g = p; rgb.b = hsv.v;
-            break;
-        default:
-            rgb.r = hsv.v; rgb.g = p; rgb.b = q;
-            break;
+    case 0:
+        rgb.r = hsv.v;
+        rgb.g = t;
+        rgb.b = p;
+        break;
+    case 1:
+        rgb.r = q;
+        rgb.g = hsv.v;
+        rgb.b = p;
+        break;
+    case 2:
+        rgb.r = p;
+        rgb.g = hsv.v;
+        rgb.b = t;
+        break;
+    case 3:
+        rgb.r = p;
+        rgb.g = q;
+        rgb.b = hsv.v;
+        break;
+    case 4:
+        rgb.r = t;
+        rgb.g = p;
+        rgb.b = hsv.v;
+        break;
+    default:
+        rgb.r = hsv.v;
+        rgb.g = p;
+        rgb.b = q;
+        break;
     }
 
     return rgb;
@@ -104,12 +109,21 @@ public:
     CColor();
     virtual ~CColor();
     int operator()(int i);
+    static void get_rgb(int &r, int &g, int &b, int color);
 protected:
 private:
     int pallete[PALLET_SIZE];
     void generate();
     int get_hue(int _color);
 };
+
+void CColor::get_rgb(int &r, int &g, int &b, int color){
+    r = color&0x00ff0000;
+    g = color&0x0000ff00;
+    b = color&0x000000ff;
+    r>>=16; g>>=8;
+}
+
 CColor::CColor()
 {
     generate();
@@ -122,7 +136,8 @@ inline int clampAndConvert(float v)
     return v;
 }
 
-int CColor::get_hue(int _color){
+int CColor::get_hue(int _color)
+{
     int red=_color&0x00ff0000;
     int green=_color&0x0000ff00;
     int blue=_color&0x000000ff;
@@ -133,13 +148,18 @@ int CColor::get_hue(int _color){
     float max_ = max(max(red, green), blue);
 
     float hue = 0.0f;
-    if (max_ == red) {
+    if (max_ == red)
+    {
         hue = (green - blue) / (max_ - min_);
 
-    } else if (max_ == green) {
+    }
+    else if (max_ == green)
+    {
         hue = 2.0f + (blue - red) / (max_ - min_);
 
-    } else {
+    }
+    else
+    {
         hue = 4.0f + (red - green) / (max_ - min_);
     }
 
@@ -156,22 +176,20 @@ void CColor::generate()
     pallete[0]=rand()*rand();
     int hue;
     int R, G, B;
-    for(int i=1; i< PALLET_SIZE; ++i){//generate random colors
+    for(int i=1; i< PALLET_SIZE; ++i) //generate random colors
+    {
         hue=get_hue(pallete[i-1]);
         unsigned char r = (pallete[i-1] & 0x00ff0000)>>16;;
         unsigned char g = (pallete[i-1] & 0x0000ff00)>>8;
         unsigned char b = (pallete[i-1] & 0x000000ff);
-        RgbColor co={r,g,b};
+        RgbColor co= {r,g,b};
         hue = clampAndConvert(hue);
-        cout<<"hue:"<<hue<<endl;
-        cout<<"Colors:"<<(int)r<<" "<<(int)g<<" "<<(int)b<<endl;
         HsvColor hs=RgbToHsv(co);
         hs.h= (unsigned char)hue;
         co=HsvToRgb(hs);
         R=co.r;
         G=co.g;
         B=co.b;
-        cout<<"Colors:"<<R<<" "<<G<<" "<<B<<endl;
         pallete[i]=(R<<16)|(G<<8)|B;
     }
 }

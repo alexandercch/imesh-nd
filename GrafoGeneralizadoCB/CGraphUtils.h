@@ -193,12 +193,12 @@ void CGraphUtils<T>::OverlapedGraphToImage2D(CGraphImage2D<T> *graph, vector<CMe
 {
     m_p_mrv = p_mrv;
     int main_region_color;
-    cout<<":3"<<endl;
+    //cout<<":3"<<endl;
     for(int i=0; i< p_mrv->size(); ++i){
         if (!(*p_mrv)[i]->m_overlap){
             main_region_color=color_pallete((*p_mrv)[i]->m_label);
             //recorrer los hijos
-            cout<<"mr: "<<i<<endl;
+            //cout<<"mr: "<<i<<endl;
             Region_DFS((*p_mrv)[i]->m_label, main_region_color);
         }
     }
