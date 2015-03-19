@@ -15,6 +15,7 @@ public:
     //methods
     CGraph();
     virtual ~CGraph();
+
     void load_data(string filename);
     int weight();//number of nodes
     int area();//image area

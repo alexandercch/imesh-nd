@@ -639,3 +639,143 @@
 	<vector>
 	<set>
 
+1417633734 source:f:\ucsp\tesis\imesh-nd\grafogeneralizadocb\main.cpp
+	<iostream>
+	"CGraphImage3D.h"
+	"CGraphImage2D.h"
+	"CGraphMeshND.h"
+	"CSegmentator.h"
+	"CImage.h"
+	"CGraphUtils.h"
+	"CAppUtils.h"
+
+1411575728 f:\ucsp\tesis\imesh-nd\grafogeneralizadocb\cgraphimage3d.h
+	"CGraph.h"
+	"CGraphIterator3D.h"
+
+1418349788 f:\ucsp\tesis\imesh-nd\grafogeneralizadocb\cgraph.h
+	"CNode.h"
+	"CImage.h"
+	<string>
+	<fstream>
+	<iostream>
+
+1410971716 f:\ucsp\tesis\imesh-nd\grafogeneralizadocb\cnode.h
+
+1410980760 f:\ucsp\tesis\imesh-nd\grafogeneralizadocb\cimage.h
+	<fstream>
+	<iostream>
+	<vector>
+	<string>
+	"CImg.h"
+
+1410442634 f:\ucsp\tesis\imesh-nd\grafogeneralizadocb\cimg.h
+	<cstdio>
+	<cstdlib>
+	<cstdarg>
+	<cstring>
+	<cmath>
+	<ctime>
+	<exception>
+	<sys/types.h>
+	<sys/time.h>
+	<unistd.h>
+	<windows.h>
+	<shlobj.h>
+	<process.h>
+	<io.h>
+	<stdio.h>
+	<X11/Xlib.h>
+	<X11/Xutil.h>
+	<X11/keysym.h>
+	<pthread.h>
+	<sys/ipc.h>
+	<sys/shm.h>
+	<X11/extensions/XShm.h>
+	<X11/extensions/Xrandr.h>
+	"omp.h"
+	<cstddef>
+	"cv.h"
+	"highgui.h"
+	"png.h"
+	"jpeglib.h"
+	"setjmp.h"
+	"tiffio.h"
+	"minc_io_simple_volume.h"
+	"minc_1_simple.h"
+	"minc_1_simple_rw.h"
+	"avformat.h"
+	"avcodec.h"
+	"swscale.h"
+	"zlib.h"
+	"Magick++.h"
+	"fftw3.h"
+	"Board.h"
+	"ImfRgbaFile.h"
+	"ImfInputFile.h"
+	"ImfChannelList.h"
+	"ImfMatrixAttribute.h"
+	"ImfArray.h"
+	"CImg.h"
+
+1410442634 f:\ucsp\tesis\imesh-nd\grafogeneralizadocb\cgraphiterator3d.h
+	"CGraphIterator.h"
+
+1410442634 f:\ucsp\tesis\imesh-nd\grafogeneralizadocb\cgraphiterator.h
+
+1413385340 f:\ucsp\tesis\imesh-nd\grafogeneralizadocb\cgraphimage2d.h
+	"CGraph.h"
+	"CGraphIterator2D.h"
+
+1410442634 f:\ucsp\tesis\imesh-nd\grafogeneralizadocb\cgraphiterator2d.h
+	"CGraphIterator.h"
+
+1411580498 f:\ucsp\tesis\imesh-nd\grafogeneralizadocb\cgraphmeshnd.h
+	"CGraph.h"
+	"CGraphIteratorND.h"
+	<vector>
+
+1410442634 f:\ucsp\tesis\imesh-nd\grafogeneralizadocb\cgraphiteratornd.h
+	"CGraphIterator.h"
+
+1417627532 f:\ucsp\tesis\imesh-nd\grafogeneralizadocb\csegmentator.h
+	<cstdio>
+	<map>
+	<set>
+	<queue>
+	<iostream>
+	<vector>
+	"CMeshRegion.h"
+	"MinDistancesSet.h"
+	"CColor.h"
+
+1415206502 f:\ucsp\tesis\imesh-nd\grafogeneralizadocb\cmeshregion.h
+	"CNode.h"
+	<math.h>
+	<vector>
+	<set>
+
+1415215790 f:\ucsp\tesis\imesh-nd\grafogeneralizadocb\mindistancesset.h
+	<vector>
+	<set>
+
+1417628728 f:\ucsp\tesis\imesh-nd\grafogeneralizadocb\ccolor.h
+	<math.h>
+	<cstdlib>
+	<time.h>
+
+1417633252 f:\ucsp\tesis\imesh-nd\grafogeneralizadocb\cgraphutils.h
+	<cstdio>
+	<set>
+	"CImage.h"
+
+1410442634 f:\ucsp\tesis\imesh-nd\grafogeneralizadocb\capputils.h
+	<iostream>
+	<fstream>
+	<time.h>
+	<cstdio>
+	<cstdlib>
+	<stdio.h>
+	<direct.h>
+	<unistd.h>
+
