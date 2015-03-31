@@ -7,7 +7,6 @@ template<class T>
 class CGraphMeshND : public CGraph<T>
 {
 public:
-    //typedef T T;
     typedef CGraphIteratorND<T> iterator;
     typedef typename CGraph<T>::node node;
 
@@ -19,18 +18,52 @@ public:
     //methods
     CGraphMeshND ();
     virtual ~CGraphMeshND ();
+
+    /**
+        @return the total number of elements
+    */
+    int weight();
+
+    /**
+        @return the total space used by the graph (i.e. area, volumen, etc)
+    */
+    int area();
+
+    /**
+        Sets the size of the graph
+        @param size the number of elements the graph will hold
+        @param dimension the number neighbors each node will containt
+        in this case that number will also define de dimension of the
+        mesh(2D, 3D, ND).
+    */
     void config(int size, int dimension);
 
-    //methods - configuration
-    void load_data(string filename);
-    int weight();
-    int area();
     //methods - iteration
+    /**
+        @return a pointer to the beginning of the Graph
+    */
     CGraphMeshND* begin();
+
+    /**
+        Set an specific element with the specific data
+        @param iter the iterator that point to the node
+        @param data the data to put in the place pointed by iter
+    */
     void set_at(iterator& iter, T& data);
 
-    //asignation operator
+    /**
+        Copy all data from other graph, first sets to the new dimensions
+        and begin the copy.
+        @param _graph pointer to a same class graph
+    */
     void operator=(CGraphMeshND &_graph);
+
+    /**
+        Read data from file
+        @param filename path to the data file
+    */
+    void load_data(string filename);
+
     void print_mesh();//beacause still we dont draw a mesh we print its values temporaly
 };
 

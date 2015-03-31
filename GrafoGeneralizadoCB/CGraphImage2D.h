@@ -1,3 +1,12 @@
+/**
+    Seminario de Tesis 10
+    CGraphImage2D.h
+    Purpose: Is a child class from CGraph will hold a 2D matrix
+
+    @author Alex Ccacyahuillca
+    @version 1.0 04/015
+*/
+
 #ifndef CGRAPHIMAGE2D_H_INCLUDED
 #define CGRAPHIMAGE2D_H_INCLUDED
 #include "CGraph.h"
@@ -9,9 +18,7 @@ template<class T>
 class CGraphImage2D : public CGraph<T>
 {
 public:
-    //typedef T T;
     typedef CGraphIterator2D<T> iterator;
-    //typedef CGraphImage2D<T> self;
     typedef typename CGraph<T>::node node;
 
     //members
@@ -22,18 +29,48 @@ public:
     //methods
     CGraphImage2D ();
     virtual ~CGraphImage2D ();
+
+    /**
+        @return the total number of elements
+    */
     int weight();
+
+    /**
+        @return the total space used by the graph (i.e. area, volumen, etc)
+    */
     int area();
 
-    //methods - configuration
+    /**
+        Sets the size of the graph
+        @param _rows the number of rows of the 2D matrix graph
+        @param _cols the number of cols of the 2D matrix graph
+    */
     void config(int _rows, int _cols);
+
+    /**
+        Read data from file
+        @param filename path to the data file
+    */
     void load_data(string filename);
 
     //methods - iteration
+    /**
+        @return a pointer to the beginning of the Graph
+    */
     CGraphImage2D* begin();
+
+    /**
+        Set an specific element with the specific data
+        @param iter the iterator that point to the node
+        @param data the data to put in the place pointed by iter
+    */
     void set_at(iterator& iter, T& data);
 
-    //asignation operator
+    /**
+        Copy all data from other graph, first sets to the new dimensions
+        and begin the copy.
+        @param _graph pointer to a same class graph
+    */
     void operator=(CGraphImage2D &_graph);
 
 protected:
@@ -55,7 +92,8 @@ CGraphImage2D <T>::~CGraphImage2D ()
 template<class T>
 void CGraphImage2D <T>::config(int _rows, int _cols)
 {
-    m_rows = _rows, m_cols=_cols;
+    m_rows = _rows;
+    m_cols = _cols;
     m_matriz = new node*[_rows];
     for(int i = 0; i < _rows; ++i)
     {
@@ -68,6 +106,7 @@ CGraphImage2D<T>* CGraphImage2D<T>::begin()
 {
     return this;
 }
+
 
 template<class T>
 void CGraphImage2D <T>::load_data(string filename)
