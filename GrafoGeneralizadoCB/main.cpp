@@ -1,3 +1,13 @@
+/**
+    Seminario de Tesis 10
+    main.cpp
+    Purpose: This file use the Generalized Graph and and the Imesh Algorithm
+             to perform the image segmentation over the 4 context of structures
+             to know images 2D, 3D, and meshes 2D, 3D.
+
+    @author Alex Ccacyahuillca
+    @version 1.0 04/015
+*/
 #include <iostream>
 #include "CGraphImage3D.h"
 #include "CGraphImage2D.h"
@@ -6,12 +16,16 @@
 #include "CImage.h"
 #include "CGraphUtils.h"
 #include "CAppUtils.h"
+
 using namespace std;
+
 //some config vars
 const string DATA_PATH ="..\\Data\\";
 
 int segmentation_difference;
 int segmentation_number_of_meshes;
+
+//this is the current file we are working with
 string data_file="pelotas.jpg";
 
 CAppUtils app;

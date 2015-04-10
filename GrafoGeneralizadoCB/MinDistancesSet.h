@@ -131,9 +131,9 @@ int CMinDistancesSet<Obj>::GetLessDistPair(Obj*& pObj1, Obj*& pObj2)
     ci = m_Set.begin();
     pObj1 = (*ci)->pObj1;
     pObj2 = (*ci)->pObj2;
-    int x,y;
+    /*int x,y;
     x = (*ci)->x;
-    y = (*ci)->y;
+    y = (*ci)->y;*/
     return m_nObjs;
 }
 
@@ -195,10 +195,10 @@ void CMinDistancesSet<Obj>::Erase(int x, int y)
     if ( it == Set_it(NULL) )
         return;
     Set_key* pKey = *it;
-    int s2, s1;
+    /*int s2, s1;
     s1 = m_Set.size();
     m_Set.erase(it);
-    s2 = m_Set.size();
+    s2 = m_Set.size();*/
     //assert(s2+1 == s1);
     it = Set_it(NULL);//NULL;//null
     delete pKey;

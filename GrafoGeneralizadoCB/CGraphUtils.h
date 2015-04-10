@@ -110,11 +110,11 @@ void CGraphUtils<T>::ImageToGraph3D(CGraphImage3D<T> *graph, CImage *image)
         graph->m_matriz[r][0][i].m_visited=
         graph->m_matriz[0][c][i].m_visited=
         graph->m_matriz[r][c][i].m_visited=true;*/
-        cout<<"set of image colors:"<<endl;
-        for(set<int>::iterator iter= colorset.begin();
+    cout<<"set of image colors:"<<endl;
+    for(set<int>::iterator iter= colorset.begin();
             iter!= colorset.end(); iter++)
-            printf("%x ", *iter);
-        cout<<endl;
+        printf("%x ", *iter);
+    cout<<endl;
 
 }
 template<class T>
@@ -179,7 +179,8 @@ void CGraphUtils<T>::LabeledGraphToImage3D(CGraphImage3D<T> *graph, CImage *imag
 }
 
 template<class T>//image must be already configured height x width
-void CGraphUtils<T>::Region_DFS(int v, int color){
+void CGraphUtils<T>::Region_DFS(int v, int color)
+{
     //cout<<"RDFS:"<<v<<"-"<<color<<endl;
     m_label_color_map[(*m_p_mrv)[v]->m_label] = color;
     for(int i=0; i < (*m_p_mrv)[v]->m_overlaped_mr_ids.size(); ++i)
@@ -194,8 +195,10 @@ void CGraphUtils<T>::OverlapedGraphToImage2D(CGraphImage2D<T> *graph, vector<CMe
     m_p_mrv = p_mrv;
     int main_region_color;
     //cout<<":3"<<endl;
-    for(int i=0; i< p_mrv->size(); ++i){
-        if (!(*p_mrv)[i]->m_overlap){
+    for(int i=0; i< p_mrv->size(); ++i)
+    {
+        if (!(*p_mrv)[i]->m_overlap)
+        {
             main_region_color=color_pallete((*p_mrv)[i]->m_label);
             //recorrer los hijos
             //cout<<"mr: "<<i<<endl;

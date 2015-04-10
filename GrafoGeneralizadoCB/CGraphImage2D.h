@@ -12,7 +12,7 @@
 #include "CGraph.h"
 #include "CGraphIterator2D.h"
 
-#define NUMBER_OF_NEIGHBOURS 4
+#define NUMBER_OF_NEIGHBOURS_2D 4
 
 template<class T>
 class CGraphImage2D : public CGraph<T>
@@ -55,9 +55,11 @@ public:
 
     //methods - iteration
     /**
-        @return a pointer to the beginning of the Graph
+        @return a pointer to the beginning of the Graph, and the same
+                for end method.
     */
-    CGraphImage2D* begin();
+    iterator* begin();
+    iterator* end();
 
     /**
         Set an specific element with the specific data
@@ -75,12 +77,13 @@ public:
 
 protected:
 private:
+    iterator *m_ibegin, *m_iend;
+    //end pointer
 };
 
 template<class T>
-CGraphImage2D<T>::CGraphImage2D ()
+CGraphImage2D<T>::CGraphImage2D ():m_number_of_neighbors(NUMBER_OF_NEIGHBOURS_2D), m_ibegin(new iterator), m_iend(new iterator)
 {
-    m_number_of_neighbors = NUMBER_OF_NEIGHBOURS;
 }
 
 template<class T>
@@ -99,14 +102,29 @@ void CGraphImage2D <T>::config(int _rows, int _cols)
     {
         m_matriz[i] = new node[_cols];
     }
+
+    m_ibegin->m_prow = m_matriz;
+    m_ibegin->m_pcol = (*m_matriz);
+    m_ibegin->m_rows = m_rows;
+    m_ibegin->m_cols = m_cols;
+
+
+    m_iend->m_prow =   &(m_matriz[m_rows]);
+    m_iend->m_pcol =   &(m_matriz[m_rows-1][m_cols]);
+
 }
 
 template<class T>
-CGraphImage2D<T>* CGraphImage2D<T>::begin()
+CGraphImage2D<T>::iterator* CGraphImage2D<T>::begin()
 {
-    return this;
+    return m_ibegin;
 }
 
+template<class T>
+CGraphImage2D<T>::iterator* CGraphImage2D<T>::end()
+{
+    return m_iend;
+}
 
 template<class T>
 void CGraphImage2D <T>::load_data(string filename)

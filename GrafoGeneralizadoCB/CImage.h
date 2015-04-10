@@ -4,18 +4,10 @@
 #include <vector>
 #include <string>
 #include "CImg.h"
+#include "CAppUtils.h"
+
 using namespace cimg_library;
 using namespace std;
-
-string int_to_str(int n)
-{
-    char *buffer= new char[64];
-    sprintf(buffer,"%d", n );
-    string res;
-    res= buffer;
-    delete[] buffer;
-    return res;
-}
 
 class CImage
 {
@@ -82,7 +74,7 @@ public:
             {
                 number="";
                 layer_counter=i;
-                number=  int_to_str(layer_counter);
+                number = CAppUtils::int_to_str(layer_counter);
 
                 newname=name + number + ext;
                 ifstream entrada(newname.c_str());

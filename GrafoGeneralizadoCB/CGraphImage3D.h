@@ -12,7 +12,7 @@
 #include "CGraph.h"
 #include "CGraphIterator3D.h"
 
-#define NUMBER_OF_NEIGHBOURS 6
+#define NUMBER_OF_NEIGHBOURS_3D 6
 
 template<class T>
 class CGraphImage3D : public CGraph<T>
@@ -79,9 +79,8 @@ private:
 };
 
 template<class T>
-CGraphImage3D<T>::CGraphImage3D ()
+CGraphImage3D<T>::CGraphImage3D ():m_number_of_neighbors(NUMBER_OF_NEIGHBOURS_3D)
 {
-    m_number_of_neighbors = NUMBER_OF_NEIGHBOURS;
 }
 
 template<class T>
