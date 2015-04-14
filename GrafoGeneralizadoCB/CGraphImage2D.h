@@ -82,7 +82,8 @@ private:
 };
 
 template<class T>
-CGraphImage2D<T>::CGraphImage2D ():m_number_of_neighbors(NUMBER_OF_NEIGHBOURS_2D), m_ibegin(new iterator), m_iend(new iterator)
+CGraphImage2D<T>::CGraphImage2D ():m_number_of_neighbors(NUMBER_OF_NEIGHBOURS_2D)
+                                    ,m_ibegin(new iterator), m_iend(new iterator)
 {
 }
 
@@ -115,13 +116,13 @@ void CGraphImage2D <T>::config(int _rows, int _cols)
 }
 
 template<class T>
-CGraphImage2D<T>::iterator* CGraphImage2D<T>::begin()
+typename CGraphImage2D<T>::iterator* CGraphImage2D<T>::begin()
 {
     return m_ibegin;
 }
 
 template<class T>
-CGraphImage2D<T>::iterator* CGraphImage2D<T>::end()
+typename CGraphImage2D<T>::iterator* CGraphImage2D<T>::end()
 {
     return m_iend;
 }

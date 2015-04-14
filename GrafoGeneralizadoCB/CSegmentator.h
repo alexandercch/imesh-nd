@@ -87,7 +87,7 @@ void CSegmentator<G>::binary_segmentation()
 {
     iterator iter;
     int pixel;
-    for(iter = input->begin(); !iter.end(); iter++)
+    for(iter = input.begin(); iter != input.end(); iter++)
     {
         //cout<<"vis"<<iter->m_data<<endl;
         pixel=iter->m_data;
@@ -101,7 +101,7 @@ void CSegmentator<G>::to_gray_scale()
 {
     int pixel;
     iterator iter ;
-    for(iter = input->begin(); !iter.end(); iter++)
+    for(iter = input.begin(); iter != input.end(); iter++)
     {
         pixel=iter->m_data;
         pixel=handle_color.process_gray_scale(pixel);
@@ -112,45 +112,52 @@ void CSegmentator<G>::to_gray_scale()
 template<class G>
 void CSegmentator<G>::group_neighbor_cells()
 {
-    int labeler=-1;
-    iterator iter ;
-    int totalarea= input->area(), totalelements=input->weight();
+    int labeler         =   -1;
+    int totalarea       =   input->area();
+    int totalelements   =   input->weight();
 
-    for(iter = input->begin(); !iter.end(); iter++)
+    iterator iter;
+    for(iter = input->begin(); iter != input->end(); iter++)
     {
         if (iter->m_label !=-1) continue;
+
         queue<iterator> node_queue;
+
         iter->m_label=++labeler;
+
         CMeshRegion<G> *mr= new CMeshRegion<G>();
         mr->Init(labeler, &m_meshregionV);
+
         node_queue.push(iter);
         while(node_queue.size())
         {
             iterator actual =node_queue.front();
             node_queue.pop();
 
-            mr->Incorporate(actual.self());
+            mr->Incorporate(*actual);
 
-            iterator i_neighbor_actual;
-            i_neighbor_actual= actual;
+            node* neighbor;
+            //i_neighbor_actual= actual;
+
             for(int i = 0 ; i< input->m_number_of_neighbors; ++i)
             {
-                i_neighbor_actual.neighbor(&actual, i);
-                if (i_neighbor_actual->m_visited || i_neighbor_actual->m_label>-1)
+                //i_neighbor_actual.neighbor(&actual, i);
+                neighbor = actual.neighbor_at(i);
+                if (neighbor->m_visited || neighbor->m_label>-1)
                 {
 
-                    if (i_neighbor_actual->m_label>-1 && i_neighbor_actual->m_label != iter->m_label)
-                        mr->Set_Neighbor(i_neighbor_actual->m_label);
+                    if (neighbor->m_label>-1 && neighbor->m_label != iter->m_label)
+                        mr->Set_Neighbor(neighbor->m_label);
                     //continue;
 
                     continue;
                 }
 
-                if ( handle_color.rgb_difference(i_neighbor_actual->m_data, actual->m_data)
+                if ( handle_color.rgb_difference(neighbor->m_data, actual->m_data)
                         < m_max_segmentation_difference )
                 {
-                    i_neighbor_actual->m_label=labeler;
-                    node_queue.push(i_neighbor_actual);
+                    neighbor->m_label=labeler;
+                    node_queue.push(neighbor);
                 }
             }
         }

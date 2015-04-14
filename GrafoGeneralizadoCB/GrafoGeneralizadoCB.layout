@@ -1,24 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_layout_file>
 	<ActiveTarget name="Debug" />
-	<File name="CGraphIteratorND.h" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="MinDistancesSet.h" open="1" top="0" tabpos="12" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="984" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="CGraphUtils.h" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1596" topLine="46" />
-		</Cursor>
-	</File>
-	<File name="CGraph.h" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="774" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="CGraphIterator.h" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="473" topLine="0" />
+			<Cursor1 position="569" topLine="157" />
 		</Cursor>
 	</File>
 	<File name="CAppUtils.h" open="1" top="0" tabpos="14" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -26,22 +11,14 @@
 			<Cursor1 position="699" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="CGraphIterator2D.h" open="1" top="1" tabpos="17" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1576" topLine="0" />
-		</Cursor>
-		<Folding>
-			<Collapse line="93" />
-		</Folding>
-	</File>
-	<File name="CImage.h" open="1" top="0" tabpos="16" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="CImage.h" open="1" top="0" tabpos="15" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="277" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="CGraphImage2D.h" open="1" top="0" tabpos="15" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="CGraphMeshND.h" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="2701" topLine="132" />
+			<Cursor1 position="0" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="CGraphImage3D.h" open="1" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -49,43 +26,27 @@
 			<Cursor1 position="47" topLine="15" />
 		</Cursor>
 	</File>
+	<File name="CGraphIterator2D.h" open="1" top="0" tabpos="16" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="639" topLine="126" />
+		</Cursor>
+		<Folding>
+			<Collapse line="114" />
+		</Folding>
+	</File>
 	<File name="CColor.h" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="281" topLine="0" />
 		</Cursor>
-		<Folding>
-			<Collapse line="25" />
-			<Collapse line="47" />
-			<Collapse line="55" />
-			<Collapse line="61" />
-			<Collapse line="68" />
-			<Collapse line="80" />
-			<Collapse line="85" />
-			<Collapse line="90" />
-			<Collapse line="101" />
-			<Collapse line="107" />
-			<Collapse line="125" />
-			<Collapse line="130" />
-			<Collapse line="135" />
-			<Collapse line="150" />
-			<Collapse line="187" />
-			<Collapse line="196" />
-			<Collapse line="204" />
-			<Collapse line="221" />
-			<Collapse line="227" />
-			<Collapse line="235" />
-			<Collapse line="246" />
-			<Collapse line="257" />
-		</Folding>
 	</File>
-	<File name="CGraphMeshND.h" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="CGraphImage2D.h" open="1" top="0" tabpos="17" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="0" topLine="0" />
+			<Cursor1 position="2800" topLine="113" />
 		</Cursor>
 	</File>
-	<File name="CMeshRegion.h" open="1" top="0" tabpos="13" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="CImg.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1772" topLine="48" />
+			<Cursor1 position="395924" topLine="7356" />
 		</Cursor>
 	</File>
 	<File name="CNode.h" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -93,24 +54,44 @@
 			<Cursor1 position="446" topLine="0" />
 		</Cursor>
 	</File>
+	<File name="CGraphIterator.h" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="473" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="CSegmentator.h" open="1" top="1" tabpos="11" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="3270" topLine="129" />
+		</Cursor>
+	</File>
+	<File name="CGraphIteratorND.h" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="984" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="CGraph.h" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="774" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="main.cpp" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1851" topLine="66" />
+		</Cursor>
+	</File>
+	<File name="CGraphUtils.h" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1596" topLine="46" />
+		</Cursor>
+	</File>
 	<File name="CGraphIterator3D.h" open="1" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="590" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="CSegmentator.h" open="1" top="0" tabpos="11" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="CMeshRegion.h" open="1" top="0" tabpos="13" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="3335" topLine="123" />
-		</Cursor>
-	</File>
-	<File name="MinDistancesSet.h" open="1" top="0" tabpos="12" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="569" topLine="157" />
-		</Cursor>
-	</File>
-	<File name="main.cpp" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="3209" topLine="88" />
+			<Cursor1 position="1772" topLine="48" />
 		</Cursor>
 	</File>
 </CodeBlocks_layout_file>

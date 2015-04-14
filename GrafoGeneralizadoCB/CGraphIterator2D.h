@@ -24,24 +24,28 @@ public:
     node **m_prow;
     node *m_pcol;
     int m_rows;
-    int m_cols;//holds position of the iterator
+    int m_cols;//hold the matrix dimensions
 
-    CGraphImage2D<T> *m_pgraph;//pointo to graph we are navigating to
+    //CGraphImage2D<T> *m_pgraph;//pointo to graph we are navigating to
 
     //bool m_end;//flag to check wether it has reach the end
 
     //overloaded operators
     //void operator=(CGraphImage2D<T> *graph);
-    void operator=(self *iter);
+    void operator=(CGraphIterator2D<T> *iter);
+    void operator=(CGraphIterator2D<T> &iter);
     void operator++(int);
     node* operator->();
-    bool operator==(self *iter);
+    node*& operator*();
+    bool operator==(CGraphIterator2D<T> *iter);
+    bool operator!=(CGraphIterator2D<T> *iter);
+
     //methods
     CGraphIterator2D();
     virtual ~CGraphIterator2D();
     //bool end();
-    void neighbor(CGraphIterator2D<T>* iter, int i);
-//hola como estas espero q se encuentren bien por que yo aqyu me diento de lo mejor, asi espero q uds esten xD
+    node* neighbor_at(int i);
+
 protected:
 private:
 };
@@ -65,29 +69,46 @@ void CGraphIterator2D<T>::operator=(CGraphImage2D<T> *graph)
 };*/
 
 template< class T>
-void CGraphIterator2D<T>::operator=(self *iter)
+void CGraphIterator2D<T>::operator=(CGraphIterator2D<T> &iter)
 {
-    m_rows=iter->m_rows;
-    m_cols=iter->m_cols;
+    m_rows=iter.m_rows;
+    m_cols=iter.m_cols;
 
-    m_prow=iter->m_prow;
-    m_pcol=iter->m_pcol;
-
+    m_prow=iter.m_prow;
+    m_pcol=iter.m_pcol;
 };
 
 template< class T>
-bool CGraphIterator2D<T>::operator==(self *iter)
+void CGraphIterator2D<T>::operator=(CGraphIterator2D<T> *iter)
+{
+    m_rows = iter->m_rows;
+    m_cols = iter->m_cols;
+
+    m_prow = iter->m_prow;
+    m_pcol = iter->m_pcol;
+};
+
+template< class T>
+bool CGraphIterator2D<T>::operator==(CGraphIterator2D<T> *iter)
 {
     return m_prow==iter->m_prow && m_pcol==iter->m_pcol;
 };
 
 template< class T>
+bool CGraphIterator2D<T>::operator!=(CGraphIterator2D<T> *iter)
+{
+    return !(m_prow==iter->m_prow && m_pcol==iter->m_pcol);
+};
+
+
+template< class T>
 void CGraphIterator2D<T>::operator++(int)
 {
+    //detect if row pointer is in the final column
     if( m_pcol - (*m_prow) < m_cols){
-        m_pcol++;
+        m_pcol++;//if not go to next column
         return;
-    }
+    }//if it is go the next row and column to the initial column
     m_prow++;
     m_pcol=(*m_prow);
 
@@ -122,10 +143,21 @@ typename CGraphIterator2D<T>::node* CGraphIterator2D<T>::operator->()
 };
 
 template< class T>
-void CGraphIterator2D<T>::neighbor( CGraphIterator2D<T>* iter, int i)
+typename CGraphIterator2D<T>::node*& CGraphIterator2D<T>::operator*()
 {
-    m_row = iter->m_row + RS2D[i];
-    m_col = iter->m_col + CS2D[i];
+    return m_pcol;
+};
+
+template< class T>
+typename CGraphIterator2D<T>::node* CGraphIterator2D<T>::neighbor_at(int i)
+{
+    //m_row = iter->m_row + RS2D[i];
+    //m_col = iter->m_col + CS2D[i];
+
+    //find column position
+    int dist = m_pcol - (*m_prow);
+
+    return (*(m_prow + RS2D[i]) + CS2D[i]);
 };
 
 #endif // CGRAPHITERATOR2D_H_INCLUDED
