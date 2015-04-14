@@ -18,7 +18,7 @@ public:
 
     //methods
     bool end();
-    void neighbor(CGraphIterator* iter, int i);
+    //void neighbor(CGraphIterator* iter, int i);
     //node *self();
 
     //overloaded operators

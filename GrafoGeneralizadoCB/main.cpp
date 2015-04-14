@@ -31,10 +31,10 @@ string data_file="pelotas.jpg";
 CAppUtils app;
 CGraphUtils<int> utils;
 
-void do_mesh();
+//void do_mesh();
 void do_bin();
-void do_ag1();
-void do_ag2();
+//void do_ag1();
+//void do_ag2();
 
 int main()
 {
@@ -51,7 +51,7 @@ int main()
         switch (op)
         {
 
-        case 1:
+        /*case 1:
             do_ag1();
             break;
         case 2:
@@ -59,7 +59,7 @@ int main()
             break;
         case 3:
             do_mesh();
-            break;
+            break;*/
         case 4:
             do_bin();
             break;
@@ -69,7 +69,7 @@ int main()
     return 0;
 }
 
-void do_ag1()
+/*void do_ag1()
 {
     CImage imagen(DATA_PATH + data_file);//true beacuse it is 3d
     imagen.display();
@@ -105,8 +105,8 @@ void do_ag1()
 
     utils.OverlapedGraphToImage2D(&in,&(seg.m_meshregionV),  &imagen);
     imagen.display();
-}
-void do_ag2()
+}*/
+/*void do_ag2()
 {
     CImage imagen(DATA_PATH + data_file);//true beacuse it is 3d
     imagen.display();
@@ -141,10 +141,10 @@ void do_ag2()
 
     utils.OverlapedGraphToImage2D(&in,&(seg.m_meshregionV),  &imagen);
     imagen.display();
-}
+}*/
 
 
-void do_mesh()
+/*void do_mesh()
 {
     CGraphMeshND<int> grafo_entrada, grafo_salida;
     grafo_entrada.load_data(DATA_PATH + data_file);
@@ -152,15 +152,15 @@ void do_mesh()
     CSegmentator<CGraphMeshND<int> > seg(&grafo_entrada, &grafo_salida);
     seg.binary_segmentation();
     grafo_salida.print_mesh();
-}
+}*/
 void do_bin()
 {
     CImage imagen(DATA_PATH + data_file);//true beacuse it is 3d
-    imagen.to_gray_scale();
+    //imagen.to_gray_scale();
     CGraphUtils<int> utils;
     CGraphImage2D<int> in, out;
     utils.ImageToGraph2D(&in, &imagen);
-    out=in;
+    //out=in;
     CSegmentator<CGraphImage2D<int> > seg(&in, &out);
     //seg.group_neighbor_cells();
     seg.binary_segmentation();

@@ -779,7 +779,7 @@
 	<direct.h>
 	<unistd.h>
 
-1428648790 source:c:\users\alex\desktop\tesis\imesh-nd\grafogeneralizadocb\main.cpp
+1429031267 source:c:\users\alex\desktop\tesis\imesh-nd\grafogeneralizadocb\main.cpp
 	<iostream>
 	"CGraphImage3D.h"
 	"CGraphImage2D.h"
@@ -862,13 +862,13 @@
 1410442634 c:\users\alex\desktop\tesis\imesh-nd\grafogeneralizadocb\cgraphiterator3d.h
 	"CGraphIterator.h"
 
-1428674103 c:\users\alex\desktop\tesis\imesh-nd\grafogeneralizadocb\cgraphiterator.h
+1429027747 c:\users\alex\desktop\tesis\imesh-nd\grafogeneralizadocb\cgraphiterator.h
 
-1428699728 c:\users\alex\desktop\tesis\imesh-nd\grafogeneralizadocb\cgraphimage2d.h
+1429031154 c:\users\alex\desktop\tesis\imesh-nd\grafogeneralizadocb\cgraphimage2d.h
 	"CGraph.h"
 	"CGraphIterator2D.h"
 
-1428699923 c:\users\alex\desktop\tesis\imesh-nd\grafogeneralizadocb\cgraphiterator2d.h
+1429031079 c:\users\alex\desktop\tesis\imesh-nd\grafogeneralizadocb\cgraphiterator2d.h
 	"CGraphIterator.h"
 
 1427840747 c:\users\alex\desktop\tesis\imesh-nd\grafogeneralizadocb\cgraphmeshnd.h
@@ -879,7 +879,7 @@
 1410442634 c:\users\alex\desktop\tesis\imesh-nd\grafogeneralizadocb\cgraphiteratornd.h
 	"CGraphIterator.h"
 
-1428687230 c:\users\alex\desktop\tesis\imesh-nd\grafogeneralizadocb\csegmentator.h
+1429031732 c:\users\alex\desktop\tesis\imesh-nd\grafogeneralizadocb\csegmentator.h
 	<cstdio>
 	<map>
 	<set>

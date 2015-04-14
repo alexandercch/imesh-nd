@@ -75,10 +75,12 @@ template<class G>
 CSegmentator<G>::CSegmentator():cntr(0), m_max_segmentation_difference(MAX_SEGMENTATION_DIFFERENCE)
 {
 };
+
 template<class G>
 CSegmentator<G>::CSegmentator(G *_input, G *_output):input(_input),output(_output),cntr(0), m_max_segmentation_difference(MAX_SEGMENTATION_DIFFERENCE)
 {
 };
+
 template<class G>
 CSegmentator<G>::~CSegmentator() {};
 
@@ -87,12 +89,16 @@ void CSegmentator<G>::binary_segmentation()
 {
     iterator iter;
     int pixel;
-    for(iter = input.begin(); iter != input.end(); iter++)
+    cout<<"Hello debug"<<endl;
+    for(iter = input->begin(); iter != input->end(); iter++)
     {
-        //cout<<"vis"<<iter->m_data<<endl;
-        pixel=iter->m_data;
+        printf("%x\n",iter->m_data);
+        /*pixel=iter->m_data;
         pixel=handle_color.process_pixel_binary(pixel);
-        output->set_at(iter, pixel);
+        output->set_at(iter, pixel);*/
+        iter->m_data = handle_color.process_pixel_binary(iter->m_data);
+        cout<<"end vis"<<iter->m_data<<endl;
+        cin.get();
     }
 }
 
@@ -101,11 +107,14 @@ void CSegmentator<G>::to_gray_scale()
 {
     int pixel;
     iterator iter ;
-    for(iter = input.begin(); iter != input.end(); iter++)
+    for(iter = input->begin(); iter != input->end(); iter++)
     {
-        pixel=iter->m_data;
+        cout<<"iter:"<<iter->m_data<<endl;
+        /*pixel=iter->m_data;
         pixel=handle_color.process_gray_scale(pixel);
-        input->set_at(iter, pixel);
+        input->set_at(iter, pixel);*/
+        iter->m_data = handle_color.process_gray_scale(iter->m_data);
+
     }
 }
 
@@ -136,7 +145,7 @@ void CSegmentator<G>::group_neighbor_cells()
 
             mr->Incorporate(*actual);
 
-            node* neighbor;
+            iterator neighbor;
             //i_neighbor_actual= actual;
 
             for(int i = 0 ; i< input->m_number_of_neighbors; ++i)

@@ -33,7 +33,7 @@ public:
     //overloaded operators
     //void operator=(CGraphImage2D<T> *graph);
     void operator=(CGraphIterator2D<T> *iter);
-    void operator=(CGraphIterator2D<T> &iter);
+    void operator=(CGraphIterator2D<T> iter);
     void operator++(int);
     node* operator->();
     node*& operator*();
@@ -44,7 +44,8 @@ public:
     CGraphIterator2D();
     virtual ~CGraphIterator2D();
     //bool end();
-    node* neighbor_at(int i);
+    node* neighbor_node_at(int i);
+    self neighbor_at(int i);
 
 protected:
 private:
@@ -69,7 +70,7 @@ void CGraphIterator2D<T>::operator=(CGraphImage2D<T> *graph)
 };*/
 
 template< class T>
-void CGraphIterator2D<T>::operator=(CGraphIterator2D<T> &iter)
+void CGraphIterator2D<T>::operator=(CGraphIterator2D<T> iter)
 {
     m_rows=iter.m_rows;
     m_cols=iter.m_cols;
@@ -81,11 +82,13 @@ void CGraphIterator2D<T>::operator=(CGraphIterator2D<T> &iter)
 template< class T>
 void CGraphIterator2D<T>::operator=(CGraphIterator2D<T> *iter)
 {
+    cout<<"iter= * called"<<endl;
     m_rows = iter->m_rows;
     m_cols = iter->m_cols;
 
     m_prow = iter->m_prow;
     m_pcol = iter->m_pcol;
+    cout<<"iter= * called end"<<endl;
 };
 
 template< class T>
@@ -149,7 +152,7 @@ typename CGraphIterator2D<T>::node*& CGraphIterator2D<T>::operator*()
 };
 
 template< class T>
-typename CGraphIterator2D<T>::node* CGraphIterator2D<T>::neighbor_at(int i)
+typename CGraphIterator2D<T>::node* CGraphIterator2D<T>::neighbor_node_at(int i)
 {
     //m_row = iter->m_row + RS2D[i];
     //m_col = iter->m_col + CS2D[i];
@@ -159,5 +162,21 @@ typename CGraphIterator2D<T>::node* CGraphIterator2D<T>::neighbor_at(int i)
 
     return (*(m_prow + RS2D[i]) + CS2D[i]);
 };
+
+template< class T>
+typename CGraphIterator2D<T>::self CGraphIterator2D<T>::neighbor_at(int i)
+{
+    self neighbor;
+
+    neighbor.m_rows = m_rows;
+    neighbor.m_cols = m_cols;
+
+    neighbor.m_prow= m_prow + RS2D[i];
+    neighbor.m_pcol= neighbor.m_prow + CS2D[i];
+
+    return neighbor;
+};
+
+
 
 #endif // CGRAPHITERATOR2D_H_INCLUDED

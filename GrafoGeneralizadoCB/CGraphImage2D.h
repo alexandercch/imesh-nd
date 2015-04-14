@@ -103,7 +103,7 @@ void CGraphImage2D <T>::config(int _rows, int _cols)
     {
         m_matriz[i] = new node[_cols];
     }
-
+    cout<<"begin setted!"<<endl;
     m_ibegin->m_prow = m_matriz;
     m_ibegin->m_pcol = (*m_matriz);
     m_ibegin->m_rows = m_rows;
@@ -112,7 +112,7 @@ void CGraphImage2D <T>::config(int _rows, int _cols)
 
     m_iend->m_prow =   &(m_matriz[m_rows]);
     m_iend->m_pcol =   &(m_matriz[m_rows-1][m_cols]);
-
+    cout<<"end setted!"<<endl;
 }
 
 template<class T>
@@ -163,7 +163,8 @@ void CGraphImage2D<T>::operator=(CGraphImage2D <T> &_graph)
 template<class T>
 void CGraphImage2D<T>::set_at(iterator& iter, T& data)
 {
-    m_matriz[iter.m_row][iter.m_col].m_data = data;
+    //m_matriz[iter.m_row][iter.m_col].m_data = data;
+    iter->m_data = data;
 }
 
 #endif // CGRAPHIMAGE2D_H_INCLUDED
