@@ -100,6 +100,7 @@ bool CGraphIterator2D<T>::operator==(CGraphIterator2D<T> *iter)
 template< class T>
 bool CGraphIterator2D<T>::operator!=(CGraphIterator2D<T> *iter)
 {
+    cout<<"!= called"<<endl;
     return !(m_prow==iter->m_prow && m_pcol==iter->m_pcol);
 };
 
@@ -108,13 +109,12 @@ template< class T>
 void CGraphIterator2D<T>::operator++(int)
 {
     //detect if row pointer is in the final column
-    if( m_pcol - (*m_prow) < m_cols){
-        m_pcol++;//if not go to next column
-        return;
+    if( ++m_pcol - (*m_prow) < m_cols){
+        return;//if not go to next column
     }//if it is go the next row and column to the initial column
     m_prow++;
     m_pcol=(*m_prow);
-
+    cout<<"in ++"<<endl;
     /*int i = 0;
     for(i = 0; i < m_pgraph->m_number_of_neighbors; ++i)
     {

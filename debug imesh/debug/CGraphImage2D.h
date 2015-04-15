@@ -111,7 +111,7 @@ void CGraphImage2D <T>::config(int _rows, int _cols)
 
 
     m_iend->m_prow =   &(m_matriz[m_rows]);
-    m_iend->m_pcol =   &(m_matriz[m_rows-1][m_cols]);
+    m_iend->m_pcol =   &(m_matriz[m_rows][0]);
     cout<<"end setted!"<<endl;
 }
 

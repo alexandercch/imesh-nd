@@ -33,7 +33,7 @@ CGraphUtils<int> utils;
 
 //void do_mesh();
 void do_bin();
-//void do_ag1();
+void do_ag1();
 //void do_ag2();
 
 int main()
@@ -51,25 +51,25 @@ int main()
         switch (op)
         {
 
-        /*case 1:
+        case 1:
             do_ag1();
             break;
-        case 2:
+        /*case 2:
             do_ag2();
             break;
         case 3:
             do_mesh();
-            break;*/
+            break;
         case 4:
             do_bin();
-            break;
+            break;*/
         }
         data_file="";
     }
     return 0;
 }
 
-/*void do_ag1()
+void do_ag1()
 {
     CImage imagen(DATA_PATH + data_file);//true beacuse it is 3d
     imagen.display();
@@ -105,7 +105,7 @@ int main()
 
     utils.OverlapedGraphToImage2D(&in,&(seg.m_meshregionV),  &imagen);
     imagen.display();
-}*/
+}
 /*void do_ag2()
 {
     CImage imagen(DATA_PATH + data_file);//true beacuse it is 3d
@@ -164,6 +164,6 @@ void do_bin()
     CSegmentator<CGraphImage2D<int> > seg(&in, &out);
     //seg.group_neighbor_cells();
     seg.binary_segmentation();
-    utils.GraphToImage2D(&out, &imagen);
+    utils.GraphToImage2D(&in, &imagen);
     imagen.display();
 }

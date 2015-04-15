@@ -88,18 +88,21 @@ template<class G>
 void CSegmentator<G>::binary_segmentation()
 {
     iterator iter;
-    int pixel;
+    //int pixel;
     cout<<"Hello debug"<<endl;
+    int i=0;
     for(iter = input->begin(); iter != input->end(); iter++)
     {
+        printf("0x");
         printf("%x\n",iter->m_data);
         /*pixel=iter->m_data;
         pixel=handle_color.process_pixel_binary(pixel);
         output->set_at(iter, pixel);*/
         iter->m_data = handle_color.process_pixel_binary(iter->m_data);
-        cout<<"end vis"<<iter->m_data<<endl;
-        cin.get();
+        cout<<"end vis"<<iter->m_data<<" i:"<<i++<<endl;
+        //cin.get();
     }
+    cout<<"end iteration"<<endl;
 }
 
 template<class G>
@@ -129,46 +132,53 @@ void CSegmentator<G>::group_neighbor_cells()
     for(iter = input->begin(); iter != input->end(); iter++)
     {
         if (iter->m_label !=-1) continue;
-
+        cout<<"hello nigga 1"<<endl;
         queue<iterator> node_queue;
-
+        cout<<"hello nigga 2"<<endl;
         iter->m_label=++labeler;
-
+        cout<<"hello nigga 3"<<endl;
         CMeshRegion<G> *mr= new CMeshRegion<G>();
         mr->Init(labeler, &m_meshregionV);
-
+        cout<<"hello nigga 4"<<endl;
         node_queue.push(iter);
+        cout<<"hello nigga 5"<<endl;
         while(node_queue.size())
         {
+            cout<<"while hello nigga 1"<<endl;
             iterator actual =node_queue.front();
             node_queue.pop();
-
+            cout<<"while hello nigga 2"<<endl;
             mr->Incorporate(*actual);
 
             iterator neighbor;
             //i_neighbor_actual= actual;
-
+            cout<<"while hello nigga 3"<<endl;
             for(int i = 0 ; i< input->m_number_of_neighbors; ++i)
             {
                 //i_neighbor_actual.neighbor(&actual, i);
+                cout<<"for hello nigga 1"<<endl;
                 neighbor = actual.neighbor_at(i);
+                cout<<"for hello nigga 2"<<endl;
                 if (neighbor->m_visited || neighbor->m_label>-1)
                 {
 
                     if (neighbor->m_label>-1 && neighbor->m_label != iter->m_label)
                         mr->Set_Neighbor(neighbor->m_label);
                     //continue;
-
+                    cout<<"for hello nigga 3"<<endl;
                     continue;
                 }
-
+                cout<<"for hello nigga 4"<<endl;
                 if ( handle_color.rgb_difference(neighbor->m_data, actual->m_data)
                         < m_max_segmentation_difference )
                 {
                     neighbor->m_label=labeler;
                     node_queue.push(neighbor);
+                    cout<<"for hello nigga 5"<<endl;
                 }
+                cout<<"for hello nigga 6"<<endl;
             }
+            cout<<"out for nigga"<<endl;
         }
         mr->Set_Distance(totalelements, totalarea);
         //cout<<labeler<<"-"<<endl;

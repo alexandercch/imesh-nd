@@ -1,0 +1,22 @@
+# depslib dependency file v1.0
+1429065526 source:c:\users\alex\desktop\tesis\imesh-nd\debug imesh\debug\main.cpp
+	"CGraphImage2D.h"
+	<iostream>
+
+1429065620 c:\users\alex\desktop\tesis\imesh-nd\debug imesh\debug\cgraphimage2d.h
+	"CGraph.h"
+	"CGraphIterator2D.h"
+
+1429032487 c:\users\alex\desktop\tesis\imesh-nd\debug imesh\debug\cgraph.h
+	"CNode.h"
+	<string>
+	<fstream>
+	<iostream>
+
+1410971716 c:\users\alex\desktop\tesis\imesh-nd\debug imesh\debug\cnode.h
+
+1429065631 c:\users\alex\desktop\tesis\imesh-nd\debug imesh\debug\cgraphiterator2d.h
+	"CGraphIterator.h"
+
+1429027747 c:\users\alex\desktop\tesis\imesh-nd\debug imesh\debug\cgraphiterator.h
+
