@@ -148,14 +148,15 @@ public:
         pos = m_width * row + column;
         msize = m_height * m_width;
         r = m_imagenes[layer]->data()[pos];
-        g = m_imagenes[layer]->data()[msize + pos];
-        b = m_imagenes[layer]->data()[msize*2 + pos];
+        //g = m_imagenes[layer]->data()[msize + pos];
+        //b = m_imagenes[layer]->data()[msize*2 + pos];
         //pixel=255<<8;
         pixel|=r;
+        /*
         pixel<<=8;
         pixel|=g;
         pixel<<=8;
-        pixel|=b;
+        pixel|=b;*/
         return pixel;
     }
     //set 2d image pixel
@@ -177,8 +178,8 @@ public:
         g = (unsigned char)(pixel>>8);
         b = (unsigned char)(pixel);
         (*m_imagenes[layer])(col, row, 0) = r;
-        (*m_imagenes[layer])(col, row, 1) = g;
-        (*m_imagenes[layer])(col, row, 2) = b;
+        //(*m_imagenes[layer])(col, row, 1) = g;
+        //(*m_imagenes[layer])(col, row, 2) = b;
     }
     void display3d()
     {

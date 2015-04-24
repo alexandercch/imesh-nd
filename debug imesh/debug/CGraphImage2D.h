@@ -91,6 +91,9 @@ template<class T>
 CGraphImage2D <T>::~CGraphImage2D ()
 {
     //dtor
+    for(int i=0; i<m_rows;++i)
+        delete[] m_matriz[i];
+    delete[] m_matriz;
 }
 
 template<class T>
@@ -103,7 +106,7 @@ void CGraphImage2D <T>::config(int _rows, int _cols)
     {
         m_matriz[i] = new node[_cols];
     }
-    cout<<"begin setted!"<<endl;
+    //cout<<"begin setted!"<<endl;
     m_ibegin->m_prow = m_matriz;
     m_ibegin->m_pcol = (*m_matriz);
     m_ibegin->m_rows = m_rows;
@@ -112,7 +115,7 @@ void CGraphImage2D <T>::config(int _rows, int _cols)
 
     m_iend->m_prow =   &(m_matriz[m_rows]);
     m_iend->m_pcol =   &(m_matriz[m_rows][0]);
-    cout<<"end setted!"<<endl;
+    //cout<<"end setted!"<<endl;
 }
 
 template<class T>

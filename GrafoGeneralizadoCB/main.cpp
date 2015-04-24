@@ -34,7 +34,8 @@ CGraphUtils<int> utils;
 //void do_mesh();
 void do_bin();
 void do_ag1();
-//void do_ag2();
+void do_ag2();
+void do_ag3();
 
 int main()
 {
@@ -54,13 +55,13 @@ int main()
         case 1:
             do_ag1();
             break;
-        /*case 2:
+        case 2:
             do_ag2();
             break;
         case 3:
-            do_mesh();
+            do_ag3();
             break;
-        case 4:
+        /*case 4:
             do_bin();
             break;*/
         }
@@ -106,7 +107,7 @@ void do_ag1()
     utils.OverlapedGraphToImage2D(&in,&(seg.m_meshregionV),  &imagen);
     imagen.display();
 }
-/*void do_ag2()
+void do_ag2()
 {
     CImage imagen(DATA_PATH + data_file);//true beacuse it is 3d
     imagen.display();
@@ -141,8 +142,46 @@ void do_ag1()
 
     utils.OverlapedGraphToImage2D(&in,&(seg.m_meshregionV),  &imagen);
     imagen.display();
-}*/
+}
+void do_ag3()
+{
+    cout<<"loading data"<<endl;
+    app.begin_counter();
+    CImage imagen(DATA_PATH + data_file, true);//true beacuse it is 3d
+    app.show_duration();
+    //imagen.display3d();// too long
 
+    CGraphImage3D<int> in, out;
+    cout<<"img to graph"<<endl;
+    app.begin_counter();
+    utils.ImageToGraph3D(&in, &imagen);
+    app.show_duration();
+
+    CSegmentator<CGraphImage3D<int> > seg(&in, &out);
+
+    cout<<"Segmentando"<<endl;
+    seg.m_max_segmentation_difference=segmentation_difference;
+
+    cout<<"ACV"<<endl;
+    app.begin_counter();
+    seg.group_neighbor_cells();
+    app.show_duration();
+    cout<<"labeled to img"<<endl;
+    app.begin_counter();
+    utils.LabeledGraphToImage3D(&in, &imagen);
+    app.show_duration();
+
+    imagen.display3d();
+
+    /*cout<<"ASm_V"<<endl;
+    app.begin_counter();
+    seg.m_nregions = segmentation_number_of_meshes;
+    seg.group_neighbor_regions();
+    app.show_duration();
+
+    utils.OverlapedGraphToImage2D(&in,&(seg.m_meshregionV),  &imagen);
+    imagen.display();*/
+}
 
 /*void do_mesh()
 {

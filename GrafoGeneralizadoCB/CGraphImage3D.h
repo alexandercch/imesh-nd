@@ -9,6 +9,7 @@
 
 #ifndef CIMAGE3D_H
 #define CIMAGE3D_H
+
 #include "CGraph.h"
 #include "CGraphIterator3D.h"
 
@@ -58,7 +59,8 @@ public:
     /**
         @return a pointer to the beginning of the Graph
     */
-    CGraphImage3D* begin();
+    iterator* begin();
+    iterator* end();
 
     /**
         Set an specific element with the specific data
@@ -76,10 +78,14 @@ public:
 
 protected:
 private:
+    iterator *m_ibegin, *m_iend;
 };
 
 template<class T>
-CGraphImage3D<T>::CGraphImage3D ():m_number_of_neighbors(NUMBER_OF_NEIGHBOURS_3D)
+CGraphImage3D<T>::CGraphImage3D():
+m_number_of_neighbors(NUMBER_OF_NEIGHBOURS_3D),
+m_ibegin(new iterator),
+m_iend(new iterator)
 {
 }
 
@@ -87,12 +93,20 @@ template<class T>
 CGraphImage3D <T>::~CGraphImage3D ()
 {
     //dtor
+    for(int i=0; i<m_rows;++i){
+        for(int j=0; j< m_cols; ++j)
+            delete[] m_matriz[i][j];
+        delete[] m_matriz[i];
+    }
+    delete[] m_matriz;
 }
 
 template<class T>
 void CGraphImage3D <T>::config(int _rows, int _cols, int _lays)
 {
-    m_rows=_rows, m_cols=_cols, m_lays= _lays;
+    m_rows = _rows;
+    m_cols = _cols;
+    m_lays = _lays;
     m_matriz= new node**[_rows];
     for(int i=0; i < _rows; ++i)
     {
@@ -100,12 +114,30 @@ void CGraphImage3D <T>::config(int _rows, int _cols, int _lays)
         for(int j=0; j< _cols; ++j)
             m_matriz[i][j]= new node[_lays];
     }
+    cout<<"iters"<<endl;
+    m_ibegin->m_prow = m_matriz;
+    m_ibegin->m_pcol = (*m_matriz);
+    m_ibegin->m_play = (**m_matriz);
+    m_ibegin->m_rows = m_rows;
+    m_ibegin->m_cols = m_cols;
+    m_ibegin->m_lays = m_lays;
+    cout<<"begin"<<endl;
+    m_iend->m_prow =   &(m_matriz[m_rows]);
+    //m_iend->m_pcol =   &(m_matriz[m_rows][0]);
+    //m_iend->m_play =   &(m_matriz[m_rows][0][0]);
+    cout<<"end"<<endl;
 }
 
 template<class T>
-CGraphImage3D<T>* CGraphImage3D<T>::begin()
+typename CGraphImage3D<T>::iterator* CGraphImage3D<T>::begin()
 {
-    return this;
+    return m_ibegin;
+}
+
+template<class T>
+typename CGraphImage3D<T>::iterator* CGraphImage3D<T>::end()
+{
+    return m_iend;
 }
 
 template<class T>
@@ -125,7 +157,7 @@ void CGraphImage3D <T>::load_data(string filename)
 template<class T>
 int CGraphImage3D<T>::weight()
 {
-    return m_rows*m_cols*m_lays;
+    return m_rows*m_cols*m_lays;//number of elements
 }
 
 template<class T>
@@ -148,7 +180,6 @@ void CGraphImage3D<T>::operator=(CGraphImage3D <T> &_graph)
 template<class T>
 void CGraphImage3D<T>::set_at(iterator& iter, T& data)
 {
-    //cout<<"in graph "<<iter.m_row<<" "<<iter.m_col<<" "<<iter.m_lay<<endl;
     m_matriz[iter.m_row][iter.m_col][iter.m_lay].m_data = data;
 }
 

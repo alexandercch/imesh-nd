@@ -779,7 +779,7 @@
 	<direct.h>
 	<unistd.h>
 
-1429069223 source:c:\users\alex\desktop\tesis\imesh-nd\grafogeneralizadocb\main.cpp
+1429674497 source:c:\users\alex\desktop\tesis\imesh-nd\grafogeneralizadocb\main.cpp
 	<iostream>
 	"CGraphImage3D.h"
 	"CGraphImage2D.h"
@@ -789,7 +789,7 @@
 	"CGraphUtils.h"
 	"CAppUtils.h"
 
-1428674749 c:\users\alex\desktop\tesis\imesh-nd\grafogeneralizadocb\cgraphimage3d.h
+1429670445 c:\users\alex\desktop\tesis\imesh-nd\grafogeneralizadocb\cgraphimage3d.h
 	"CGraph.h"
 	"CGraphIterator3D.h"
 
@@ -800,9 +800,9 @@
 	<fstream>
 	<iostream>
 
-1410971716 c:\users\alex\desktop\tesis\imesh-nd\grafogeneralizadocb\cnode.h
+1429458402 c:\users\alex\desktop\tesis\imesh-nd\grafogeneralizadocb\cnode.h
 
-1428647901 c:\users\alex\desktop\tesis\imesh-nd\grafogeneralizadocb\cimage.h
+1429674497 c:\users\alex\desktop\tesis\imesh-nd\grafogeneralizadocb\cimage.h
 	<fstream>
 	<iostream>
 	<vector>
@@ -859,16 +859,16 @@
 	"ImfArray.h"
 	"CImg.h"
 
-1410442634 c:\users\alex\desktop\tesis\imesh-nd\grafogeneralizadocb\cgraphiterator3d.h
+1429560575 c:\users\alex\desktop\tesis\imesh-nd\grafogeneralizadocb\cgraphiterator3d.h
 	"CGraphIterator.h"
 
-1429027747 c:\users\alex\desktop\tesis\imesh-nd\grafogeneralizadocb\cgraphiterator.h
+1429493376 c:\users\alex\desktop\tesis\imesh-nd\grafogeneralizadocb\cgraphiterator.h
 
-1429066056 c:\users\alex\desktop\tesis\imesh-nd\grafogeneralizadocb\cgraphimage2d.h
+1429364150 c:\users\alex\desktop\tesis\imesh-nd\grafogeneralizadocb\cgraphimage2d.h
 	"CGraph.h"
 	"CGraphIterator2D.h"
 
-1429069279 c:\users\alex\desktop\tesis\imesh-nd\grafogeneralizadocb\cgraphiterator2d.h
+1429559654 c:\users\alex\desktop\tesis\imesh-nd\grafogeneralizadocb\cgraphiterator2d.h
 	"CGraphIterator.h"
 
 1427840747 c:\users\alex\desktop\tesis\imesh-nd\grafogeneralizadocb\cgraphmeshnd.h
@@ -879,7 +879,7 @@
 1410442634 c:\users\alex\desktop\tesis\imesh-nd\grafogeneralizadocb\cgraphiteratornd.h
 	"CGraphIterator.h"
 
-1429070503 c:\users\alex\desktop\tesis\imesh-nd\grafogeneralizadocb\csegmentator.h
+1429673564 c:\users\alex\desktop\tesis\imesh-nd\grafogeneralizadocb\csegmentator.h
 	<cstdio>
 	<map>
 	<set>
@@ -905,7 +905,7 @@
 	<cstdlib>
 	<time.h>
 
-1428687230 c:\users\alex\desktop\tesis\imesh-nd\grafogeneralizadocb\cgraphutils.h
+1429673443 c:\users\alex\desktop\tesis\imesh-nd\grafogeneralizadocb\cgraphutils.h
 	<cstdio>
 	<set>
 	"CImage.h"

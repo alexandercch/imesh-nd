@@ -82,26 +82,26 @@ void CGraphIterator2D<T>::operator=(CGraphIterator2D<T> iter)
 template< class T>
 void CGraphIterator2D<T>::operator=(CGraphIterator2D<T> *iter)
 {
-    cout<<"iter= * called"<<endl;
+    //cout<<"iter= * called"<<endl;
     m_rows = iter->m_rows;
     m_cols = iter->m_cols;
 
     m_prow = iter->m_prow;
     m_pcol = iter->m_pcol;
-    cout<<"iter= * called end"<<endl;
+    //cout<<"iter= * called end"<<endl;
 };
 
 template< class T>
 bool CGraphIterator2D<T>::operator==(CGraphIterator2D<T> *iter)
 {
-    return m_prow==iter->m_prow && m_pcol==iter->m_pcol;
+    return m_prow==iter->m_prow;// && m_pcol==iter->m_pcol;
 };
 
 template< class T>
 bool CGraphIterator2D<T>::operator!=(CGraphIterator2D<T> *iter)
 {
-    cout<<"!= called"<<endl;
-    return !(m_prow==iter->m_prow && m_pcol==iter->m_pcol);
+    //cout<<"!= called"<<endl;
+    return m_prow!=iter->m_prow;// && m_pcol==iter->m_pcol);
 };
 
 
@@ -114,7 +114,7 @@ void CGraphIterator2D<T>::operator++(int)
     }//if it is go the next row and column to the initial column
     m_prow++;
     m_pcol=(*m_prow);
-    cout<<"in ++"<<endl;
+    //cout<<"in ++"<<endl;
     /*int i = 0;
     for(i = 0; i < m_pgraph->m_number_of_neighbors; ++i)
     {

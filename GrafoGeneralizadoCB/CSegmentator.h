@@ -124,64 +124,54 @@ void CSegmentator<G>::to_gray_scale()
 template<class G>
 void CSegmentator<G>::group_neighbor_cells()
 {
-    int labeler         =   -1;
-    int totalarea       =   input->area();
-    int totalelements   =   input->weight();
+    int current_label_value =   DEFAULT_LABEL_VALUE;
+    int totalarea           =   input->area();
+    int totalelements       =   input->weight();
 
     iterator iter;
     for(iter = input->begin(); iter != input->end(); iter++)
     {
-        if (iter->m_label !=-1) continue;
-        cout<<"hello nigga 1"<<endl;
+        if (iter->m_label != DEFAULT_LABEL_VALUE) continue;
+
+        iter->m_label = ++current_label_value;
+
         queue<iterator> node_queue;
-        cout<<"hello nigga 2"<<endl;
-        iter->m_label=++labeler;
-        cout<<"hello nigga 3"<<endl;
-        CMeshRegion<G> *mr= new CMeshRegion<G>();
-        mr->Init(labeler, &m_meshregionV);
-        cout<<"hello nigga 4"<<endl;
         node_queue.push(iter);
-        cout<<"hello nigga 5"<<endl;
+
+        CMeshRegion<G> *mr= new CMeshRegion<G>();
+        mr->Init(current_label_value, &m_meshregionV);
+
         while(node_queue.size())
-        {
-            cout<<"while hello nigga 1"<<endl;
+        {//cout<<"hello"<<endl;
             iterator actual =node_queue.front();
             node_queue.pop();
-            cout<<"while hello nigga 2"<<endl;
+
             mr->Incorporate(*actual);
 
             iterator neighbor;
-            //i_neighbor_actual= actual;
-            cout<<"while hello nigga 3"<<endl;
             for(int i = 0 ; i< input->m_number_of_neighbors; ++i)
             {
-                //i_neighbor_actual.neighbor(&actual, i);
-                cout<<"for hello nigga 1"<<endl;
                 neighbor = actual.neighbor_at(i);
-                cout<<"for hello nigga 2"<<endl;
-                if (neighbor->m_visited || neighbor->m_label>-1)
-                {
 
-                    if (neighbor->m_label>-1 && neighbor->m_label != iter->m_label)
+                if (neighbor->m_label == INVALID_NEIGHBOR_LABEL_VALUE)
+                    continue;
+
+                if (neighbor->m_label > -1)
+                {
+                    if (neighbor->m_label != iter->m_label)
                         mr->Set_Neighbor(neighbor->m_label);
-                    //continue;
-                    cout<<"for hello nigga 3"<<endl;
                     continue;
                 }
-                cout<<"for hello nigga 4"<<endl;
+
                 if ( handle_color.rgb_difference(neighbor->m_data, actual->m_data)
                         < m_max_segmentation_difference )
                 {
-                    neighbor->m_label=labeler;
+                    neighbor->m_label=current_label_value;
                     node_queue.push(neighbor);
-                    cout<<"for hello nigga 5"<<endl;
                 }
-                cout<<"for hello nigga 6"<<endl;
             }
-            cout<<"out for nigga"<<endl;
         }
         mr->Set_Distance(totalelements, totalarea);
-        //cout<<labeler<<"-"<<endl;
         m_meshregionV.push_back(mr);
     }
 }
@@ -207,8 +197,8 @@ void CSegmentator<G>::group_neighbor_regions()
         double min_dist, curr_dist;
         int min_index;
         for(neighbor_iter = (*siter)->m_neighbors_set.begin();
-                neighbor_iter != (*siter)->m_neighbors_set.end();
-                ++neighbor_iter)
+            neighbor_iter != (*siter)->m_neighbors_set.end();
+            ++neighbor_iter)
         {
             if ((*neighbor_iter)->Is_Overlaped())continue;
             if (first)

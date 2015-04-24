@@ -1,3 +1,7 @@
+3d_data\dra.pgm
+3
+13
+4
 pikachu.jpg
 1
 11
@@ -22,10 +26,6 @@ pelotas.jpg
 2
 13
 6
-test.jpg
-2
-13
-4
 minion.jpg
 2
 7

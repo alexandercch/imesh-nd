@@ -55,16 +55,18 @@ void CGraphUtils<T>::ImageToGraph2D(CGraphImage2D<T> *graph, CImage *image)
 {
     graph->config(image->m_height+2, image->m_width+2);
 
-    for(int i=0; i< graph->m_rows; ++i)
-        for(int j=0; j< graph->m_cols; ++j)
-            graph->m_matriz[i][j].m_visited=true;
+    for(int i=0; i< graph->m_rows; ++i){
+        graph->m_matriz[i][0].m_label = INVALID_NEIGHBOR_LABEL_VALUE;
+        graph->m_matriz[i][graph->m_cols - 1].m_label = INVALID_NEIGHBOR_LABEL_VALUE;
+    }
 
+    for(int j=0; j< graph->m_cols; ++j){
+        graph->m_matriz[0][j].m_label = INVALID_NEIGHBOR_LABEL_VALUE;
+        graph->m_matriz[graph->m_rows - 1][j].m_label = INVALID_NEIGHBOR_LABEL_VALUE;
+    }
     for(int i=0; i< image->m_height; ++i)
         for(int j=0; j< image->m_width; ++j)
-        {
-            graph->m_matriz[i+1][j+1].m_data= image->get_pixel(i, j);
-            graph->m_matriz[i+1][j+1].m_visited=false;
-        }
+            graph->m_matriz[i+1][j+1].m_data = image->get_pixel(i, j);
 }
 
 template<class T>//image must be already configured height x width
@@ -80,21 +82,41 @@ template<class T>
 void CGraphUtils<T>::ImageToGraph3D(CGraphImage3D<T> *graph, CImage *image)
 {
     graph->config(image->m_height+2, image->m_width+2, image->m_layers+2);
+
     set<int> colorset;
-    for(int i=0; i< graph->m_rows; ++i)
-        for(int j=0; j< graph->m_cols; ++j)
-            for(int k=0; k< graph->m_lays; ++k)
-                graph->m_matriz[i][j][k].m_visited=true;
+    cout<<"i h, w, l:"<<image->m_height<<" "<<image->m_width<<" "<<image->m_layers<<endl;
+    cout<<"config"<<endl;
+    for(int i=0; i< graph->m_rows; ++i){
+        for(int j=0; j< graph->m_cols; ++j){
+            graph->m_matriz[i][j][0].m_label = INVALID_NEIGHBOR_LABEL_VALUE;
+            graph->m_matriz[i][j][graph->m_lays - 1].m_label = INVALID_NEIGHBOR_LABEL_VALUE;
+        }
+        for(int k=0; k< graph->m_lays; ++k){
+            graph->m_matriz[i][0][k].m_label = INVALID_NEIGHBOR_LABEL_VALUE;
+            graph->m_matriz[i][graph->m_cols - 1][k].m_label = INVALID_NEIGHBOR_LABEL_VALUE;
+        }
+    }
+    cout<<"sides"<<endl;
+
+    for(int j=0; j< graph->m_cols; ++j)
+        for(int k=0; k< graph->m_lays; ++k){
+            graph->m_matriz[0][j][k].m_label = INVALID_NEIGHBOR_LABEL_VALUE;
+            graph->m_matriz[graph->m_rows - 1][j][k].m_label = INVALID_NEIGHBOR_LABEL_VALUE;
+        }
+    cout<<"top & bottom"<<endl;
 
     for(int i=0; i< image->m_height; ++i)
         for(int j=0; j< image->m_width; ++j)
             for(int k=0; k< image->m_layers; ++k)
             {
+                //cout<<i<<":"<<j<<":"<<k<<endl;
                 graph->m_matriz[i+1][j+1][k+1].m_data= image->get_pixel(i, j, k);
-                graph->m_matriz[i+1][j+1][k+1].m_visited=false;
                 colorset.insert(image->get_pixel(i, j, k));
             }
-    /*int r=graph->m_rows-1, c=graph->m_cols-1, l=graph->m_lays-1;
+    cout<<"data"<<endl;
+
+    /*interresting :P
+    int r=graph->m_rows-1, c=graph->m_cols-1, l=graph->m_lays-1;
     for(int i=0; i< graph->m_rows; ++i)
         graph->m_matriz[i][0][0].m_visited=
         graph->m_matriz[i][c][0].m_visited=
