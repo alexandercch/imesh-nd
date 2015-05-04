@@ -1,3 +1,12 @@
+/**
+    Seminario de Tesis 10
+    CGraphIterator2D.h
+    Purpose: Is the iterator of CGraphImage2D, inherits from CGraphIterator
+        in order to be a compatible iteration in the generalized graph
+    @author Alex Ccacyahuillca
+    @version 1.0 04/015
+*/
+
 #ifndef CGRAPHITERATOR2D_H_INCLUDED
 #define CGRAPHITERATOR2D_H_INCLUDED
 
@@ -39,7 +48,16 @@ public:
     CGraphIterator2D();
     virtual ~CGraphIterator2D();
 
+    /**
+        return the neighbor node at the position i
+        @param i neighbor number, see CGraphImage2D::number of neighbors
+    */
     node* neighbor_node_at(int i);
+
+    /**
+        return the neighbor iterator at position i
+        @param i neighbor number, see CGraphImage2D::number of neighbors
+    */
     self neighbor_at(int i);
 
 protected:

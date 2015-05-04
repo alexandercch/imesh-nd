@@ -639,35 +639,29 @@
 	<vector>
 	<set>
 
-1417633734 source:f:\ucsp\tesis\imesh-nd\grafogeneralizadocb\main.cpp
-	<iostream>
-	"CGraphImage3D.h"
-	"CGraphImage2D.h"
-	"CGraphMeshND.h"
-	"CSegmentator.h"
-	"CImage.h"
-	"CGraphUtils.h"
-	"CAppUtils.h"
+1430003471 source:f:\ucsp\tesis\imesh-nd\grafogeneralizadocb\main.cpp
+	"CImg.h"
 
-1427839305 f:\ucsp\tesis\imesh-nd\grafogeneralizadocb\cgraphimage3d.h
+1430577443 f:\ucsp\tesis\imesh-nd\grafogeneralizadocb\cgraphimage3d.h
 	"CGraph.h"
 	"CGraphIterator3D.h"
 
-1427840039 f:\ucsp\tesis\imesh-nd\grafogeneralizadocb\cgraph.h
+1429984208 f:\ucsp\tesis\imesh-nd\grafogeneralizadocb\cgraph.h
 	"CNode.h"
 	"CImage.h"
 	<string>
 	<fstream>
 	<iostream>
 
-1410971716 f:\ucsp\tesis\imesh-nd\grafogeneralizadocb\cnode.h
+1429458402 f:\ucsp\tesis\imesh-nd\grafogeneralizadocb\cnode.h
 
-1410980760 f:\ucsp\tesis\imesh-nd\grafogeneralizadocb\cimage.h
+1429674497 f:\ucsp\tesis\imesh-nd\grafogeneralizadocb\cimage.h
 	<fstream>
 	<iostream>
 	<vector>
 	<string>
 	"CImg.h"
+	"CAppUtils.h"
 
 1410442634 f:\ucsp\tesis\imesh-nd\grafogeneralizadocb\cimg.h
 	<cstdio>
@@ -718,27 +712,26 @@
 	"ImfArray.h"
 	"CImg.h"
 
-1410442634 f:\ucsp\tesis\imesh-nd\grafogeneralizadocb\cgraphiterator3d.h
+1430577314 f:\ucsp\tesis\imesh-nd\grafogeneralizadocb\cgraphiterator3d.h
 	"CGraphIterator.h"
 
-1410442634 f:\ucsp\tesis\imesh-nd\grafogeneralizadocb\cgraphiterator.h
+1429493376 f:\ucsp\tesis\imesh-nd\grafogeneralizadocb\cgraphiterator.h
 
-1427839645 f:\ucsp\tesis\imesh-nd\grafogeneralizadocb\cgraphimage2d.h
+1430577391 f:\ucsp\tesis\imesh-nd\grafogeneralizadocb\cgraphimage2d.h
 	"CGraph.h"
 	"CGraphIterator2D.h"
 
-1410442634 f:\ucsp\tesis\imesh-nd\grafogeneralizadocb\cgraphiterator2d.h
+1430577183 f:\ucsp\tesis\imesh-nd\grafogeneralizadocb\cgraphiterator2d.h
 	"CGraphIterator.h"
 
-1427840747 f:\ucsp\tesis\imesh-nd\grafogeneralizadocb\cgraphmeshnd.h
+1430606904 f:\ucsp\tesis\imesh-nd\grafogeneralizadocb\cgraphmeshnd.h
 	"CGraph.h"
 	"CGraphIteratorND.h"
-	<vector>
 
-1410442634 f:\ucsp\tesis\imesh-nd\grafogeneralizadocb\cgraphiteratornd.h
+1430695827 f:\ucsp\tesis\imesh-nd\grafogeneralizadocb\cgraphiteratornd.h
 	"CGraphIterator.h"
 
-1417627532 f:\ucsp\tesis\imesh-nd\grafogeneralizadocb\csegmentator.h
+1429673564 f:\ucsp\tesis\imesh-nd\grafogeneralizadocb\csegmentator.h
 	<cstdio>
 	<map>
 	<set>
@@ -755,23 +748,24 @@
 	<vector>
 	<set>
 
-1415215790 f:\ucsp\tesis\imesh-nd\grafogeneralizadocb\mindistancesset.h
+1428647598 f:\ucsp\tesis\imesh-nd\grafogeneralizadocb\mindistancesset.h
 	<vector>
 	<set>
 
-1417628728 f:\ucsp\tesis\imesh-nd\grafogeneralizadocb\ccolor.h
+1428649099 f:\ucsp\tesis\imesh-nd\grafogeneralizadocb\ccolor.h
 	<math.h>
 	<cstdlib>
 	<time.h>
 
-1417633252 f:\ucsp\tesis\imesh-nd\grafogeneralizadocb\cgraphutils.h
+1429673443 f:\ucsp\tesis\imesh-nd\grafogeneralizadocb\cgraphutils.h
 	<cstdio>
 	<set>
 	"CImage.h"
 
-1410442634 f:\ucsp\tesis\imesh-nd\grafogeneralizadocb\capputils.h
+1428687230 f:\ucsp\tesis\imesh-nd\grafogeneralizadocb\capputils.h
 	<iostream>
 	<fstream>
+	<string>
 	<time.h>
 	<cstdio>
 	<cstdlib>
@@ -1090,4 +1084,14 @@
 	"ImfMatrixAttribute.h"
 	"ImfArray.h"
 	"CImg.h"
+
+1430003583 source:f:\ucsp\tesis\imesh-nd\grafogeneralizadocb\main_back.cpp
+	<iostream>
+	"CGraphImage3D.h"
+	"CGraphImage2D.h"
+	"CGraphMeshND.h"
+	"CSegmentator.h"
+	"CImage.h"
+	"CGraphUtils.h"
+	"CAppUtils.h"
 

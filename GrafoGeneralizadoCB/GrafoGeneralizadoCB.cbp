@@ -53,6 +53,7 @@
 		<Unit filename="CSegmentator.h" />
 		<Unit filename="MinDistancesSet.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="main_back.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />

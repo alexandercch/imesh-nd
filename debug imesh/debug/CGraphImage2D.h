@@ -171,16 +171,3 @@ void CGraphImage2D<T>::set_at(iterator& iter, T& data)
 }
 
 #endif // CGRAPHIMAGE2D_H_INCLUDED
-
-
-
-
-
-
-//old code, just to dont loose everything
-
-//static int row_step[4], col_step[4];//inside class
-//template<class T>
-//int CGraphImage2D<T>::row_step[4]= {1,-1, 0, 0};
-//template<class T>
-//int CGraphImage2D<T>::col_step[4]= {0, 0, 1,-1};

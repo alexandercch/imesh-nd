@@ -91,6 +91,10 @@ template<class T>
 CGraphImage2D <T>::~CGraphImage2D ()
 {
     //dtor
+    //dtor
+    for(int i=0; i<m_rows;++i)
+        delete[] m_matriz[i];
+    delete[] m_matriz;
 }
 
 template<class T>

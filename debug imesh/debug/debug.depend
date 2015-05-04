@@ -32,13 +32,15 @@
 	<direct.h>
 	<unistd.h>
 
-1429492338 source:f:\ucsp\tesis\imesh-nd\debug imesh\debug\main.cpp
+1430692918 source:f:\ucsp\tesis\imesh-nd\debug imesh\debug\main.cpp
 	"CGraphImage2D.h"
+	"CGraphImage3D.h"
+	"CGraphMeshND.h"
 	<iostream>
 	<math.h>
 	"capputils.h"
 
-1429475963 f:\ucsp\tesis\imesh-nd\debug imesh\debug\cgraphimage2d.h
+1430577452 f:\ucsp\tesis\imesh-nd\debug imesh\debug\cgraphimage2d.h
 	"CGraph.h"
 	"CGraphIterator2D.h"
 
@@ -48,7 +50,7 @@
 	<fstream>
 	<iostream>
 
-1429476448 f:\ucsp\tesis\imesh-nd\debug imesh\debug\cnode.h
+1430690936 f:\ucsp\tesis\imesh-nd\debug imesh\debug\cnode.h
 
 1429491540 f:\ucsp\tesis\imesh-nd\debug imesh\debug\cgraphiterator2d.h
 	"CGraphIterator.h"
@@ -65,4 +67,18 @@
 	<stdio.h>
 	<direct.h>
 	<unistd.h>
+
+1429979966 f:\ucsp\tesis\imesh-nd\debug imesh\debug\cgraphimage3d.h
+	"CGraph.h"
+	"CGraphIterator3D.h"
+
+1429983673 f:\ucsp\tesis\imesh-nd\debug imesh\debug\cgraphiterator3d.h
+	"CGraphIterator.h"
+
+1430692988 f:\ucsp\tesis\imesh-nd\debug imesh\debug\cgraphmeshnd.h
+	"CGraph.h"
+	"CGraphIteratorND.h"
+
+1430615761 f:\ucsp\tesis\imesh-nd\debug imesh\debug\cgraphiteratornd.h
+	"CGraphIterator.h"
 

@@ -34,9 +34,14 @@
 		</Compiler>
 		<Unit filename="CGraph.h" />
 		<Unit filename="CGraphImage2D.h" />
+		<Unit filename="CGraphImage3D.h" />
 		<Unit filename="CGraphIterator.h" />
 		<Unit filename="CGraphIterator2D.h" />
+		<Unit filename="CGraphIterator3D.h" />
+		<Unit filename="CGraphIteratorND.h" />
+		<Unit filename="CGraphMeshND.h" />
 		<Unit filename="CNode.h" />
+		<Unit filename="capputils.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />

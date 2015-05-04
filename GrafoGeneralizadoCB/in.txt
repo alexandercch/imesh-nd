@@ -1,4 +1,4 @@
-3d_data\dra.pgm
+..\..\3d_data\dragon\dra.pgm
 3
 13
 4
