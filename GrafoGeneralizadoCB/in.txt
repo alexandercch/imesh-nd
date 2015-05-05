@@ -1,7 +1,7 @@
 ..\..\3d_data\dragon\dra.pgm
 3
-13
-4
+11
+3
 pikachu.jpg
 1
 11

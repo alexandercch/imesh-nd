@@ -639,8 +639,15 @@
 	<vector>
 	<set>
 
-1430003471 source:f:\ucsp\tesis\imesh-nd\grafogeneralizadocb\main.cpp
-	"CImg.h"
+1430773246 source:f:\ucsp\tesis\imesh-nd\grafogeneralizadocb\main.cpp
+	<iostream>
+	"CGraphImage3D.h"
+	"CGraphImage2D.h"
+	"CGraphMeshND.h"
+	"CSegmentator.h"
+	"CImage.h"
+	"CGraphUtils.h"
+	"CAppUtils.h"
 
 1430577443 f:\ucsp\tesis\imesh-nd\grafogeneralizadocb\cgraphimage3d.h
 	"CGraph.h"
@@ -1094,4 +1101,7 @@
 	"CImage.h"
 	"CGraphUtils.h"
 	"CAppUtils.h"
+
+1430773253 source:f:\ucsp\tesis\imesh-nd\grafogeneralizadocb\main_cimg_3d_demo.cpp
+	"CImg.h"
 
