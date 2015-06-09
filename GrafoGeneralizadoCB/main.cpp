@@ -41,18 +41,21 @@ int main()
 {
     //freopen("out.txt", "w", stdout);
     freopen("in.txt", "r", stdin);
+    freopen("cimgelog.txt", "w", stderr);
 
     int op;
     while(cin>>data_file, data_file!="")
     {
-        cout<<data_file<<endl;
+        //cout<<data_file<<endl;
         //cin>>data_file;
         cin>>op;
         cin>>segmentation_difference;
         cin>>segmentation_number_of_meshes;
+
+        //system("cls");
+        cout<<"op:"<<op<<"\t seg diff:"<<segmentation_difference<<"\t # of ms:"<<segmentation_number_of_meshes<<endl;
         switch (op)
         {
-
         case 1:
             do_ag1();
             break;
@@ -111,38 +114,36 @@ void do_ag1()
 void do_ag2()
 {
     CImage imagen(DATA_PATH + data_file);//true beacuse it is 3d
+    cout<<"begin ag2 width file:"<<data_file<<endl;
     imagen.display();
     CGraphImage2D<int> in, out;
     utils.ImageToGraph2D(&in, &imagen);
     CSegmentator<CGraphImage2D<int> > seg(&in, &out);
-
     cout<<"Segmentando"<<endl;
     cout<<"ACV"<<endl;
     seg.m_max_segmentation_difference=segmentation_difference;
     app.begin_counter();
     seg.group_neighbor_cells();
     app.show_duration();
-
     utils.LabeledGraphToImage2D(&in, &imagen);
     imagen.display();
-
     seg.m_nregions = segmentation_number_of_meshes;
-
+    cout<<"# de regiones:"<<seg.m_meshregionV.size()<<endl<<endl;
+    cout<<"# de regiones a converger:"<<segmentation_number_of_meshes<<endl;
     cout<<"ASm_V"<<endl;
     app.begin_counter();
     seg.group_neighbor_regions();
     app.show_duration();
-
+    cout<<"# de regiones convergidas:"<<endl;
     utils.OverlapedGraphToImage2D(&in,&(seg.m_meshregionV),  &imagen);
     imagen.display();
-
     cout<<"ASm_S"<<endl;
     app.begin_counter();
     seg.group_similar_regions();
     app.show_duration();
-
     utils.OverlapedGraphToImage2D(&in,&(seg.m_meshregionV),  &imagen);
     imagen.display();
+    cout<<"end processing width file:"<<data_file<<endl;
 }
 void do_ag3()
 {
@@ -172,16 +173,23 @@ void do_ag3()
     utils.LabeledGraphToImage3D(&in, &imagen);
     app.show_duration();
 
-    imagen.display3d();
+    //imagen.display3d();
 
-    /*cout<<"ASm_V"<<endl;
+
+
+    cout<<"ASm_V"<<endl;
     app.begin_counter();
     seg.m_nregions = segmentation_number_of_meshes;
     seg.group_neighbor_regions();
     app.show_duration();
 
-    utils.OverlapedGraphToImage2D(&in,&(seg.m_meshregionV),  &imagen);
-    imagen.display();*/
+    cout<<"overlaped to img"<<endl;
+    app.begin_counter();
+    utils.OverlapedGraphToImage3D(&in,&(seg.m_meshregionV),  &imagen);
+    app.show_duration();
+    //imagen.display3d();
+    utils.OverlapedGraphToFile(&in,&(seg.m_meshregionV), &imagen, "3ddragon.txt");
+
 }
 
 /*void do_mesh()

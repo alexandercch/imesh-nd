@@ -30,7 +30,7 @@ public:
     typedef CGraphIterator2D<T> self;
 
     //members
-    node **m_prow;
+    node **m_prow, **m_prowbegin;;
     node *m_pcol;
     int m_rows;
     int m_cols;
@@ -82,6 +82,8 @@ void CGraphIterator2D<T>::operator=(CGraphIterator2D<T> iter)
 
     m_prow=iter.m_prow;
     m_pcol=iter.m_pcol;
+
+    m_prowbegin = iter.m_prow;
 };
 
 template< class T>
@@ -92,18 +94,20 @@ void CGraphIterator2D<T>::operator=(CGraphIterator2D<T> *iter)
 
     m_prow = iter->m_prow;
     m_pcol = iter->m_pcol;
+
+    m_prowbegin = iter->m_prow;
 };
 
 template< class T>
 bool CGraphIterator2D<T>::operator==(CGraphIterator2D<T> *iter)
 {
-    return m_prow==iter->m_prow && m_pcol==iter->m_pcol;
+    return m_prow==iter->m_prow;// && m_pcol==iter->m_pcol;
 };
 
 template< class T>
 bool CGraphIterator2D<T>::operator!=(CGraphIterator2D<T> *iter)
 {
-    return !(m_prow==iter->m_prow && m_pcol==iter->m_pcol);
+    return !(m_prow==iter->m_prow);// && m_pcol==iter->m_pcol);
 };
 
 
@@ -114,8 +118,9 @@ void CGraphIterator2D<T>::operator++(int)
     if( ++m_pcol - (*m_prow) < m_cols){
         return;//if not go to next column
     }//if it is go the next row and column to the initial column
-    m_prow++;
-    m_pcol=(*m_prow);
+    if (++m_prow - m_prowbegin < m_rows){
+        m_pcol=(*m_prow);
+    }
 };
 
 template< class T>

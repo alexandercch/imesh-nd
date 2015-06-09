@@ -639,7 +639,7 @@
 	<vector>
 	<set>
 
-1430773246 source:f:\ucsp\tesis\imesh-nd\grafogeneralizadocb\main.cpp
+1433803256 source:f:\ucsp\tesis\imesh-nd\grafogeneralizadocb\main.cpp
 	<iostream>
 	"CGraphImage3D.h"
 	"CGraphImage2D.h"
@@ -649,7 +649,7 @@
 	"CGraphUtils.h"
 	"CAppUtils.h"
 
-1430577443 f:\ucsp\tesis\imesh-nd\grafogeneralizadocb\cgraphimage3d.h
+1433619207 f:\ucsp\tesis\imesh-nd\grafogeneralizadocb\cgraphimage3d.h
 	"CGraph.h"
 	"CGraphIterator3D.h"
 
@@ -662,7 +662,7 @@
 
 1429458402 f:\ucsp\tesis\imesh-nd\grafogeneralizadocb\cnode.h
 
-1429674497 f:\ucsp\tesis\imesh-nd\grafogeneralizadocb\cimage.h
+1431764387 f:\ucsp\tesis\imesh-nd\grafogeneralizadocb\cimage.h
 	<fstream>
 	<iostream>
 	<vector>
@@ -719,16 +719,16 @@
 	"ImfArray.h"
 	"CImg.h"
 
-1430577314 f:\ucsp\tesis\imesh-nd\grafogeneralizadocb\cgraphiterator3d.h
+1433544908 f:\ucsp\tesis\imesh-nd\grafogeneralizadocb\cgraphiterator3d.h
 	"CGraphIterator.h"
 
 1429493376 f:\ucsp\tesis\imesh-nd\grafogeneralizadocb\cgraphiterator.h
 
-1430577391 f:\ucsp\tesis\imesh-nd\grafogeneralizadocb\cgraphimage2d.h
+1433619357 f:\ucsp\tesis\imesh-nd\grafogeneralizadocb\cgraphimage2d.h
 	"CGraph.h"
 	"CGraphIterator2D.h"
 
-1430577183 f:\ucsp\tesis\imesh-nd\grafogeneralizadocb\cgraphiterator2d.h
+1433616545 f:\ucsp\tesis\imesh-nd\grafogeneralizadocb\cgraphiterator2d.h
 	"CGraphIterator.h"
 
 1430606904 f:\ucsp\tesis\imesh-nd\grafogeneralizadocb\cgraphmeshnd.h
@@ -738,7 +738,7 @@
 1430695827 f:\ucsp\tesis\imesh-nd\grafogeneralizadocb\cgraphiteratornd.h
 	"CGraphIterator.h"
 
-1429673564 f:\ucsp\tesis\imesh-nd\grafogeneralizadocb\csegmentator.h
+1433617247 f:\ucsp\tesis\imesh-nd\grafogeneralizadocb\csegmentator.h
 	<cstdio>
 	<map>
 	<set>
@@ -749,7 +749,7 @@
 	"MinDistancesSet.h"
 	"CColor.h"
 
-1415206502 f:\ucsp\tesis\imesh-nd\grafogeneralizadocb\cmeshregion.h
+1433548702 f:\ucsp\tesis\imesh-nd\grafogeneralizadocb\cmeshregion.h
 	"CNode.h"
 	<math.h>
 	<vector>
@@ -764,7 +764,7 @@
 	<cstdlib>
 	<time.h>
 
-1429673443 f:\ucsp\tesis\imesh-nd\grafogeneralizadocb\cgraphutils.h
+1433812921 f:\ucsp\tesis\imesh-nd\grafogeneralizadocb\cgraphutils.h
 	<cstdio>
 	<set>
 	"CImage.h"

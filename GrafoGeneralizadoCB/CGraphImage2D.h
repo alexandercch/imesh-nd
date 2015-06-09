@@ -83,7 +83,7 @@ private:
 
 template<class T>
 CGraphImage2D<T>::CGraphImage2D ():m_number_of_neighbors(NUMBER_OF_NEIGHBOURS_2D)
-                                    ,m_ibegin(new iterator), m_iend(new iterator)
+                                    ,m_ibegin(new iterator), m_iend(new iterator), m_rows(0), m_cols(0)
 {
 }
 
@@ -91,8 +91,7 @@ template<class T>
 CGraphImage2D <T>::~CGraphImage2D ()
 {
     //dtor
-    //dtor
-    for(int i=0; i<m_rows;++i)
+    for(int i = 0; i < m_rows; ++i)
         delete[] m_matriz[i];
     delete[] m_matriz;
 }
@@ -100,9 +99,10 @@ CGraphImage2D <T>::~CGraphImage2D ()
 template<class T>
 void CGraphImage2D <T>::config(int _rows, int _cols)
 {
-    m_rows = _rows;
-    m_cols = _cols;
-    m_matriz = new node*[_rows];
+    m_rows      = _rows;
+    m_cols      = _cols;
+    m_matriz    = new node*[_rows];
+
     for(int i = 0; i < _rows; ++i)
     {
         m_matriz[i] = new node[_cols];
@@ -113,9 +113,9 @@ void CGraphImage2D <T>::config(int _rows, int _cols)
     m_ibegin->m_rows = m_rows;
     m_ibegin->m_cols = m_cols;
 
-
     m_iend->m_prow =   &(m_matriz[m_rows]);
     m_iend->m_pcol =   &(m_matriz[m_rows][0]);
+    cout<<"ini:"<<&m_matriz<<" "<<m_matriz<<endl;
     cout<<"end setted!"<<endl;
 }
 

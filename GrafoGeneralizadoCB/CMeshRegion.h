@@ -19,12 +19,12 @@ public:
     CMeshRegion();
     virtual ~CMeshRegion();
 
-    int m_label;
-    int m_ncells;
-    float m_area;
-    float m_pattern;
-    float m_index;
-    bool m_overlap;
+    int     m_label;
+    int     m_ncells;
+    float   m_area;
+    float   m_pattern;
+    float   m_index;
+    bool    m_overlap;
 
     NeighborSet m_neighbors_set;
     vector<CMeshRegion*> *m_pMeshRegionV;
@@ -103,14 +103,20 @@ void CMeshRegion<G>::Incorporate(self *mregion)
     mregion->m_overlap = true;
     m_ncells += mregion->m_ncells;
     m_area += mregion->m_area;
+
     m_pattern = (m_pattern * (m_area - mregion->m_area) + mregion->m_pattern * mregion->m_area)/m_area;
     m_overlaped_mr_ids.push_back(mregion->m_label);
     //merge the neighborset :3
     typename NeighborSet::iterator nsiter= mregion->m_neighbors_set.begin();
     for(; nsiter!= mregion->m_neighbors_set.end(); ++nsiter)
     {
-        if ((*nsiter)->m_label !=m_label)
+        if ((*nsiter)->m_label !=m_label){
             m_neighbors_set.insert(*nsiter);
+            ///this a big difference between original imesh and this implementation of imesh
+            (*nsiter)->m_neighbors_set.erase(mregion);
+            (*nsiter)->m_neighbors_set.insert(this);
+            ///end quote
+        }
     }
 }
 

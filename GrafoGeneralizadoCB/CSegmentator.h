@@ -129,46 +129,51 @@ void CSegmentator<G>::group_neighbor_cells()
     int totalelements       =   input->weight();
 
     iterator iter;
+    int nn=1;
     for(iter = input->begin(); iter != input->end(); iter++)
     {
-        if (iter->m_label != DEFAULT_LABEL_VALUE) continue;
+        //if (nn++ %10000 ==0)
 
+        if (iter->m_label != DEFAULT_LABEL_VALUE) {continue;}
         iter->m_label = ++current_label_value;
-
+        //cout<<"f";
         queue<iterator> node_queue;
         node_queue.push(iter);
-
+        //cout<<"f";
         CMeshRegion<G> *mr= new CMeshRegion<G>();
         mr->Init(current_label_value, &m_meshregionV);
-
+        //cout<<"f";
         while(node_queue.size())
-        {//cout<<"hello"<<endl;
+        {
+            //cout<<"w";
+            //cout<<"hello"<<endl;
             iterator actual =node_queue.front();
             node_queue.pop();
-
+            //cout<<"w";
             mr->Incorporate(*actual);
-
+            //cout<<"w";
             iterator neighbor;
             for(int i = 0 ; i< input->m_number_of_neighbors; ++i)
             {
                 neighbor = actual.neighbor_at(i);
-
+                //cout<<"i";
                 if (neighbor->m_label == INVALID_NEIGHBOR_LABEL_VALUE)
                     continue;
-
+                //cout<<"i";
                 if (neighbor->m_label > -1)
                 {
                     if (neighbor->m_label != iter->m_label)
                         mr->Set_Neighbor(neighbor->m_label);
                     continue;
                 }
-
+                //cout<<"i";
                 if ( handle_color.rgb_difference(neighbor->m_data, actual->m_data)
                         < m_max_segmentation_difference )
                 {
                     neighbor->m_label=current_label_value;
                     node_queue.push(neighbor);
                 }
+                //cout<<"i";
             }
         }
         mr->Set_Distance(totalelements, totalarea);
@@ -188,14 +193,15 @@ void CSegmentator<G>::group_neighbor_regions()
     typename CMeshRegion<G>::NeighborSet::iterator neighbor_iter;
 
     CMeshRegion<G>* min_neighbor;
-    int niterations=0;
+    //int niterations=0;
     while(mr_priority_set.size() > m_nregions)
     {
-        niterations++;
-        siter = mr_priority_set.begin();
+        //niterations++;
         bool first=true;
         double min_dist, curr_dist;
         int min_index;
+
+        siter = mr_priority_set.begin();
         for(neighbor_iter = (*siter)->m_neighbors_set.begin();
             neighbor_iter != (*siter)->m_neighbors_set.end();
             ++neighbor_iter)
@@ -203,22 +209,23 @@ void CSegmentator<G>::group_neighbor_regions()
             if ((*neighbor_iter)->Is_Overlaped())continue;
             if (first)
             {
-                first = false;
-                min_dist = handle_color.rgb_difference((*siter)->m_pattern, (*neighbor_iter)->m_pattern);
-                min_index=(*neighbor_iter)->m_label;
+                first       = false;
+                min_dist    = handle_color.rgb_difference((*siter)->m_pattern, (*neighbor_iter)->m_pattern);
+                min_index   = (*neighbor_iter)->m_label;
                 min_neighbor= m_meshregionV[(*neighbor_iter)->m_label];
                 continue;
             }
             curr_dist = handle_color.rgb_difference((*siter)->m_pattern , (*neighbor_iter)->m_pattern);
             if (curr_dist < min_dist)
             {
-                min_dist = curr_dist;
-                min_index = (*neighbor_iter)->m_label;
+                min_dist    = curr_dist;
+                min_index   = (*neighbor_iter)->m_label;
                 min_neighbor= m_meshregionV[(*neighbor_iter)->m_label];
             }
         }
         if (first)
         {
+            cout<<"alone found!"<<endl;
             mr_priority_set.erase(*siter);
             continue;
         }

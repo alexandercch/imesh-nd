@@ -85,7 +85,9 @@ template<class T>
 CGraphImage3D<T>::CGraphImage3D():
 m_number_of_neighbors(NUMBER_OF_NEIGHBOURS_3D),
 m_ibegin(new iterator),
-m_iend(new iterator)
+m_iend(new iterator),
+m_rows(0),
+m_cols(0)
 {
 }
 

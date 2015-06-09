@@ -24,7 +24,8 @@ public:
         IType gr1;
         if (m_layers)
         {
-            for(int i=0; i<m_width; i++)
+            for(int i=0;
+             i<m_width; i++)
             {
                 for(int j=0; j<m_height; j++)
                 {

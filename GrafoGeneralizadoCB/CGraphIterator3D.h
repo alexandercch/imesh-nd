@@ -35,6 +35,7 @@ public:
     node ***m_prow, ***m_prowbegin;
     node **m_pcol;
     node *m_play;
+
     int m_rows;
     int m_cols;
     int m_lays;
