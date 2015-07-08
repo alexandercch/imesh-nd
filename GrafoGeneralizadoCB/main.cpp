@@ -23,7 +23,8 @@ using namespace std;
 const string DATA_PATH ="..\\Data\\";
 
 int segmentation_difference;
-int segmentation_number_of_meshes;
+int nmeshes_asmv;
+int nmeshes_asms;
 
 //this is the current file we are working with
 string data_file="pelotas.jpg";
@@ -36,24 +37,38 @@ void do_bin();
 void do_ag1();
 void do_ag2();
 void do_ag3();
+void do_mesh1();
+void do_mesh2();
 
 int main()
 {
     //freopen("out.txt", "w", stdout);
+    /**
+        input file format:
+        filename
+        number of operation
+        segmentation differente
+        number of meshes for asmv
+        number of meshes for asms
+    */
     freopen("in.txt", "r", stdin);
     freopen("cimgelog.txt", "w", stderr);
+
 
     int op;
     while(cin>>data_file, data_file!="")
     {
-        //cout<<data_file<<endl;
-        //cin>>data_file;
         cin>>op;
         cin>>segmentation_difference;
-        cin>>segmentation_number_of_meshes;
+        cin>>nmeshes_asmv;
+        cin>>nmeshes_asmv;
 
         //system("cls");
-        cout<<"op:"<<op<<"\t seg diff:"<<segmentation_difference<<"\t # of ms:"<<segmentation_number_of_meshes<<endl;
+        cout<<"op:"<<op<<endl
+            <<"seg diff:"<<segmentation_difference<<endl
+            <<"# of meshes asmv:"<<nmeshes_asmv<<endl
+            <<"# of meshes asms:"<<nmeshes_asms<<endl;
+
         switch (op)
         {
         case 1:
@@ -65,14 +80,89 @@ int main()
         case 3:
             do_ag3();
             break;
-        /*case 4:
-            do_bin();
-            break;*/
+        case 4:
+            do_mesh1();
+            break;
+        case 5:
+            do_mesh2();
+            break;
         }
         data_file="";
     }
     return 0;
 }
+
+void do_mesh1()
+{
+    cout<<"Testing mesh segmentation:"<<endl;
+    cout<<"File:"<<DATA_PATH + data_file<<endl;
+    CGraphMeshND<int> in, out;
+
+    cout<<"loading..."<<endl;
+    app.begin_counter();
+    utils.AdjacentListToMesh(&in, DATA_PATH + data_file);
+    app.show_duration();
+
+    CSegmentator<CGraphMeshND<int> > seg(&in, &out);
+
+    cout<<"Begin segmentation:"<<endl;
+    app.begin_counter();
+    seg.binary_segmentation();
+    app.show_duration();
+    cout<<"End Segmentation."<<endl<<endl;
+
+    cout<<"Saving file:"<<endl;
+    app.begin_counter();
+    utils.MeshToAdjacentList(&in,DATA_PATH + data_file + "out");
+    app.show_duration();
+    cout<<"end saving."<<endl<<endl;
+    //grafo_salida.print_mesh();
+}
+
+void do_mesh2()
+{
+    cout<<"Testing mesh segmentation:"<<endl;
+    cout<<"File:"<<DATA_PATH + data_file<<endl;
+    CGraphMeshND<int> in, out;
+
+    cout<<"loading..."<<endl;
+    app.begin_counter();
+    utils.AdjacentListToMesh(&in, DATA_PATH + data_file);
+    app.show_duration();
+
+    CSegmentator<CGraphMeshND<int> > seg(&in, &out);
+    seg.m_segmentation_difference=segmentation_difference;
+    seg.m_nregions_asmv = nmeshes_asmv;
+    seg.m_nregions_asms = nmeshes_asms;
+
+    cout<<"Segmentando"<<endl;
+    cout<<"ACV"<<endl;
+    app.begin_counter();
+    seg.group_neighbor_cells();
+    app.show_duration();
+
+
+    cout<<"Labeled Mesh to Graph"<<endl;
+    app.begin_counter();
+    utils.LabeledMeshToNDGraph(&in, "..\\resultados\\labeledgraph.txt");
+    app.show_duration();
+    //cout<<"Labeled Mesh to Graph"<<endl;
+
+    cout<<"ASm_V"<<endl;
+    app.begin_counter();
+    seg.group_neighbor_regions();
+    app.show_duration();
+
+    cout<<"Saving file:"<<endl;
+    app.begin_counter();
+    utils.OverlapedNDGraphToFile(&in,&(seg.m_meshregionV), "..\\resultados\\overlapedgraph.txt");
+    app.show_duration();
+    cout<<"end saving."<<endl<<endl;
+
+
+    //grafo_salida.print_mesh();
+}
+
 
 void do_ag1()
 {
@@ -92,7 +182,9 @@ void do_ag1()
     imagen.display();
 
     cout<<"Segmentando"<<endl;
-    seg.m_max_segmentation_difference=segmentation_difference;
+    seg.m_segmentation_difference=segmentation_difference;
+    seg.m_nregions_asmv = nmeshes_asmv;
+    seg.m_nregions_asms = nmeshes_asms;
 
     cout<<"ACV"<<endl;
     app.begin_counter();
@@ -104,7 +196,6 @@ void do_ag1()
 
     cout<<"ASm_V"<<endl;
     app.begin_counter();
-    seg.m_nregions = segmentation_number_of_meshes;
     seg.group_neighbor_regions();
     app.show_duration();
 
@@ -116,31 +207,40 @@ void do_ag2()
     CImage imagen(DATA_PATH + data_file);//true beacuse it is 3d
     cout<<"begin ag2 width file:"<<data_file<<endl;
     imagen.display();
+
     CGraphImage2D<int> in, out;
+
     utils.ImageToGraph2D(&in, &imagen);
     CSegmentator<CGraphImage2D<int> > seg(&in, &out);
+    seg.m_segmentation_difference=segmentation_difference;
+    seg.m_nregions_asmv = nmeshes_asmv;
+    seg.m_nregions_asms = nmeshes_asms;
+
     cout<<"Segmentando"<<endl;
     cout<<"ACV"<<endl;
-    seg.m_max_segmentation_difference=segmentation_difference;
     app.begin_counter();
     seg.group_neighbor_cells();
     app.show_duration();
+
     utils.LabeledGraphToImage2D(&in, &imagen);
     imagen.display();
-    seg.m_nregions = segmentation_number_of_meshes;
+
     cout<<"# de regiones:"<<seg.m_meshregionV.size()<<endl<<endl;
-    cout<<"# de regiones a converger:"<<segmentation_number_of_meshes<<endl;
+    cout<<"# de regiones a converger asmv:"<<nmeshes_asmv<<endl;
     cout<<"ASm_V"<<endl;
     app.begin_counter();
     seg.group_neighbor_regions();
     app.show_duration();
+
     cout<<"# de regiones convergidas:"<<endl;
     utils.OverlapedGraphToImage2D(&in,&(seg.m_meshregionV),  &imagen);
     imagen.display();
+
     cout<<"ASm_S"<<endl;
     app.begin_counter();
     seg.group_similar_regions();
     app.show_duration();
+
     utils.OverlapedGraphToImage2D(&in,&(seg.m_meshregionV),  &imagen);
     imagen.display();
     cout<<"end processing width file:"<<data_file<<endl;
@@ -160,26 +260,23 @@ void do_ag3()
     app.show_duration();
 
     CSegmentator<CGraphImage3D<int> > seg(&in, &out);
+    seg.m_segmentation_difference=segmentation_difference;
+    seg.m_nregions_asmv = nmeshes_asmv;
+    seg.m_nregions_asms = nmeshes_asms;
 
     cout<<"Segmentando"<<endl;
-    seg.m_max_segmentation_difference=segmentation_difference;
-
     cout<<"ACV"<<endl;
     app.begin_counter();
     seg.group_neighbor_cells();
     app.show_duration();
+
     cout<<"labeled to img"<<endl;
     app.begin_counter();
     utils.LabeledGraphToImage3D(&in, &imagen);
     app.show_duration();
 
-    //imagen.display3d();
-
-
-
     cout<<"ASm_V"<<endl;
     app.begin_counter();
-    seg.m_nregions = segmentation_number_of_meshes;
     seg.group_neighbor_regions();
     app.show_duration();
 
@@ -188,19 +285,11 @@ void do_ag3()
     utils.OverlapedGraphToImage3D(&in,&(seg.m_meshregionV),  &imagen);
     app.show_duration();
     //imagen.display3d();
-    utils.OverlapedGraphToFile(&in,&(seg.m_meshregionV), &imagen, "3ddragon.txt");
+    utils.Overlaped3DGraphToFile(&in,&(seg.m_meshregionV), &imagen, "..\\resultados\\3ddragon.txt");
 
 }
 
-/*void do_mesh()
-{
-    CGraphMeshND<int> grafo_entrada, grafo_salida;
-    grafo_entrada.load_data(DATA_PATH + data_file);
-    grafo_salida=grafo_entrada;
-    CSegmentator<CGraphMeshND<int> > seg(&grafo_entrada, &grafo_salida);
-    seg.binary_segmentation();
-    grafo_salida.print_mesh();
-}*/
+
 void do_bin()
 {
     CImage imagen(DATA_PATH + data_file);//true beacuse it is 3d

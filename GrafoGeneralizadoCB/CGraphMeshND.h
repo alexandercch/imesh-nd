@@ -16,7 +16,7 @@
 
 
 template<class T>
-class CGraphMeshND : public CGraph<T>
+class CGraphMeshND
 {
 public:
     typedef CGraphIteratorND<T> iterator;
@@ -87,32 +87,44 @@ private:
 
 template<class T>CGraphMeshND<T>::CGraphMeshND ():
     m_ibegin(new iterator),
-    m_iend(new iterator)
+    m_iend(new iterator),
+    m_size(0),
+    m_number_of_neighbors(0)
 {
 
 }
-template<class T>CGraphMeshND<T>::~CGraphMeshND () {
-
-
+template<class T>CGraphMeshND<T>::~CGraphMeshND ()
+{
+    cout<<"m_size:"<<m_size<<" ";
+    cout<<"~";
+    delete[] m_nodes;
+    for(int i=0; i< m_size; ++i)
+        delete[] m_adj_list[i];
+    delete[] m_adj_list;
+    cout<<"dtor"<<endl;
 }
 
 template<class T>
 void CGraphMeshND<T>::config(int size, int dimension) //dimensio should be 2 or 3
 {
-    m_size=size;
+    m_size = size;
     dimension++;
-    m_number_of_neighbors= dimension;
-    m_nodes= new node[size];
-    m_adj_list= new int*[size];
-    for(int i=0; i< size; ++i)
+    m_number_of_neighbors = dimension;
+    m_nodes = new node[size+1];
+    m_adj_list = new int*[size];
+    for(int i = 0; i < size; ++i)
     {
-        m_adj_list[i]= new int[dimension];
+        m_adj_list[i] = new int[dimension];
     }
-    m_ibegin->m_pgraph  =this;
-    m_ibegin->m_index   =0;
+    m_ibegin->m_pgraph  = this;
+    m_ibegin->m_index   = 0;
 
-    m_iend->m_pgraph    =this;
-    m_iend->m_index     =size;
+    m_iend->m_pgraph    = this;
+    m_iend->m_index     = size;
+    ///this node is setted to invalid to be pointed for the border
+    ///cells of the mesh, in wich case has less neighbors than others
+    m_nodes[size].m_label = INVALID_NEIGHBOR_LABEL_VALUE;
+
 }
 
 template<class T>
@@ -177,7 +189,7 @@ int CGraphMeshND<T>::area()
 {
     float tarea=0.0;
     for(int i=0; i< m_size; ++i)
-        tarea+=m_nodes[i]->m_area;
+        tarea+=m_nodes[i].m_area;
     return tarea;
 }
 

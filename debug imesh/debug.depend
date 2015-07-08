@@ -1,0 +1,84 @@
+# depslib dependency file v1.0
+1429475651 source:c:\users\alex\desktop\tesis\imesh-nd\debug imesh\debug\main.cpp
+	"CGraphImage2D.h"
+	<iostream>
+	"capputils.h"
+
+1429475963 c:\users\alex\desktop\tesis\imesh-nd\debug imesh\debug\cgraphimage2d.h
+	"CGraph.h"
+	"CGraphIterator2D.h"
+
+1429032487 c:\users\alex\desktop\tesis\imesh-nd\debug imesh\debug\cgraph.h
+	"CNode.h"
+	<string>
+	<fstream>
+	<iostream>
+
+1410971716 c:\users\alex\desktop\tesis\imesh-nd\debug imesh\debug\cnode.h
+
+1429474903 c:\users\alex\desktop\tesis\imesh-nd\debug imesh\debug\cgraphiterator2d.h
+	"CGraphIterator.h"
+
+1429027747 c:\users\alex\desktop\tesis\imesh-nd\debug imesh\debug\cgraphiterator.h
+
+1429474568 c:\users\alex\desktop\tesis\imesh-nd\debug imesh\debug\capputils.h
+	<iostream>
+	<fstream>
+	<string>
+	<time.h>
+	<cstdio>
+	<cstdlib>
+	<stdio.h>
+	<direct.h>
+	<unistd.h>
+
+1430692918 source:f:\ucsp\tesis\imesh-nd\debug imesh\debug\main.cpp
+	"CGraphImage2D.h"
+	"CGraphImage3D.h"
+	"CGraphMeshND.h"
+	<iostream>
+	<math.h>
+	"capputils.h"
+
+1430577452 f:\ucsp\tesis\imesh-nd\debug imesh\debug\cgraphimage2d.h
+	"CGraph.h"
+	"CGraphIterator2D.h"
+
+1429032487 f:\ucsp\tesis\imesh-nd\debug imesh\debug\cgraph.h
+	"CNode.h"
+	<string>
+	<fstream>
+	<iostream>
+
+1430690936 f:\ucsp\tesis\imesh-nd\debug imesh\debug\cnode.h
+
+1429491540 f:\ucsp\tesis\imesh-nd\debug imesh\debug\cgraphiterator2d.h
+	"CGraphIterator.h"
+
+1429027747 f:\ucsp\tesis\imesh-nd\debug imesh\debug\cgraphiterator.h
+
+1429474568 f:\ucsp\tesis\imesh-nd\debug imesh\debug\capputils.h
+	<iostream>
+	<fstream>
+	<string>
+	<time.h>
+	<cstdio>
+	<cstdlib>
+	<stdio.h>
+	<direct.h>
+	<unistd.h>
+
+1429979966 f:\ucsp\tesis\imesh-nd\debug imesh\debug\cgraphimage3d.h
+	"CGraph.h"
+	"CGraphIterator3D.h"
+
+1429983673 f:\ucsp\tesis\imesh-nd\debug imesh\debug\cgraphiterator3d.h
+	"CGraphIterator.h"
+
+1430692988 f:\ucsp\tesis\imesh-nd\debug imesh\debug\cgraphmeshnd.h
+	"CGraph.h"
+	"CGraphIteratorND.h"
+
+1430615761 f:\ucsp\tesis\imesh-nd\debug imesh\debug\cgraphiteratornd.h
+	"CGraphIterator.h"
+

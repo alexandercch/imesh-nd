@@ -15,7 +15,7 @@
 #define NUMBER_OF_NEIGHBOURS_2D 4
 
 template<class T>
-class CGraphImage2D : public CGraph<T>
+class CGraphImage2D
 {
 public:
     typedef CGraphIterator2D<T> iterator;

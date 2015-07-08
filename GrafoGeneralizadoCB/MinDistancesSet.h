@@ -46,11 +46,11 @@ private:
     };
 //............................................................................................................
 private:
-    typedef CSetKey/*<Obj>*/							Set_key;
+    typedef CSetKey/*<Obj>*/			    Set_key;
     typedef multiset<Set_key*, PLessCPtr>	Set;
-    typedef typename Set::iterator							Set_it;
+    typedef typename Set::iterator			Set_it;
 public:
-    typedef vector<Obj*>							Obj_vector;
+    typedef vector<Obj*>					Obj_vector;
 
 public:
     CMinDistancesSet();

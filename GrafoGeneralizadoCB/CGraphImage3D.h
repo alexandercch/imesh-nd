@@ -16,7 +16,7 @@
 #define NUMBER_OF_NEIGHBOURS_3D 6
 
 template<class T>
-class CGraphImage3D : public CGraph<T>
+class CGraphImage3D
 {
 public:
     typedef CGraphIterator3D<T> iterator;

@@ -18,49 +18,6 @@ public:
 
     int m_height, m_width, m_layers;
     //load 2d  images
-    void to_gray_scale()
-    {
-        IType r,g,b;
-        IType gr1;
-        if (m_layers)
-        {
-            for(int i=0;
-             i<m_width; i++)
-            {
-                for(int j=0; j<m_height; j++)
-                {
-                    for(int k=0; k<m_layers; k++)
-                    {
-                        r = (*(m_imagenes[k]))(i,j,0,0); // First channel RED
-                        g = (*(m_imagenes[k]))(i,j,0,1); // Second channel GREEN
-                        b = (*(m_imagenes[k]))(i,j,0,2); // Third channel BLUE
-                        gr1 = round(0.299*((double)r) + 0.587*((double)g) + 0.114*((double)b));
-                        (*(m_imagenes[k]))(i,j,0,0) = gr1;
-                        (*(m_imagenes[k]))(i,j,0,1) = gr1;
-                        (*(m_imagenes[k]))(i,j,0,2) = gr1;
-                    }
-                }
-            }
-            return;
-        }
-        for(int i=0; i<m_width; i++)
-        {
-            for(int j=0; j<m_height; j++)
-            {
-
-                r = (*m_imagen)(i,j,0,0); // First channel RED
-                g = (*m_imagen)(i,j,0,1); // Second channel GREEN
-                b = (*m_imagen)(i,j,0,2); // Third channel BLUE
-                gr1 = round(0.299*((double)r) + 0.587*((double)g) + 0.114*((double)b));
-                (*m_imagen)(i,j,0,0) = gr1;
-                (*m_imagen)(i,j,0,1) = gr1;
-                (*m_imagen)(i,j,0,2) = gr1;
-            }
-
-        }
-
-    }
-
     CImage(string filename, bool is_3d=false):m_layers(0)
     {
         if (is_3d)
@@ -123,6 +80,50 @@ public:
             m_imagenes[i] = new CImg<IType>(height,width,1,3);
     }
     virtual ~CImage() {};
+
+     void to_gray_scale()
+    {
+        IType r,g,b;
+        IType gr1;
+        if (m_layers)
+        {
+            for(int i=0;
+             i<m_width; i++)
+            {
+                for(int j=0; j<m_height; j++)
+                {
+                    for(int k=0; k<m_layers; k++)
+                    {
+                        r = (*(m_imagenes[k]))(i,j,0,0); // First channel RED
+                        g = (*(m_imagenes[k]))(i,j,0,1); // Second channel GREEN
+                        b = (*(m_imagenes[k]))(i,j,0,2); // Third channel BLUE
+                        gr1 = round(0.299*((double)r) + 0.587*((double)g) + 0.114*((double)b));
+                        (*(m_imagenes[k]))(i,j,0,0) = gr1;
+                        (*(m_imagenes[k]))(i,j,0,1) = gr1;
+                        (*(m_imagenes[k]))(i,j,0,2) = gr1;
+                    }
+                }
+            }
+            return;
+        }
+        for(int i=0; i<m_width; i++)
+        {
+            for(int j=0; j<m_height; j++)
+            {
+
+                r = (*m_imagen)(i,j,0,0); // First channel RED
+                g = (*m_imagen)(i,j,0,1); // Second channel GREEN
+                b = (*m_imagen)(i,j,0,2); // Third channel BLUE
+                gr1 = round(0.299*((double)r) + 0.587*((double)g) + 0.114*((double)b));
+                (*m_imagen)(i,j,0,0) = gr1;
+                (*m_imagen)(i,j,0,1) = gr1;
+                (*m_imagen)(i,j,0,2) = gr1;
+            }
+
+        }
+
+    }
+
     //get 2d image pixel
     unsigned int get_pixel(int row, int column)
     {

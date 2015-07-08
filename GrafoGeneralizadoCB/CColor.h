@@ -118,7 +118,7 @@ void CColor::generate()
         R=co.r;
         G=co.g;
         B=co.b;
-        pallete[i]=(R<<16)|(G<<8)|B;
+        pallete[i]=0xff000000|(R<<16)|(G<<8)|B;
     }
 }
 
@@ -223,7 +223,7 @@ int CColor::process_pixel_binary(int pixel)
     int r, g, b;
     get_rgb(r, g, b, pixel);
     if (((r+g+b)>>1) < 126)
-        pixel= 0x00000000;//negro
+        pixel= 0xff000000;//negro
     else
     {
         pixel=0xffffffff;//blanco

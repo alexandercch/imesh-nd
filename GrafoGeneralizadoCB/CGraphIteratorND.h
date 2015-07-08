@@ -105,7 +105,8 @@ typename CGraphIteratorND<T>::node* CGraphIteratorND<T>::operator->()
 template< class T>
 typename CGraphIteratorND<T>::node*& CGraphIteratorND<T>::operator*()
 {
-    return m_pgraph->m_nodes[m_index];
+    node* p = &m_pgraph->m_nodes[m_index];
+    return p;
 };
 
 template< class T>

@@ -639,7 +639,7 @@
 	<vector>
 	<set>
 
-1433803256 source:f:\ucsp\tesis\imesh-nd\grafogeneralizadocb\main.cpp
+1436378328 source:f:\ucsp\tesis\imesh-nd\grafogeneralizadocb\main.cpp
 	<iostream>
 	"CGraphImage3D.h"
 	"CGraphImage2D.h"
@@ -649,7 +649,7 @@
 	"CGraphUtils.h"
 	"CAppUtils.h"
 
-1433619207 f:\ucsp\tesis\imesh-nd\grafogeneralizadocb\cgraphimage3d.h
+1434036450 f:\ucsp\tesis\imesh-nd\grafogeneralizadocb\cgraphimage3d.h
 	"CGraph.h"
 	"CGraphIterator3D.h"
 
@@ -662,7 +662,7 @@
 
 1429458402 f:\ucsp\tesis\imesh-nd\grafogeneralizadocb\cnode.h
 
-1431764387 f:\ucsp\tesis\imesh-nd\grafogeneralizadocb\cimage.h
+1434041726 f:\ucsp\tesis\imesh-nd\grafogeneralizadocb\cimage.h
 	<fstream>
 	<iostream>
 	<vector>
@@ -724,21 +724,21 @@
 
 1429493376 f:\ucsp\tesis\imesh-nd\grafogeneralizadocb\cgraphiterator.h
 
-1433619357 f:\ucsp\tesis\imesh-nd\grafogeneralizadocb\cgraphimage2d.h
+1434036453 f:\ucsp\tesis\imesh-nd\grafogeneralizadocb\cgraphimage2d.h
 	"CGraph.h"
 	"CGraphIterator2D.h"
 
-1433616545 f:\ucsp\tesis\imesh-nd\grafogeneralizadocb\cgraphiterator2d.h
+1434692315 f:\ucsp\tesis\imesh-nd\grafogeneralizadocb\cgraphiterator2d.h
 	"CGraphIterator.h"
 
-1430606904 f:\ucsp\tesis\imesh-nd\grafogeneralizadocb\cgraphmeshnd.h
+1435350968 f:\ucsp\tesis\imesh-nd\grafogeneralizadocb\cgraphmeshnd.h
 	"CGraph.h"
 	"CGraphIteratorND.h"
 
-1430695827 f:\ucsp\tesis\imesh-nd\grafogeneralizadocb\cgraphiteratornd.h
+1434725237 f:\ucsp\tesis\imesh-nd\grafogeneralizadocb\cgraphiteratornd.h
 	"CGraphIterator.h"
 
-1433617247 f:\ucsp\tesis\imesh-nd\grafogeneralizadocb\csegmentator.h
+1436376055 f:\ucsp\tesis\imesh-nd\grafogeneralizadocb\csegmentator.h
 	<cstdio>
 	<map>
 	<set>
@@ -755,21 +755,21 @@
 	<vector>
 	<set>
 
-1428647598 f:\ucsp\tesis\imesh-nd\grafogeneralizadocb\mindistancesset.h
+1434646857 f:\ucsp\tesis\imesh-nd\grafogeneralizadocb\mindistancesset.h
 	<vector>
 	<set>
 
-1428649099 f:\ucsp\tesis\imesh-nd\grafogeneralizadocb\ccolor.h
+1434725956 f:\ucsp\tesis\imesh-nd\grafogeneralizadocb\ccolor.h
 	<math.h>
 	<cstdlib>
 	<time.h>
 
-1433812921 f:\ucsp\tesis\imesh-nd\grafogeneralizadocb\cgraphutils.h
+1435347962 f:\ucsp\tesis\imesh-nd\grafogeneralizadocb\cgraphutils.h
 	<cstdio>
 	<set>
 	"CImage.h"
 
-1428687230 f:\ucsp\tesis\imesh-nd\grafogeneralizadocb\capputils.h
+1434656337 f:\ucsp\tesis\imesh-nd\grafogeneralizadocb\capputils.h
 	<iostream>
 	<fstream>
 	<string>

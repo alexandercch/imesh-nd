@@ -40,8 +40,9 @@ public:
     G *output;
 
     int cntr;
-    int m_max_segmentation_difference;
-    int m_nregions;
+    int m_segmentation_difference;
+    int m_nregions_asmv;
+    int m_nregions_asms;
 
     vector<CMeshRegion<G>* > m_meshregionV;
 
@@ -72,12 +73,12 @@ private:
 };
 
 template<class G>
-CSegmentator<G>::CSegmentator():cntr(0), m_max_segmentation_difference(MAX_SEGMENTATION_DIFFERENCE)
+CSegmentator<G>::CSegmentator():cntr(0), m_segmentation_difference(MAX_SEGMENTATION_DIFFERENCE)
 {
 };
 
 template<class G>
-CSegmentator<G>::CSegmentator(G *_input, G *_output):input(_input),output(_output),cntr(0), m_max_segmentation_difference(MAX_SEGMENTATION_DIFFERENCE)
+CSegmentator<G>::CSegmentator(G *_input, G *_output):input(_input),output(_output),cntr(0), m_segmentation_difference(MAX_SEGMENTATION_DIFFERENCE)
 {
 };
 
@@ -88,36 +89,19 @@ template<class G>
 void CSegmentator<G>::binary_segmentation()
 {
     iterator iter;
-    //int pixel;
-    cout<<"Hello debug"<<endl;
-    int i=0;
     for(iter = input->begin(); iter != input->end(); iter++)
     {
-        printf("0x");
-        printf("%x\n",iter->m_data);
-        /*pixel=iter->m_data;
-        pixel=handle_color.process_pixel_binary(pixel);
-        output->set_at(iter, pixel);*/
         iter->m_data = handle_color.process_pixel_binary(iter->m_data);
-        cout<<"end vis"<<iter->m_data<<" i:"<<i++<<endl;
-        //cin.get();
     }
-    cout<<"end iteration"<<endl;
 }
 
 template<class G>
 void CSegmentator<G>::to_gray_scale()
 {
-    int pixel;
     iterator iter ;
     for(iter = input->begin(); iter != input->end(); iter++)
     {
-        cout<<"iter:"<<iter->m_data<<endl;
-        /*pixel=iter->m_data;
-        pixel=handle_color.process_gray_scale(pixel);
-        input->set_at(iter, pixel);*/
         iter->m_data = handle_color.process_gray_scale(iter->m_data);
-
     }
 }
 
@@ -168,7 +152,7 @@ void CSegmentator<G>::group_neighbor_cells()
                 }
                 //cout<<"i";
                 if ( handle_color.rgb_difference(neighbor->m_data, actual->m_data)
-                        < m_max_segmentation_difference )
+                        < m_segmentation_difference )
                 {
                     neighbor->m_label=current_label_value;
                     node_queue.push(neighbor);
@@ -194,7 +178,7 @@ void CSegmentator<G>::group_neighbor_regions()
 
     CMeshRegion<G>* min_neighbor;
     //int niterations=0;
-    while(mr_priority_set.size() > m_nregions)
+    while(mr_priority_set.size() > m_nregions_asmv)
     {
         //niterations++;
         bool first=true;
@@ -225,7 +209,7 @@ void CSegmentator<G>::group_neighbor_regions()
         }
         if (first)
         {
-            cout<<"alone found!"<<endl;
+            cout<<"region alone found!"<<endl;
             mr_priority_set.erase(*siter);
             continue;
         }
@@ -251,10 +235,9 @@ void CSegmentator<G>::group_similar_regions()
             v.push_back(m_meshregionV[i]);
     }
     similarity_set.Init(&v);
-    while(similarity_set.Size() > m_nregions)
+    while(similarity_set.Size() > m_nregions_asms)
     {
         CMeshRegion<G> *s1, *s2;
-
         similarity_set.GetLessDistPair(s1, s2);
         s1->Incorporate(s2);
         similarity_set.UpdtLessDistPair();
@@ -287,7 +270,5 @@ void CSegmentator<G>::show_mesh_region()
         cout<<endl;
     }
 }
-
-
 
 #endif // SEGMENTATOR_H
